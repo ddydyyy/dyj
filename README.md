@@ -1,5 +1,5 @@
 # finance
-# yb commit
+yb commit
 A new Flutter project.
 
 ## Getting Started
