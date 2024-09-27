@@ -1,7 +1,7 @@
 // flutter의 기본적인 UI 구성 요소를 가져옴
 import 'package:flutter/material.dart';
 import 'Style/mainStyle.dart' as mainStyle;
-import 'home.dart';
+import 'Page/home.dart';
 
 // 실행 시 MyApp 클래스로 애플리케이션 실행
 void main() {
