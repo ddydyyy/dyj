@@ -1,11 +1,17 @@
 // flutter의 기본적인 UI 구성 요소를 가져옴
 import 'package:flutter/material.dart';
-// import 'package:finance/Style/mainStyle.dart';
-import 'Style/mainStyle.dart';
+import 'Style/mainStyle.dart' as mainStyle;
 
 // 실행 시 MyApp 클래스로 애플리케이션 실행
 void main() {
-  runApp(Ref());
+  runApp(
+      // MaterialApp : 테마 등 여러 속성을 같이 시작해주는듯?
+      MaterialApp(
+          // Style/mainStyle.dart의 테마 상속받음
+          theme: mainStyle.AppTheme.theme,
+          home : Ref()
+      )
+  );
 }
 
 // StatelessWidget을 상속받아, 앱의 기본 구조를 정의
@@ -14,17 +20,16 @@ class Ref extends StatelessWidget {
   Widget build(BuildContext context) {
     // 머티리얼 디자인을 사용하는 앱의 기본적인 설정을 제공
     return MaterialApp(
-      // mainStyle.dart 스타일 적용
-      theme: AppTheme.theme,
       // 앱 제목
-      title: 'Hello Flutter',
+      title: 'Ref Flutter',
       // Scaffold 위젯 사용( 레이아웃 ), Wrapper 느낌
       // 앱바( 헤더 ), 바디, BottomNavigationBar or persistentFooterButtons( footer )
       home: Scaffold(
         // 앱바( 헤더 )
         appBar: AppBar(
           // 제목
-          title: Text('Flutter Demo'),
+          title: Text('Ref Demo'),
+          titleTextStyle: Theme.of(context).textTheme.headlineLarge,
         ),
 
         // Center 위젯 사용( 레이아웃, 중앙정렬 )
@@ -34,8 +39,9 @@ class Ref extends StatelessWidget {
           // child : div, span 같은 느낌
           child: Text(
             'Hello, World!',
-            // css나 scss로 못빼고 위에 스타일 정의하고, 상속받을 수는 있음
+            // Style/mainStyle.dart에서 정의한 bodyLarge 스타일 적용
             style: Theme.of(context).textTheme.bodyLarge,
+            // style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
       ),

@@ -8,8 +8,8 @@ class AppTheme {
     return ThemeData(
       primaryColor: Colors.blue,
       textTheme: TextTheme(
-        bodyLarge: TextStyle(fontSize: 30, color: Colors.black),
-        headlineLarge: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.blue),
+        bodyLarge: TextStyle(fontSize: 24, color: Colors.green),
+        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.blue),
       ),
     );
   }
