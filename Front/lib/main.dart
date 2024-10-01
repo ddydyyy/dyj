@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'Style/mainStyle.dart' as mainStyle;
 import 'Page/home.dart';
 
-// 실행 시 MyApp 클래스로 애플리케이션 실행
+// 실행 시 MyApp 클래스로 애플리케이션 실행.
 void main() {
   runApp(
     // MaterialApp : 테마 등 여러 속성을 같이 시작해주는듯?
