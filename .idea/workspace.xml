@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="dy_241001_2302 파일 구조 변경">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241009_0200 커스텀위젯 사용">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/Page/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/Page/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +19,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ddydyyy"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ddydyyy/dyj.git",
+    "accountId": "1c5b19d2-9205-4748-b243-5b00d5e5048a"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -119,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728401486889</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="241009_0200 커스텀위젯 사용">
+      <option name="closed" value="true" />
+      <created>1728407816381</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728407816381</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -127,6 +146,7 @@
     <MESSAGE value="dy_241001_2301 파일 구조 변경" />
     <MESSAGE value="dy_241001_2302 파일 구조 변경" />
     <MESSAGE value="__" />
-    <option name="LAST_COMMIT_MESSAGE" value="__" />
+    <MESSAGE value="241009_0200 커스텀위젯 사용" />
+    <option name="LAST_COMMIT_MESSAGE" value="241009_0200 커스텀위젯 사용" />
   </component>
 </project>
