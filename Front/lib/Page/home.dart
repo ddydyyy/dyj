@@ -42,29 +42,45 @@ class ChartBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
-      padding: const EdgeInsets.all(24.0),
+      padding: const EdgeInsets.all(32.0),
       child: Column(
         children: [
           Column(
             children: [
+              // 첫 번째 행
               Row(
                 children: [
                   Text(
                     this.title,
-                    style: TextStyle(
-                      fontSize: 20,
+                    style: const TextStyle(
+                      fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
                   ),
-                  TextButton(
-                    onPressed: (){ },
-                    child: Text('더보기')
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 24.0),
+                    child: TextButton(
+                      onPressed: (){ },
+                      child: const Text(
+                        '더보기 >',
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey,
+                        ),
+                      ),
+                    ),
                   )
                 ],
               ),
             ],
           ),
+
+          // 두 번째 행
+
+          // 세 번째 행
 
         ],
       ),
