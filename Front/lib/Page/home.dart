@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../CustomWidget/global.dart';
 
 // StatelessWidget : 앱 시작 시 랜더링 후 불변
 // StatefulWidget : 각종 상호작용에 따라 UI 변경
@@ -9,15 +10,13 @@ class Home extends StatelessWidget {
     return MaterialApp(
       title: 'Home',
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Ref Demo'),
-          titleTextStyle: Theme.of(context).textTheme.headlineLarge,
-        ),
-
         body: ListView(
           // child : div, span 같은 느낌
-          children: const [
-            ChartBox(
+          children: [
+            SearchBox(
+
+            ),
+            const ChartBox(
               title: '어제 사람들이 관심있던 ETF/ETN',
               subtitle: 'This is a custom card widget.',
             ),
