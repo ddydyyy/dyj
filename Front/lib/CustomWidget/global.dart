@@ -16,21 +16,26 @@ class _SearchBoxState extends State<SearchBox> {
 
   @override
   Widget build(BuildContext context) {
-    return
-      Column(
-        children: [
-          Row(
-            children: [
+    return Column(
+      children: [
+        Row(
+          children: [
             const Icon(Icons.insert_emoticon),
             Expanded(
               child: TextField(
                 controller: _controller,
                 decoration: const InputDecoration(
-                  hintText: '주식, 메뉴, 상품, 뉴스를 검색하세요', // 입력 필드에 힌트 텍스트 추가
+                  hintText: '주식, 메뉴, 상품, 뉴스를 검색하세요',
+                  border: InputBorder.none, // 밑줄 제거
                 ),
               ),
             ),
           ],
+        ),
+
+        Container(
+          height: 2, // 밑줄의 두께이
+          color: Colors.grey, // 밑줄 색상
         ),
       ],
     );
