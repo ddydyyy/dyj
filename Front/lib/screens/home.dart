@@ -1,8 +1,11 @@
 import 'package:finance/provider/provider.dart';
 import 'package:finance/start.dart';
+import 'package:finance/widgets/graph.dart';
+import 'package:finance/widgets/search.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme.dart';
+
 // StatelessWidget : 앱 시작 시 랜더링 후 불변
 // StatefulWidget : 각종 상호작용에 따라 UI 변경
 class Home extends StatelessWidget {
@@ -19,64 +22,16 @@ class Home extends StatelessWidget {
             Column(
               // crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                // Column_1
                 // 검색창
-                Column(
-                  children: [
-                    // 아이콘 + 검색창
-                    const Row(
-                      children: [
-                        // 아이콘
-                        Icon(Icons.insert_emoticon),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 10,
-                          ),
-                        ),
-                        Expanded(
-                          // TextField는 크기가 정해져 있지 않음
-                          // 왜인지 모르지만, 차지하는 공간이 계속 변하면서
-                          // 무한로딩되는 오류가 생기는듯
-                          // Expanded로 부모 위젯의 남은 공간을 모두 차지하게 해
-                          // 공간을 재할당하지 않게 해서 무한로딩 방지하는듯?
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: '주식, 메뉴, 상품, 뉴스를 검색하세요',
-                              border: InputBorder.none, // 밑줄 제거
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    // 검색창 아래 밑줄
-                    Container(
-                      height: 2, // 밑줄의 두께
-                      color: Colors.grey, // 밑줄 색상
-                    ),
-                  ],
-                ),
-                // 아이콘
-                SizedBox(
+                const Search(),
+                const SizedBox(
                   height: 10,
                 ),
-                Row(
-                  children: [
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: themeProvider.isDarkMode
-                            ? Colors.red
-                            : Colors.blue, // 텍스트 색상
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0, vertical: 8.0), // 패딩
-                        textStyle: const TextStyle(fontSize: 18), // 텍스트 스타일
-                      ),
-                      onPressed: () {
-                        print('click');
-                      },
-                      child: Text('click2'),
-                    ),
-                  ],
-                )
+                // 국내, 해외, ETF 선택
+                const GraphRow(),
+                const SizedBox(
+                  height: 50,
+                ),
               ],
             )
           ],
