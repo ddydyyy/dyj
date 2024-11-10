@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SearchBox extends StatefulWidget {
+  const SearchBox({super.key});
+
   // _ : private 클래스, 같은 파일 내에서만 접근 가능
   // createState() -> 위젯이 처음 생성될 때 한 번만 호출
   // 텍스트를 입력할 때마다 UI가 업데이트 되지만,
@@ -42,3 +44,18 @@ class _SearchBoxState extends State<SearchBox> {
 
   }
 }
+
+// 화면 전환 위젯
+// class ScreenConv extends StatelessWidget{
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//
+//     )
+//   }
+// }
+
+
+
+

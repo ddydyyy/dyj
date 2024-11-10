@@ -9,13 +9,15 @@ void main() {
       MaterialApp(
           // Style/mainStyle.dart의 테마 상속받음
           theme: mainStyle.AppTheme.theme,
-          home : Ref()
+          home : const Ref()
       )
   );
 }
 
 // StatelessWidget을 상속받아, 앱의 기본 구조를 정의
 class Ref extends StatelessWidget {
+  const Ref({super.key});
+
   @override
   Widget build(BuildContext context) {
     // 머티리얼 디자인을 사용하는 앱의 기본적인 설정을 제공
@@ -28,7 +30,7 @@ class Ref extends StatelessWidget {
         // 앱바( 헤더 )
         appBar: AppBar(
           // 제목
-          title: Text('Ref Demo'),
+          title: const Text('Ref Demo'),
           titleTextStyle: Theme.of(context).textTheme.headlineLarge,
         ),
 

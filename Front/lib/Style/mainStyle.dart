@@ -7,7 +7,7 @@ class AppTheme {
   static ThemeData get theme {
     return ThemeData(
       primaryColor: Colors.blue,
-      textTheme: TextTheme(
+      textTheme: const TextTheme(
         bodyLarge: TextStyle(fontSize: 24, color: Colors.green),
         headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.blue),
       ),
