@@ -1,9 +1,11 @@
+import 'package:finance/provider/provider.dart';
 import 'package:finance/theme/theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:finance/screens/home.dart';
 import 'package:finance/screens/dy_temp.dart';
 import 'package:finance/screens/yb_home.dart';
+import 'package:provider/provider.dart';
 
 class Start extends StatefulWidget {
   const Start({super.key});
@@ -13,17 +15,6 @@ class Start extends StatefulWidget {
 }
 
 class _Start extends State<Start> {
-  bool isDarkMode = false;
-  // 현재 테마를 가져오는 함수
-  AppTheme get currentTheme =>
-      isDarkMode ? AppTheme.darkTheme : AppTheme.lightTheme;
-
-  void _toggleTheme() {
-    setState(() {
-      isDarkMode = !isDarkMode;
-    });
-  }
-
   // 선택한 bottomBar 탭 인덱스
   int _selectedIndex = 0;
 
@@ -45,17 +36,26 @@ class _Start extends State<Start> {
 
   @override
   Widget build(BuildContext context) {
+    // provider에 저장된 currentTheme 가져오기
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       // 앱 전체 테마
-      theme: currentTheme.themeData,
+      theme: themeProvider.currentTheme.themeData,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Custom Theme Demo'),
-          backgroundColor: currentTheme.primaryColor,
+          backgroundColor: themeProvider.currentTheme.primaryColor,
           actions: [
             IconButton(
-              icon: Icon(isDarkMode ? Icons.brightness_7 : Icons.brightness_2),
-              onPressed: _toggleTheme,
+              icon: Icon(
+                  themeProvider.isDarkMode ? Icons.brightness_7 : Icons.brightness_2),
+              // onPressed: _toggleTheme,
+              onPressed: () {
+                // provider에 있는 toggleTheme 실행
+                Provider.of<ThemeProvider>(context, listen: false)
+                    .toggleTheme();
+              },
             ),
           ],
         ),

@@ -1,6 +1,8 @@
+import 'package:finance/provider/provider.dart';
+import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
-import '../widgets/search.dart';
-
+import 'package:provider/provider.dart';
+import '../theme/theme.dart';
 // StatelessWidget : 앱 시작 시 랜더링 후 불변
 // StatefulWidget : 각종 상호작용에 따라 UI 변경
 class Home extends StatelessWidget {
@@ -8,6 +10,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ThemeProvider에서 currentTheme 가져오기
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -51,6 +55,28 @@ class Home extends StatelessWidget {
                     ),
                   ],
                 ),
+                // 아이콘
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: themeProvider.isDarkMode
+                            ? Colors.red
+                            : Colors.blue, // 텍스트 색상
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.0, vertical: 8.0), // 패딩
+                        textStyle: const TextStyle(fontSize: 18), // 텍스트 스타일
+                      ),
+                      onPressed: () {
+                        print('click');
+                      },
+                      child: Text('click2'),
+                    ),
+                  ],
+                )
               ],
             )
           ],
