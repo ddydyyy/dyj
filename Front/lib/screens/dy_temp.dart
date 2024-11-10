@@ -9,7 +9,7 @@ class dy_temp extends StatelessWidget {
       color: Colors.black,
       padding: const EdgeInsets.all(32.0),
       child: const Text(
-        'temp',
+        'dy',
         style: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
