@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241110_2100 dy provider로 isDarkMode 변수 전역으로 설정_UI 바로바로 업데이트">
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_0100 dy graph 위젯 생성">
+      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/Style/mainStyle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/Style/mainStyle.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/theme/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/theme/theme.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -235,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731240219526</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="241111_0100 dy graph 위젯 생성">
+      <option name="closed" value="true" />
+      <created>1731255283938</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1731255283938</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -254,6 +262,7 @@
     <MESSAGE value="241110_1630 dy&#10;bottomNavigationBar 페이지 이동 설정 / 파일 구조 변경" />
     <MESSAGE value="241110_1830 dy 테마 페이지 파일로 구분 / 다크모드 화이트모드 적용" />
     <MESSAGE value="241110_2100 dy provider로 isDarkMode 변수 전역으로 설정_UI 바로바로 업데이트" />
-    <option name="LAST_COMMIT_MESSAGE" value="241110_2100 dy provider로 isDarkMode 변수 전역으로 설정_UI 바로바로 업데이트" />
+    <MESSAGE value="241111_0100 dy graph 위젯 생성" />
+    <option name="LAST_COMMIT_MESSAGE" value="241111_0100 dy graph 위젯 생성" />
   </component>
 </project>

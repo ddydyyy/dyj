@@ -26,20 +26,38 @@ class _GraphRowState extends State<GraphRow> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Graph(
-          title: "국내주식",
+          title: "국내",
           index: 0,
           selectedIndex: _selectedIndex,
           onSelected: _onSelected,
         ),
         Graph(
-          title: "해외주식",
+          title: "해외",
           index: 1,
           selectedIndex: _selectedIndex,
           onSelected: _onSelected,
         ),
         Graph(
-          title: "ETFs",
+          title: "원자재",
           index: 2,
+          selectedIndex: _selectedIndex,
+          onSelected: _onSelected,
+        ),
+        Graph(
+          title: "ETF",
+          index: 3,
+          selectedIndex: _selectedIndex,
+          onSelected: _onSelected,
+        ),
+        Graph(
+          title: "환율",
+          index: 4,
+          selectedIndex: _selectedIndex,
+          onSelected: _onSelected,
+        ),
+        Graph(
+          title: "채권",
+          index: 5,
           selectedIndex: _selectedIndex,
           onSelected: _onSelected,
         ),

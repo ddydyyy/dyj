@@ -2,6 +2,7 @@ import 'package:finance/provider/provider.dart';
 import 'package:finance/start.dart';
 import 'package:finance/widgets/graph.dart';
 import 'package:finance/widgets/search.dart';
+import 'package:finance/widgets/stock_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme.dart';
@@ -15,8 +16,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // ThemeProvider에서 currentTheme 가져오기
     final themeProvider = Provider.of<ThemeProvider>(context);
-    return Scaffold(
-      body: SingleChildScrollView(
+    return Container(
         child: Column(
           children: [
             Column(
@@ -30,12 +30,12 @@ class Home extends StatelessWidget {
                 // 국내, 해외, ETF 선택
                 const GraphRow(),
                 const SizedBox(
-                  height: 50,
+                  height: 300,
                 ),
+                StockSummary(),
               ],
             )
           ],
-        ),
       ),
     );
 

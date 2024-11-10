@@ -54,15 +54,16 @@ class _Start extends State<Start> {
             ),
           ],
         ),
-        body: Padding(
-          // 모든 페이지에 동일하게 적용될 패딩
-          // padding: const EdgeInsets.all(16.0),
-          padding: const EdgeInsets.only(
-            left: 100,
-            right: 100,
-            top: 50,
+        body: SingleChildScrollView(
+          child: Padding(
+            // 모든 페이지에 동일하게 적용될 패딩
+            // padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 100,
+              vertical: 50,
+            ),
+            child: _navIndex.elementAt(_selectedIndex),
           ),
-          child: _navIndex.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
           // 다크모드 시 body와 bottom 구분을 위해
