@@ -1,7 +1,7 @@
 // 시작 파일
 
 // flutter의 기본적인 UI 구성 요소를 가져옴
-import 'package:finance/screens/start.dart';
+import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
 import 'Style/mainStyle.dart' as main_style;
 

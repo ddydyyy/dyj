@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241106_0000 dy home 제작중">
-      <change afterPath="$PROJECT_DIR$/Front/lib/screens/dy_temp.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/screens/start.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/screens/yb_home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/bottomBar.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241110_1600 dy&#10;bottomNavigationBar 페이지 이동 설정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/CustomWidget/global.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/global.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/Page/home.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/Page/yb_home.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/Style/mainStyle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/Style/mainStyle.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/zzzRef.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/zzzRef.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/bottomBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/bottomBar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/zzzRef.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/zzzRef_Origin.dart" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +77,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\screens" />
       <recent name="C:\Users\ION\StudioProjects\dyj\Front\assets" />
       <recent name="C:\Users\ION\StudioProjects\dyj\Front" />
     </key>
@@ -198,7 +194,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730819918745</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="241110_1600 dy">
+      <option name="closed" value="true" />
+      <created>1731223469704</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1731223469704</updated>
+    </task>
+    <task id="LOCAL-00014" summary="241110_1600 dy&#10;bottomNavigationBar 페이지 이동 설정">
+      <option name="closed" value="true" />
+      <created>1731223491741</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1731223491741</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -212,6 +224,8 @@
     <MESSAGE value="241009_1500 dy home 커스텀위젯 제작중" />
     <MESSAGE value="241009_1600 dy home 커스텀위젯 제작중" />
     <MESSAGE value="241106_0000 dy home 제작중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241106_0000 dy home 제작중" />
+    <MESSAGE value="241110_1600 dy" />
+    <MESSAGE value="241110_1600 dy&#10;bottomNavigationBar 페이지 이동 설정" />
+    <option name="LAST_COMMIT_MESSAGE" value="241110_1600 dy&#10;bottomNavigationBar 페이지 이동 설정" />
   </component>
 </project>

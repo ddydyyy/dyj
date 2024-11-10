@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/bottomBar.dart';
+import '../widgets/search.dart';
 
 // StatelessWidget : 앱 시작 시 랜더링 후 불변
 // StatefulWidget : 각종 상호작용에 따라 UI 변경
