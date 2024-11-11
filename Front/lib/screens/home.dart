@@ -1,8 +1,7 @@
-import 'package:finance/models/kospi.dart';
 import 'package:finance/provider/theme_provider.dart';
-import 'package:finance/service/api_service.dart';
 import 'package:finance/widgets/graph.dart';
 import 'package:finance/widgets/graph_tab.dart';
+import 'package:finance/widgets/line_chart.dart';
 import 'package:finance/widgets/search.dart';
 import 'package:finance/widgets/stock_summary.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +15,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ThemeProvider에서 currentTheme 가져오기
-    final themeProvider = Provider.of<ThemeProvider>(context);
+    // final themeProvider = Provider.of<ThemeProvider>(context);
     // final Future<KospiModel> kospi = KospiService.getKospi();
 
     return Container(
@@ -38,13 +37,13 @@ class Home extends StatelessWidget {
                 child: Column(
                   children: [
                     const GraphRow(),
+
+                    Graph1(symbol: 'INTC'),
                     const SizedBox(
                       height: 150,
                     ),
-                    Graph1(),
-                    const SizedBox(
-                      height: 150,
-                    ),
+                    LineChartWidget(symbol: 'AAPL'),
+
                     StockSummary(),
                   ],
                 ),

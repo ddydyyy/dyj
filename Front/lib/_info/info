@@ -1,0 +1,36 @@
+// .dart는 생략
+
+stock_model / stock_service / stock_provider
+- symbol 입력해 요청( 티커 )
+- 시가, 종가, 고가, 저가, 거래량, 시간 응답받음
+-> graph 에서 사용
+
+theme / theme_provider
+- 전역으로 사용할 테마
+-> main, start 에서 사용
+
+graph
+- 작업중
+-> home에서 사용 예정
+
+graph_tab
+- 국내, 해외, 원자재 등 대분류
+-> home에서 사용
+
+search
+- 검색창, ui만 구현
+-> home 에서 사용
+
+stock_summary
+- 코스피, 코스닥 등 graph_tab에서 선택하면 해당 지수 출력
+- 이후 나스닥 등 지수를 클릭하면 해당 그래프가 graph에 출력되게 작업중
+- 추후 오른쪽으로 밀어서 ui 개선해야 함
+- 작업중
+-> home 에서 사용
+
+
+
+
+
+
+

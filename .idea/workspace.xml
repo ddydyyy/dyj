@@ -4,19 +4,26 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_1700 dy krx api 호출 성공">
-      <change afterPath="$PROJECT_DIR$/Front/lib/models/kospi.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/provider/main_index_provider.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님">
+      <change afterPath="$PROJECT_DIR$/Front/Old/models/kospi.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/_info/info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/models/stock_chart_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/models/stock_data_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/provider/stock_chart_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/provider/stock_data_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/services/stock_chart_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/services/stock_data_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/line_chart.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/provider/provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/theme_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/models/kospi.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/main_index_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/main_index_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/service/api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/service/api_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/service/api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/api_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,10 +91,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib" />
-      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\screens" />
-      <recent name="C:\Users\ION\StudioProjects\dyj\Front\assets" />
-      <recent name="C:\Users\ION\StudioProjects\dyj\Front" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\_info" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\service" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\provider" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\Old\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -265,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731312975532</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님">
+      <option name="closed" value="true" />
+      <created>1731321899148</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1731321899149</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -298,6 +314,7 @@
     <MESSAGE value="241111_0100 dy graph 위젯 생성" />
     <MESSAGE value="241111_0220 dy 지수 요약 제작중" />
     <MESSAGE value="241111_1700 dy krx api 호출 성공" />
-    <option name="LAST_COMMIT_MESSAGE" value="241111_1700 dy krx api 호출 성공" />
+    <MESSAGE value="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님" />
+    <option name="LAST_COMMIT_MESSAGE" value="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님" />
   </component>
 </project>

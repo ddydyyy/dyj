@@ -32,6 +32,8 @@ dependencies:
   provider: ^6.1.2
   # 인터넷에서 api 받아오기 위한 http 패키지
   http: ^1.2.2
+  # 그래프 그리기
+  fl_chart: ^0.69.0
 
   flutter:
     sdk: flutter

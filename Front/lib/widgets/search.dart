@@ -11,8 +11,8 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 100,
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.1,
         // vertical: 50,
       ),
       child: Column(

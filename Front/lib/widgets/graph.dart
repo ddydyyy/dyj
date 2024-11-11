@@ -25,32 +25,53 @@
 //   }
 // }
 
-import 'package:finance/provider/main_index_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../provider/stock_data_provider.dart'; // StockProvider import
 
-class Graph1 extends StatelessWidget {
+class Graph1 extends StatefulWidget {
+  final String symbol;
+
+  const Graph1({
+    Key? key,
+    required this.symbol,
+  }) : super(key: key);
+
+  @override
+  State<Graph1> createState() => _Graph1State();
+}
+
+class _Graph1State extends State<Graph1> {
+  @override
+  void initState() {
+    super.initState();
+    // 처음 한 번만 데이터를 가져오도록 함
+    Future.microtask(() {
+      Provider.of<StockDataProvider>(context, listen: false)
+          .fetchData(widget.symbol);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final kospiProvider = Provider.of<KospiProvider>(context);
-    // final kospiProvider = Provider.of<KospiProvider>(context);
-    //
-    // // fetchKospiData 메서드를 호출하여 데이터를 가져옵니다.
-    // if (kospiProvider.kospiData == null) {
-    //   kospiProvider.fetchKospiData();
-    // }
+    final stockProvider = Provider.of<StockDataProvider>(context);
 
-    return kospiProvider.kospiData == null
-        // 로딩 표시
-        ? Center(child: CircularProgressIndicator())
-        : Column(
-            children: [
-              Text('teststst'),
-              Text('기준일: ${kospiProvider.kospiData![0].BAS_DD}'),
-              // Text('지수명: ${kospiProvider.kospiData!.IDX_NM}'),
-              // Text('종가 지수: ${kospiProvider.kospiData!.CLSPRC_IDX}',),
-              // 필요한 데이터들을 추가로 표시
-            ],
-          );
+    // stockData가 null이면 로딩 중
+    if (stockProvider.stockData == null) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    final stockData = stockProvider.stockData!;
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text('Symbol: ${widget.symbol}'),
+        Text('Open: ${stockData.open}'),
+        Text('High: ${stockData.high}'),
+        Text('Low: ${stockData.low}'),
+        Text('Volume: ${stockData.volume}'),
+      ],
+    );
   }
 }
