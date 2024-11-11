@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_0220 dy 지수 요약 제작중">
-      <change afterPath="$PROJECT_DIR$/Front/lib/screens/DY.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/service/api_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_1700 dy krx api 호출 성공">
+      <change afterPath="$PROJECT_DIR$/Front/lib/models/kospi.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/provider/main_index_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/dy_temp.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/theme_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/service/api_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/service/api_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731259357104</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="241111_1700 dy krx api 호출 성공">
+      <option name="closed" value="true" />
+      <created>1731312975532</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1731312975532</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -289,6 +297,7 @@
     <MESSAGE value="241110_2100 dy provider로 isDarkMode 변수 전역으로 설정_UI 바로바로 업데이트" />
     <MESSAGE value="241111_0100 dy graph 위젯 생성" />
     <MESSAGE value="241111_0220 dy 지수 요약 제작중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241111_0220 dy 지수 요약 제작중" />
+    <MESSAGE value="241111_1700 dy krx api 호출 성공" />
+    <option name="LAST_COMMIT_MESSAGE" value="241111_1700 dy krx api 호출 성공" />
   </component>
 </project>

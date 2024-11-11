@@ -1,4 +1,4 @@
-import 'package:finance/provider/provider.dart';
+import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

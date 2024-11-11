@@ -1,17 +1,18 @@
-import 'package:finance/provider/provider.dart';
-import 'package:finance/service/api_service.dart';
+import 'package:finance/provider/main_index_provider.dart';
+import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui';
 
 void main() {
-  KospiService().getKospi();
+  // KospiService.getKospi();
   runApp(
     // Provider 이용
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => KospiProvider()),
       ],
       child: MyApp(),
     ),

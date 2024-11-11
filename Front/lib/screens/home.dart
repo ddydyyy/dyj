@@ -1,12 +1,12 @@
-import 'package:finance/provider/provider.dart';
-import 'package:finance/start.dart';
+import 'package:finance/models/kospi.dart';
+import 'package:finance/provider/theme_provider.dart';
+import 'package:finance/service/api_service.dart';
 import 'package:finance/widgets/graph.dart';
 import 'package:finance/widgets/graph_tab.dart';
 import 'package:finance/widgets/search.dart';
 import 'package:finance/widgets/stock_summary.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../theme/theme.dart';
 
 // StatelessWidget : 앱 시작 시 랜더링 후 불변
 // StatefulWidget : 각종 상호작용에 따라 UI 변경
@@ -17,6 +17,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // ThemeProvider에서 currentTheme 가져오기
     final themeProvider = Provider.of<ThemeProvider>(context);
+    // final Future<KospiModel> kospi = KospiService.getKospi();
+
     return Container(
       child: Column(
         children: [
@@ -36,9 +38,12 @@ class Home extends StatelessWidget {
                 child: Column(
                   children: [
                     const GraphRow(),
+                    const SizedBox(
+                      height: 150,
+                    ),
                     Graph1(),
                     const SizedBox(
-                      height: 300,
+                      height: 150,
                     ),
                     StockSummary(),
                   ],

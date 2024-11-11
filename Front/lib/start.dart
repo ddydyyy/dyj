@@ -1,4 +1,4 @@
-import 'package:finance/provider/provider.dart';
+import 'package:finance/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:finance/screens/home.dart';
@@ -122,14 +122,14 @@ class _Start extends State<Start> {
 
 
 
-// import 'package:finance/provider/provider.dart';
+// import 'package:finance/provider/theme_provider.dart';
 // import 'package:finance/theme/theme.dart';
 // import 'package:flutter/material.dart';
 //
 // import 'package:finance/screens/home.dart';
 // import 'package:finance/screens/DY.dart';
 // import 'package:finance/screens/yb_home.dart';
-// import 'package:provider/provider.dart';
+// import 'package:provider/theme_provider.dart';
 //
 // class Start extends StatefulWidget {
 //   const Start({super.key});
