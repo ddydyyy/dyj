@@ -1,9 +1,12 @@
 import 'package:finance/provider/provider.dart';
+import 'package:finance/service/api_service.dart';
 import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:ui';
 
 void main() {
+  KospiService().getKospi();
   runApp(
     // Provider 이용
     MultiProvider(
@@ -22,6 +25,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        // import 'dart:ui'; 해야 사용 가능
+        // 웹 화면 좌우 스크롤
+        dragDevices: {
+          PointerDeviceKind.mouse,
+          PointerDeviceKind.touch,
+          PointerDeviceKind.stylus,
+          PointerDeviceKind.unknown
+        },
+      ),
       title: 'Flutter Demo',   // 앱 제목
       theme: themeProvider.currentTheme.themeData,
       home: const Start(),

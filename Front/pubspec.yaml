@@ -30,8 +30,13 @@ environment:
 dependencies:
   # 전역으로 변수를 사용하기 위한 provider
   provider: ^6.1.2
+  # 인터넷에서 api 받아오기 위한 http 패키지
+  http: ^1.2.2
+
   flutter:
     sdk: flutter
+
+
 
 
   # The following adds the Cupertino Icons font to your application.

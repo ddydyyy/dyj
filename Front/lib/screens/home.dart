@@ -1,6 +1,7 @@
 import 'package:finance/provider/provider.dart';
 import 'package:finance/start.dart';
 import 'package:finance/widgets/graph.dart';
+import 'package:finance/widgets/graph_tab.dart';
 import 'package:finance/widgets/search.dart';
 import 'package:finance/widgets/stock_summary.dart';
 import 'package:flutter/material.dart';
@@ -17,25 +18,36 @@ class Home extends StatelessWidget {
     // ThemeProvider에서 currentTheme 가져오기
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Container(
-        child: Column(
-          children: [
-            Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                // 검색창
-                const Search(),
-                const SizedBox(
-                  height: 10,
+      child: Column(
+        children: [
+          Column(
+            // crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              // 검색창
+              const Search(),
+              const SizedBox(
+                height: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 100,
+                  // vertical: 50,
                 ),
-                // 국내, 해외, ETF 선택
-                const GraphRow(),
-                const SizedBox(
-                  height: 300,
+                child: Column(
+                  children: [
+                    const GraphRow(),
+                    Graph1(),
+                    const SizedBox(
+                      height: 300,
+                    ),
+                    StockSummary(),
+                  ],
                 ),
-                StockSummary(),
-              ],
-            )
-          ],
+              ),
+              // 국내, 해외, ETF 선택
+            ],
+          )
+        ],
       ),
     );
 

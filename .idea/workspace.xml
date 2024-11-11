@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_0100 dy graph 위젯 생성">
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241111_0220 dy 지수 요약 제작중">
+      <change afterPath="$PROJECT_DIR$/Front/lib/screens/DY.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/service/api_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/Style/mainStyle.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/Style/mainStyle.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/dy_temp.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +69,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "io.flutter.reload.alreadyRun": "true",
@@ -72,7 +78,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.customizations",
+    "settings.editor.selected.configurable": "emulator",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -243,8 +249,27 @@
       <option name="project" value="LOCAL" />
       <updated>1731255283938</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="241111_0220 dy 지수 요약 제작중">
+      <option name="closed" value="true" />
+      <created>1731259357104</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1731259357104</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="dy_241001_2300 파일 구조 변경" />
@@ -263,6 +288,7 @@
     <MESSAGE value="241110_1830 dy 테마 페이지 파일로 구분 / 다크모드 화이트모드 적용" />
     <MESSAGE value="241110_2100 dy provider로 isDarkMode 변수 전역으로 설정_UI 바로바로 업데이트" />
     <MESSAGE value="241111_0100 dy graph 위젯 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="241111_0100 dy graph 위젯 생성" />
+    <MESSAGE value="241111_0220 dy 지수 요약 제작중" />
+    <option name="LAST_COMMIT_MESSAGE" value="241111_0220 dy 지수 요약 제작중" />
   </component>
 </project>

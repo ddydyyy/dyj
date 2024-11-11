@@ -2,7 +2,7 @@ import 'package:finance/provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:finance/screens/home.dart';
-import 'package:finance/screens/dy_temp.dart';
+import 'package:finance/screens/DY.dart';
 import 'package:finance/screens/yb_home.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class _Start extends State<Start> {
   // 페이지 이동
   final List<Widget> _navIndex = [
     const Home(),
-    const dy_temp(),
+    DY(),
     const yb_home(),
   ];
 
@@ -59,7 +59,7 @@ class _Start extends State<Start> {
             // 모든 페이지에 동일하게 적용될 패딩
             // padding: const EdgeInsets.all(16.0),
             padding: const EdgeInsets.symmetric(
-              horizontal: 100,
+              // horizontal: 100,
               vertical: 50,
             ),
             child: _navIndex.elementAt(_selectedIndex),
@@ -127,7 +127,7 @@ class _Start extends State<Start> {
 // import 'package:flutter/material.dart';
 //
 // import 'package:finance/screens/home.dart';
-// import 'package:finance/screens/dy_temp.dart';
+// import 'package:finance/screens/DY.dart';
 // import 'package:finance/screens/yb_home.dart';
 // import 'package:provider/provider.dart';
 //
