@@ -27,7 +27,7 @@ class StockDataProvider with ChangeNotifier {
     }
 
     // 주식 데이터 가져오기
-    StockDataModel? fetched = await _stockDataService.getStockData(symbol);
+    StockDataModel? fetched = await _stockDataService.getData(symbol);
 
     // fetchedData가 null이 아닐 경우에만 _stockData에 값을 할당
     if (fetched != null) {

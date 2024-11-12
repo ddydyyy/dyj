@@ -8,7 +8,7 @@ class StockDataService {
   final String _apiKey = 'csouqu1r01qt3r34hmi0csouqu1r01qt3r34hmig'; // API 키
 
   // 단일 주식 데이터를 가져오는 메서드
-  Future<StockDataModel> getStockData(String symbol) async {
+  Future<StockDataModel> getData(String symbol) async {
     final url = 'https://finnhub.io/api/v1/quote?symbol='
         '$symbol&token=$_apiKey';
 

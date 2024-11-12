@@ -9,13 +9,13 @@ class StockChartService {
   final String apiKey = 'vH9CqGMGHJc9TIDO540RgpbQrO1guSKW';
   final String baseUrl = 'https://api.polygon.io';
 
-  Future<List<StockChartModel>> fetch5MinData(String symbol) async {
+  Future<List<StockChartModel>> getData(String symbol) async {
     final DateTime now = DateTime.now();
     // 미국은 한국보다 14시간정도 느림
     final String startDate = DateFormat('yyyy-MM-dd').format(
-        now.subtract(Duration(days: 32)));
+        now.subtract(Duration(days: 4)));
     final String endDate = DateFormat('yyyy-MM-dd').format(
-        now.subtract(Duration(days: 2)));
+        now.subtract(Duration(days: 3)));
     print('$startDate/$endDate');
     // final DateTime midnight =
     // DateTime(yesterday.year, yesterday.month, yesterday.day);
@@ -31,7 +31,7 @@ class StockChartService {
 
     final response = await http.get(Uri.parse(
         '$baseUrl/v2/aggs/ticker/$symbol/'
-            'range/5/minute/'
+            'range/30/minute/'
             // '$yesterday/$yesterday?'
             '$startDate/$endDate?'
             // '${midnight.millisecondsSinceEpoch ~/ 1000}/'

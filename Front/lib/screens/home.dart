@@ -29,6 +29,8 @@ class Home extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              const GraphRow(),
+              LineChartWidget(symbol: 'TSLA'),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 100,
@@ -36,14 +38,14 @@ class Home extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    const GraphRow(),
 
-                    Graph1(symbol: 'INTC'),
+
+                    // Graph1(symbol: 'INTC'),
                     const SizedBox(
                       height: 150,
                     ),
                     // LineChartWidget(),
-                    LineChartWidget(symbol: 'AAPL'),
+
 
                     StockSummary(),
                   ],
