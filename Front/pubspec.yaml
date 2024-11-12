@@ -34,6 +34,7 @@ dependencies:
   http: ^1.2.2
   # 그래프 그리기
   fl_chart: ^0.69.0
+  intl_utils: ^2.8.7
 
   flutter:
     sdk: flutter

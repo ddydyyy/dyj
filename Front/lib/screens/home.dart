@@ -42,6 +42,7 @@ class Home extends StatelessWidget {
                     const SizedBox(
                       height: 150,
                     ),
+                    // LineChartWidget(),
                     LineChartWidget(symbol: 'AAPL'),
 
                     StockSummary(),

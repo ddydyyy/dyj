@@ -9,30 +9,35 @@ class StockDataService {
 
   // 단일 주식 데이터를 가져오는 메서드
   Future<StockDataModel> getStockData(String symbol) async {
-    // 주식 데이터 API URL
-    final url = 'https://finnhub.io/api/v1/quote?symbol=$symbol&token=$_apiKey';
+    final url = 'https://finnhub.io/api/v1/quote?symbol='
+        '$symbol&token=$_apiKey';
 
     try {
+      // 비동기 요청
       final response = await http.get(Uri.parse(url));
 
       if (response.statusCode == 200) {
+        // String -> Json
         final data = json.decode(response.body);
 
-        // 단일 주식 데이터만 추출하여 StockModel로 변환
+        // 필요 데이터로 StockModel 생성
         return StockDataModel(
           open: data['o']?.toDouble() ?? 0.0,
           high: data['h']?.toDouble() ?? 0.0,
           low: data['l']?.toDouble() ?? 0.0,
-          close: data['c']?.toDouble() ?? 0.0, // 종가
-          time: DateTime.now(), // 현재 시간을 사용 (타임스탬프 대신)
+          close: data['c']?.toDouble() ?? 0.0,
+          time: DateTime.now(),
+          // 현재 시간을 사용 (타임스탬프 대신)
+          // 수정 필요
           volume: 0, // API에서 제공되지 않으면 0으로 설정
         );
       } else {
-        throw Exception('Failed to load stock data');
+        throw Exception('stock_data_service - 응답 실패 : '
+            '${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching stock data: $e');
-      throw Exception('Error fetching stock data');
+      // print('stock_data_service - Error: $e');
+      throw Exception('stock_data_service - Error : $e');
     }
   }
 }
