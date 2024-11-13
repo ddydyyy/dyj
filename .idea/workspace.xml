@@ -4,20 +4,24 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241113_0600 dy 그래프 제작중">
-      <change afterPath="$PROJECT_DIR$/Front/lib/models/test_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/provider/test.provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/services/test_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-11-06__1_06__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-11-06_오후_1_06_[Changes]/shelved.patch" beforeDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241113_2300 dy 한국투자증권 api로 그래프 제작중">
+      <change afterPath="$PROJECT_DIR$/Front/Old/models/kis_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/Old/service/kis_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/provider/test_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/models/stock_chart_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/models/polygon_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/models/stock_data_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/models/finnhub_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/stock_chart_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/polygon_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/stock_data_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/finnhub_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/test.provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/kis_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/DY.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/DY.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_chart_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/polygon_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_data_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/finnhub_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/services/test_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/test_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/line_chart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/line_chart.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +81,7 @@
     "git-widget-placeholder": "master",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/ION/Desktop/toonflix-ce64e48ac81187a266e1406ca3bc3d9cf69c538f",
+    "last_opened_file_path": "C:/Users/USER/StudioProjects/dyj/Front/lib/services",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
@@ -86,12 +90,17 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\services" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\provider" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\models" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\_info" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\service" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\provider" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\models" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\_info" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front" />
-      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\Old\models" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.DY">
@@ -309,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731444919653</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="241113_2300 dy 한국투자증권 api로 그래프 제작중">
+      <option name="closed" value="true" />
+      <created>1731507231837</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1731507231837</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -346,13 +363,14 @@
     <MESSAGE value="241112_0230 dy finnhub api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
     <MESSAGE value="241112_1530 dy polygon.io api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
     <MESSAGE value="241113_0600 dy 그래프 제작중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241113_0600 dy 그래프 제작중" />
+    <MESSAGE value="241113_2300 dy 한국투자증권 api로 그래프 제작중" />
+    <option name="LAST_COMMIT_MESSAGE" value="241113_2300 dy 한국투자증권 api로 그래프 제작중" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/Front/lib/models/stock_chart_model.dart</url>
+          <url>file://$PROJECT_DIR$/Front/Old/models/polygon_model.dart</url>
           <line>28</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>

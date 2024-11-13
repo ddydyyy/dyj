@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:finance/models/stock_chart_model.dart';
+import '../models/polygon_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 // ref
@@ -67,7 +67,7 @@ class StockChartService {
 
 
 // import 'dart:convert';
-// import 'package:finance/models/stock_chart_model.dart';
+// import 'package:finance/models/polygon_model.dart';
 // import 'package:http/http.dart' as http;
 // import 'package:intl/intl.dart';
 // ref

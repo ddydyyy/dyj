@@ -1,8 +1,8 @@
-// lib/provider/stock_data_provider.dart
+// lib/provider/finnhub_provider.dart
 
 import 'package:flutter/material.dart';
-import '../models/stock_data_model.dart';
-import '../services/stock_data_service.dart';
+import '../models/finnhub_model.dart';
+import '../service/finnhub_service.dart';
 
 class StockDataProvider with ChangeNotifier {
   final StockDataService _stockDataService = StockDataService();

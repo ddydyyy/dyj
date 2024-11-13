@@ -1,4 +1,4 @@
-// lib/models/stock_data_model.dart
+// lib/models/finnhub_model.dart
 
 class StockDataModel {
   final double open;

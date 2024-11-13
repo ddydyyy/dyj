@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/test.provider.dart';
+import '../provider/test_provider.dart';
 
 void main() {
   // KospiService.getKospi();
@@ -41,7 +41,7 @@ class _TestAppState extends State<TestApp> {
           child: TextButton(
             // accessToken 확인
             // onPressed: () => print(stockProvider.accessToken),
-            onPressed: () => print(KISService().getStockData(accessToken, '')),
+            onPressed: () => print(KISService().getStockData(accessToken)),
 
             style: TextButton.styleFrom(
               foregroundColor: Colors.black,

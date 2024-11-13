@@ -1,5 +1,5 @@
-import 'package:finance/models/stock_chart_model.dart';
-import 'package:finance/services/stock_chart_service.dart';
+import '../models/polygon_model.dart';
+import '../service/polygon_service.dart';
 import 'package:flutter/material.dart';
 
 class StockChartProvider with ChangeNotifier {
@@ -30,8 +30,8 @@ class StockChartProvider with ChangeNotifier {
   }
 }
 
-// import 'package:finance/models/stock_chart_model.dart';
-// import 'package:finance/services/stock_chart_service.dart';
+// import 'package:finance/models/polygon_model.dart';
+// import 'package:finance/services/polygon_service.dart';
 // import 'package:flutter/material.dart';
 //
 // class StockChartProvider with ChangeNotifier {

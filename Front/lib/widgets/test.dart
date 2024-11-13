@@ -1,5 +1,5 @@
 // // main.dart (또는 stock_screen.dart)
-// import 'package:finance/provider/test.provider.dart';
+// import 'package:finance/provider/test_provider.dart';
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 //

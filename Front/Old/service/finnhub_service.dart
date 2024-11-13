@@ -1,8 +1,8 @@
-// lib/services/stock_data_service.dart
+// lib/services/finnhub_service.dart
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../models/stock_data_model.dart';
+import '../models/finnhub_model.dart';
 
 class StockDataService {
   final String _apiKey = 'csouqu1r01qt3r34hmi0csouqu1r01qt3r34hmig'; // API 키
