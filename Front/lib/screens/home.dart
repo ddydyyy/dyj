@@ -4,6 +4,7 @@ import 'package:finance/widgets/graph_tab.dart';
 import 'package:finance/widgets/line_chart.dart';
 import 'package:finance/widgets/search.dart';
 import 'package:finance/widgets/stock_summary.dart';
+import 'package:finance/widgets/test.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class Home extends StatelessWidget {
                 height: 10,
               ),
               const GraphRow(),
-              LineChartWidget(symbol: 'TSLA'),
+              // LineChartWidget(symbol: 'TSLA'),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 100,
@@ -38,6 +39,7 @@ class Home extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    // TestScreen(),
 
 
                     // Graph1(symbol: 'INTC'),
@@ -47,7 +49,7 @@ class Home extends StatelessWidget {
                     // LineChartWidget(),
 
 
-                    StockSummary(),
+                    // StockSummary(),
                   ],
                 ),
               ),

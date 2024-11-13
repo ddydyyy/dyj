@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241112_1530 dy polygon.io api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241113_0600 dy 그래프 제작중">
+      <change afterPath="$PROJECT_DIR$/Front/lib/models/test_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/provider/test.provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/services/test_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-11-06__1_06__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024-11-06_오후_1_06_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/provider/stock_chart_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/stock_chart_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/provider/stock_data_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/stock_data_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/DY.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/DY.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_chart_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_chart_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_data_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_data_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/line_chart.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/line_chart.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
     </list>
@@ -60,6 +64,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Flutter.DY.executor": "Run",
     "Flutter.main.dart.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -89,11 +94,19 @@
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\Old\models" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flutter.DY">
+    <configuration name="DY" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/Front/lib/screens/DY.dart" />
+      <method v="2" />
+    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/Front/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Flutter.main.dart" />
+      <item itemvalue="Flutter.DY" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -288,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731392926631</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="241113_0600 dy 그래프 제작중">
+      <option name="closed" value="true" />
+      <created>1731444919653</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1731444919653</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,7 +345,8 @@
     <MESSAGE value="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님" />
     <MESSAGE value="241112_0230 dy finnhub api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
     <MESSAGE value="241112_1530 dy polygon.io api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241112_1530 dy polygon.io api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
+    <MESSAGE value="241113_0600 dy 그래프 제작중" />
+    <option name="LAST_COMMIT_MESSAGE" value="241113_0600 dy 그래프 제작중" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,11 +360,6 @@
           <url>file://$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart</url>
           <line>123</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/Front/lib/services/stock_chart_service.dart</url>
-          <line>39</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

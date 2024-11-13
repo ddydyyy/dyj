@@ -29,7 +29,7 @@ class _Start extends State<Start> {
   // 페이지 이동
   final List<Widget> _navIndex = [
     const Home(),
-    DY(),
+    // DY(),
     const yb_home(),
   ];
 

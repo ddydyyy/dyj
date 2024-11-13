@@ -36,6 +36,9 @@ dependencies:
   fl_chart: ^0.69.0
   # 데이터 형식 변환
   intl: ^0.18.0
+  # 테스트
+  test: any
+
 #  intl_utils: ^2.8.7
 
   flutter:

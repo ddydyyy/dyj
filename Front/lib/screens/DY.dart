@@ -1,51 +1,56 @@
-// import 'package:finance/service/api_service.dart';
-// import 'package:flutter/material.dart';
-//
-// class DY extends StatefulWidget {
-//   @override
-//   _DY createState() => _DY();
-// }
-//
-// class _DY extends State<DY> {
-//   // final Kospi _kospi = Kospi();
-//   final Future<void> _kospi = Kospi();
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//     _fetchKospiData();
-//   }
-//
-//   void _fetchKospiData() async {
-//     await _kospi.getKospi();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: Text('KOSPI Data')),
-//       body: FutureBuilder(
-//         future: _kospi,
-//         builder: (context, snapshot) {
-//           if(snapshot.hasData) {
-//             return Text('성공');
-//           }else{
-//             return Text('실패');
-//           }
-//         },
-//       ),
-//     );
-//   }
-// }
-
+import 'package:finance/services/test_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class DY extends StatelessWidget{
+import '../provider/test.provider.dart';
+
+void main() {
+  // KospiService.getKospi();
+  runApp(
+    // Provider 이용
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => StockProvider()),
+      ],
+      child: TestApp(),
+    ),
+  );
+}
+
+class TestApp extends StatefulWidget {
+  const TestApp({super.key});
 
   @override
+  State<TestApp> createState() => _TestAppState();
+}
+
+class _TestAppState extends State<TestApp> {
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('...'),
+    final stockProvider = Provider.of<StockProvider>(context);
+    final accessToken = stockProvider.accessToken;
+    return MaterialApp(
+      title: 'Test',
+      // theme: ThemeData.dark(),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Custom Theme Demo'),
+        ),
+        body: Center(
+          child: TextButton(
+            // accessToken 확인
+            // onPressed: () => print(stockProvider.accessToken),
+            onPressed: () => print(KISService().getStockData(accessToken, '')),
+
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.greenAccent,
+            ),
+            child: Text('Test 버튼'),
+          ),
+        ),
+      ),
     );
   }
 }

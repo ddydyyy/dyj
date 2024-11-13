@@ -1,5 +1,6 @@
 import 'package:finance/provider/stock_chart_provider.dart';
 import 'package:finance/provider/stock_data_provider.dart';
+import 'package:finance/provider/test.provider.dart';
 import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +14,9 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        ChangeNotifierProvider(create: (_) => StockDataProvider()),
-        ChangeNotifierProvider(create: (_) => StockChartProvider()),
+        // ChangeNotifierProvider(create: (_) => StockDataProvider()),
+        // ChangeNotifierProvider(create: (_) => StockChartProvider()),
+        // ChangeNotifierProvider(create: (_) => TestProvider()),
       ],
       child: MyApp(),
     ),
