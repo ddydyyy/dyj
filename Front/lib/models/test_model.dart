@@ -1,48 +1,54 @@
-// models/stock_model.dart
-class GetApiModel {
-  final String access_token; // api 토큰
-  // final String token_type; // 토큰 유형
-  // final double expires_in; // 유효기간( 초 ex) 7776000 )
-  // final String acess_token_token_expired; // 유효기간( ex) 2022-08-30 08:10:10 )
+import 'package:intl/intl.dart';
+import 'package:ntp/ntp.dart';  // NTP 패키지 사용
 
-  GetApiModel({
-    required this.access_token,
-    // required this.token_type,
-    // required this.expires_in,
-    // required this.acess_token_token_expired,
+class StockDataModel {
+  final String time;
+  final double open; // 시가
+  final double high; // 고가
+  final double low; // 저가
+  final double close; // 종가
+  final int volume; // 거래량
+
+  // 생성자
+  StockDataModel({
+    required this.time,
+    required this.open,
+    required this.high,
+    required this.low,
+    required this.close,
+    required this.volume,
   });
 
-  // JSON 데이터를 StockModel로 변환
-  factory GetApiModel.fromJson(Map<String, dynamic> json) {
-    return GetApiModel(
-      access_token: json['access_token'],
-      // token_type: json['token_type'],
-      // expires_in: json['expires_in'],
-      // acess_token_token_expired: json['acess_token_token_expired'],
+
+
+  // JSON을 StockData 객체로 변환하는 팩토리 메서드
+  static Future<StockDataModel> fromJson(String time, Map<String, dynamic> json) async {
+    // UTC 시간 파싱
+    final dateTimeUtc = DateTime.parse(time).toUtc();
+
+    // NTP를 사용하여 미국 동부 시간으로 변환
+    final newYorkTime = await formatToNewYorkTime(dateTimeUtc);
+
+    return StockDataModel(
+      time: newYorkTime,
+      open: double.parse(json['1. open']),
+      high: double.parse(json['2. high']),
+      low: double.parse(json['3. low']),
+      close: double.parse(json['4. close']),
+      volume: int.parse(json['5. volume']),
     );
   }
-}
 
-class TestModel {
-  final String symbol;
-  final double price;
-  final double change;
-  final String companyName;
+  // NTP를 사용하여 미국 동부 시간대로 변환
+  static Future<String> formatToNewYorkTime(DateTime dateTimeUtc) async {
+    // NTP로 현재 시간을 가져옴
+    DateTime ntpTime = await NTP.now();
 
-  TestModel({
-    required this.symbol,
-    required this.price,
-    required this.change,
-    required this.companyName,
-  });
+    // 미국 동부 시간대 변환 (예시로 -5시간 차이로 변환)
+    DateTime newYorkTime = ntpTime.toUtc().add(Duration(hours: -5));
 
-  // JSON 데이터를 StockModel로 변환
-  factory TestModel.fromJson(Map<String, dynamic> json) {
-    return TestModel(
-      symbol: json['symbol'],
-      price: json['price'],
-      change: json['change'],
-      companyName: json['companyName'],
-    );
+    // 날짜 포맷
+    final nyFormat = DateFormat('yyyy-MM-dd HH:mm:ss');
+    return nyFormat.format(newYorkTime);
   }
 }

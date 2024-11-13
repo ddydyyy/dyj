@@ -2,6 +2,8 @@
 import 'package:finance/services/test_service.dart';
 import 'package:flutter/material.dart';
 
+import '../service/kis_service.dart';
+
 class StockProvider with ChangeNotifier {
   String? _accessToken;
   String? get accessToken => _accessToken;
