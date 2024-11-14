@@ -4,18 +4,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241114_0500 dy alphavantage 데이터 이용해서 그래프 제작중">
-      <change afterPath="$PROJECT_DIR$/Front/lib/library/TimeZoneConvert.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/screens/test.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241114_0500 dy 가장 최신 날짜 데이터만 저장 성공">
+      <change afterPath="$PROJECT_DIR$/Front/Old/models/alpha_vantage_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/Old/screens/alphavantage.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/Old/service/alpha_vantage_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/screens/temp.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/services/x100.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/provider/polygon_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/polygon_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/Old/provider/kis_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/kis_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/models/test_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/models/test_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/test_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/test_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/DY.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/DY.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/services/test_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/test_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +92,12 @@
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\services" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\provider" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\models" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\screens" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\service" />
-      <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\provider" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\models" />
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\provider" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\_info" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front" />
     </key>
@@ -336,7 +341,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731527876603</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="241114_0500 dy 가장 최신 날짜 데이터만 저장 성공">
+      <option name="closed" value="true" />
+      <created>1731563265946</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1731563265946</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -351,7 +364,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dy_241001_2300 파일 구조 변경" />
     <MESSAGE value="dy_241001_2301 파일 구조 변경" />
     <MESSAGE value="dy_241001_2302 파일 구조 변경" />
     <MESSAGE value="__" />
@@ -376,7 +388,8 @@
     <MESSAGE value="241113_2300 dy 한국투자증권 api로 그래프 제작중" />
     <MESSAGE value="241114_0000 dy 한국투자증권 api 장 종료 후 업데이트 안됨 -&gt; fmp api 시작" />
     <MESSAGE value="241114_0500 dy alphavantage 데이터 이용해서 그래프 제작중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241114_0500 dy alphavantage 데이터 이용해서 그래프 제작중" />
+    <MESSAGE value="241114_0500 dy 가장 최신 날짜 데이터만 저장 성공" />
+    <option name="LAST_COMMIT_MESSAGE" value="241114_0500 dy 가장 최신 날짜 데이터만 저장 성공" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

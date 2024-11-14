@@ -1,12 +1,13 @@
-import 'package:finance/provider/test_provider.dart';
 import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:ui';
+import 'package:timezone/data/latest.dart' as tz;
 
 void main() {
-  // KospiService.getKospi();
+  // 타임존 데이터 초기화
+  // tz.initializeTimeZones();
   runApp(
     // Provider 이용
     MultiProvider(
