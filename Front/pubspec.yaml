@@ -37,7 +37,7 @@ dependencies:
   # 데이터 형식 변환
   intl: ^0.18.0
   # 미국 시간으로 변환
-#  timezone: ^0.10.0
+  timezone: ^0.10.0
   ntp: ^2.0.0
   # 테스트
   test: any

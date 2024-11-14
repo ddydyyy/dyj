@@ -18,7 +18,7 @@ class StockChartProvider with ChangeNotifier {
       print('test0');
       _data.map((stock) {
         // 시간 확인
-        print('test : ${stock.timestamp}');
+        print('test.dart : ${stock.timestamp}');
       }).toList();
       // final index = value.toInt();
       // final timestamp = stockChartProvider.data[index].timestamp;

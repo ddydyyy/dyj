@@ -5,9 +5,13 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 void main() {
   // KospiService.getKospi();
+  // 타임존 데이터 초기화
+  tz.initializeTimeZones();
   runApp(
     // Provider 이용
     MultiProvider(
@@ -35,24 +39,6 @@ class _TestAppState extends State<TestApp> {
     super.initState();
   }
 
-  // 자정 이후 데이터만 선택
-  List<StockDataModel> filterAfterMidnight(List<StockDataModel> stockList) {
-    final midnight = DateTime.now().copyWith(
-      hour: 0,
-      minute: 0,
-      second: 0,
-    );
-
-    return stockList.where((stock) {
-      // 시간을 가져옴 ( String : 2024-11-12 19:00:00 )
-      // String -> DataTime
-      final stockTime = DateTime.parse(stock.time);
-      print('Parsed time: ${stockTime}');
-      // 00시 이후의 데이터만 남김
-      return stockTime.isAfter(midnight);
-    }).toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     // StockDataService().stockData(symbol: 'AAPL');
@@ -76,22 +62,14 @@ class _TestAppState extends State<TestApp> {
               // 에러 표시
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-              // { time : 2024-11-12 19:45:00 open : 123, high : 456, ... }
-              // [0]이 가장 최신
               final stockList = snapshot.data!;
-              print('test : ${stockList[3].time}');
-              // print(stockList[0].time);
-              final aa = filterAfterMidnight(snapshot.data!);
-              print('aa : $aa');
-              print('123');
+              print('test.dart : ${stockList[0].time}');
+              print('all data : ${stockList.map((data)=>data.time).toList()}');
 
-              // stockList.map((stock){
-              //   print('123123');
-              //   print('time : ${stock.time}');
-              // });
+
               return Center(child: Text(
                 // '${snapshot.data[2]} 123123'
-                '${aa}'
+                '${stockList.map((data)=>data.time).toList()}}'
               ));
               // if (stockList.isEmpty) {
               //   return const Center(child: Text('No data available'));
