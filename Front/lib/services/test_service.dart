@@ -70,14 +70,15 @@ class StockService {
         '${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}';
     int time = int.parse(formattedNow);
     print('time : $time');
+    print('hour : ${now.hour}');
 
     // 변경된 부분: 정렬을 위한 일반 List 선언
     List<StockData> resultList = [];
 
-    for (int i = 080000; i < (time + 3000); i += 3000) {
-      print('i : $i');
+    for (int i = 000000; i < (time + 3000); i += 3000) {
       String nowTime = i.toString().padLeft(6, '0');
-
+      // print('i : $i');
+      // print('nowTime : $nowTime');
       final params = {
         'FID_ETC_CLS_CODE': "",
         'FID_COND_MRKT_DIV_CODE': 'J',
@@ -92,9 +93,11 @@ class StockService {
         ),
         headers: headers,
       );
+      // print('status : ${response.statusCode}');
 
       if (response.statusCode == 200) {
         final temp = json.decode(response.body);
+        // print('temp : $temp');
 
         // output2 데이터를 가져와 StockData로 변환 후 resultList에 추가
         List<StockData> filteredData = (temp['output2'] as List)
@@ -123,7 +126,6 @@ class StockService {
     for (int i=0; i<resultList.length; i++) {
       print('stock_cntg_hour : ${resultList[i].stck_cntg_hour}');
       print('stck_prpr : ${resultList[i].stck_prpr}');
-
     }
 
     return resultList;

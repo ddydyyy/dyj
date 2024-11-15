@@ -22,6 +22,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => StockProvider()),
       ],
       child: TestApp(),
+      // child: TestApp(),
     ),
   );
 }
@@ -64,9 +65,10 @@ class _TestAppState extends State<TestApp> {
               child: TextButton(
                 // accessToken 확인
                 // onPressed: () => print(stockProvider.accessToken),
-                onPressed: () =>
-                    {StockService().getStockData(accessToken)},
-
+                onPressed: () => {
+                  StockService().getStockData(accessToken),
+                  print(''),
+                },
 
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.black,
@@ -75,8 +77,6 @@ class _TestAppState extends State<TestApp> {
                 child: Text('Test 버튼'),
               ),
             ),
-
-
             Container(
               height: 300,
               child: FutureBuilder<List<StockData>>(
@@ -88,20 +88,42 @@ class _TestAppState extends State<TestApp> {
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (snapshot.hasData) {
-                    List<StockData> stockList = snapshot.data!;
-                    print('awefasdf : ${stockList[0].stck_cntg_hour}');
-                    print('aw2233df : ${stockList[0].stck_prpr}');
+                    List<StockData> stockData = snapshot.data!;
+                    print('stockList : ${snapshot.data!}');
+
+                    // stockList의 각 StockData 객체를 Map으로 변환
+                    // List<Map<String, dynamic>> stockData = stockList.map((stck) {
+                    //   return stck.toMap(); // 변환
+                    // }).toList();
+
+                    // print('awefasdf : ${stockList[0].stck_cntg_hour}, aw2233df : ${stockList[0].stck_prpr}');
+                    // print('aw2233df : ${stockList[0].stck_prpr}');
 
                     // stockList에서 데이터를 가져와서 FlSpot 리스트로 변환
-                    List<FlSpot> spots = stockList.map((stock) {
-                      // String 값을 double로 변환
-                      double time = double.parse(stock.stck_cntg_hour); // 시간값
-                      double price = double.parse(stock.stck_prpr.toString()); // 가격값
+                    // List<FlSpot> spots = stockList.map((stock) {
+                    //   // String 값을 double로 변환
+                    //   double time = double.parse(stock.stck_cntg_hour); // 시간값
+                    //   double price =
+                    //       double.parse(stock.stck_prpr.toString()); // 가격값
+                    //
+                    //   return FlSpot(time, price); // FlSpot 객체 생성
+                    // }).toList();
+                    // return Text(';;');
+                    return GraphWidget(stockData: stockData);
 
-                      return FlSpot(time, price); // FlSpot 객체 생성
-                    }).toList();
-
-                    return GraphWidget(data: spots);
+                    // return Center(child:
+                    // TextButton(
+                    //   // accessToken 확인
+                    //   // onPressed: () => print(stockProvider.accessToken),
+                    //   onPressed: () =>{
+                    //     print('44444 : ${snapshot}'),
+                    //   },
+                    //   style: TextButton.styleFrom(
+                    //     foregroundColor: Colors.black,
+                    //     backgroundColor: Colors.greenAccent,
+                    //   ),
+                    //   child: Text('Test 버튼'),
+                    // ),);
 
                     // return ListView.builder(
                     //   itemCount: stockList.length,
@@ -126,5 +148,3 @@ class _TestAppState extends State<TestApp> {
     );
   }
 }
-
-
