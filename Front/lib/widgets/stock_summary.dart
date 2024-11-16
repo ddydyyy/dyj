@@ -37,11 +37,17 @@ class StockBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final themeProvider = Provider.of<ThemeProvider>(context);
+    // final a=MediaQuery.of(context).size.width * 0.9;
+    // final b = 0.5*a;
+    // print('a : $a, b : $b');
     return Container(
-      height: 130,
-      width: 170,
-      padding: EdgeInsets.all(15),
+
+      // width: ,
+      height: 50,
+//
+      // padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: themeProvider.isDarkMode
             ? AppTheme.darkTheme.primaryColor
@@ -56,14 +62,21 @@ class StockBox extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '코스피',
+            '코스피  2,671.57',
+            style: TextStyle(
+              fontSize: 12
+            ),
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 8),//
           Text(
-            '2,671.57',
-            style: themeProvider.isDarkMode
-                ? AppTheme.darkTheme.bodyLargeStyle
-                : AppTheme.lightTheme.bodyLargeStyle,
+            '123',
+            // '2,671.57',
+            style: TextStyle(
+              color: themeProvider.isDarkMode
+                  ? AppTheme.darkTheme.bodyLargeStyle.color
+                  : AppTheme.lightTheme.bodyLargeStyle.color,
+              fontSize: 10,
+            )
           ),
           SizedBox(height: 4),
           Row(
@@ -79,16 +92,16 @@ class StockBox extends StatelessWidget {
                 ),
               ),
               SizedBox(width: 4),
-              Text(
-                '75.25',
-                style: TextStyle(
-                  fontSize: themeProvider.isDarkMode
-                      ? AppTheme.darkTheme.bodySmallStyle.fontSize
-                      : AppTheme.lightTheme.bodySmallStyle.fontSize,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.redAccent,
-                ),
-              ),
+              // Text(
+              //   '75.25',
+              //   style: TextStyle(
+              //     fontSize: themeProvider.isDarkMode
+              //         ? AppTheme.darkTheme.bodySmallStyle.fontSize
+              //         : AppTheme.lightTheme.bodySmallStyle.fontSize,
+              //     fontWeight: FontWeight.w600,
+              //     color: Colors.redAccent,
+              //   ),
+              // ),
             ],
           ),
         ],

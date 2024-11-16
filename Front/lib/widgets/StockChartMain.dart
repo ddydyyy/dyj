@@ -1,10 +1,149 @@
 import 'package:finance/models/test_model.dart';
+import 'package:finance/services/test_service.dart';
+import 'package:finance/widgets/stock_summary.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+class StockChartMain extends StatelessWidget {
+  late final String accessToken;
+
+  StockChartMain({
+    super.key,
+    required this.accessToken,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.95,
+      color: Colors.greenAccent,
+      child: Column(
+        children: [
+          StockSummary(
+            accessToken: accessToken,
+          ),
+          Text('2'),
+          Text('3'),
+          Text('4'),
+        ],
+      ),
+    );
+  }
+}
+
+class StockSummary extends StatelessWidget {
+  late final String accessToken;
+
+  StockSummary({
+    super.key,
+    required this.accessToken,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: StockService().getStockData(accessToken),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              child: Text("Error loading data"),
+            ),
+          );
+        } else if (snapshot.hasData) {
+          final data = snapshot.data!;
+          print('data : $data');
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('${data.stockName}'),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('data123123123123'),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('data123123123123'),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        } else {
+          // 데이터가 없는 경우의 기본 반환값 추가
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              child: Text("No data available"),
+            ),
+          );
+        }
+      },
+    );
+  }
+}
+
+// class TopDownTab extends StatelessWidget {
+//
+//   TopDownTab({
+//     super.key,
+//   });
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return
+//       Column(
+//         children: [
+//           Icon(Icons.arrow_drop_down_sharp),
+//         ],
+//       );
+//   }
+// }
+
 class GraphWidget extends StatelessWidget {
-  List<StockData> stockData; // stockData를 리스트로 받습니다.
+  List<StockMinData> stockData; // stockData를 리스트로 받습니다.
   late final List<FlSpot> spots;
 
   // 생성자에서 stockData 받아서 spots 초기화
@@ -15,7 +154,8 @@ class GraphWidget extends StatelessWidget {
       int hour = int.parse(hourStr.substring(0, 2)); // 14
       int minute = int.parse(hourStr.substring(2, 4)); // 35
       int second = int.parse(hourStr.substring(4, 6)); // 00
-      DateTime dateTime = DateTime(2023, 1, 1, hour, minute, second); // 기본 날짜 설정
+      DateTime dateTime =
+          DateTime(2023, 1, 1, hour, minute, second); // 기본 날짜 설정
 
       double time = dateTime.millisecondsSinceEpoch.toDouble(); // x축 값 (시간)
       double price = data.stck_prpr; // y축 값 (가격)
@@ -26,8 +166,6 @@ class GraphWidget extends StatelessWidget {
       print('Time: ${spot.x}, Price: ${spot.y}');
     }
   }
-
-
 
   // final String stockName = '삼성전자';
   // final List<Map<String, dynamic>> stockData = [
@@ -45,61 +183,58 @@ class GraphWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      color: Colors.white,
-      home: Container(
-        height: 300,
-        width: 300,
-        child: LineChart(
-          LineChartData(
-            // 배경 격자
-            gridData: FlGridData(show: false),
-            // 경계선
-            borderData: FlBorderData(show: false),
-            titlesData: FlTitlesData(
-              topTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: false,
-                ),
-              ),
-              leftTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: false,
-                ),
-              ),
-              rightTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: false,
-                ),
-              ),
-              // x축 타이틀
-              bottomTitles: AxisTitles(
-                sideTitles: SideTitles(
-                  showTitles: true,
-                  // 타이틀 공간
-                  reservedSize: 42,
-                  getTitlesWidget: (value, meta) {
-                    // millisecondsSinceEpoch를 DateTime으로 변환
-                    DateTime date =
-                        DateTime.fromMillisecondsSinceEpoch(value.toInt());
-                    // 날짜를 'MM-dd' 형식으로 표시
-                    String formattedDate = DateFormat('MM-dd').format(date);
-
-                    return Text(formattedDate, style: TextStyle(fontSize: 10));
-                  },
-                ),
+    return Container(
+      height: 300,
+      width: 300,
+      child: LineChart(
+        LineChartData(
+          // 배경 격자
+          gridData: FlGridData(show: false),
+          // 경계선
+          borderData: FlBorderData(show: false),
+          titlesData: FlTitlesData(
+            topTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
               ),
             ),
-            lineBarsData: [
-              LineChartBarData(
-                spots: spots,
-                isCurved: false,
-                color: Colors.blue,
-                dotData: FlDotData(show: false),
-                isStrokeCapRound: true, // 점선 스타일 설정
+            leftTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
               ),
-            ],
+            ),
+            rightTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: false,
+              ),
+            ),
+            // x축 타이틀
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                // 타이틀 공간
+                reservedSize: 42,
+                getTitlesWidget: (value, meta) {
+                  // millisecondsSinceEpoch를 DateTime으로 변환
+                  DateTime date =
+                      DateTime.fromMillisecondsSinceEpoch(value.toInt());
+                  // 날짜를 'MM-dd' 형식으로 표시
+                  String formattedDate = DateFormat('MM-dd').format(date);
+
+                  return Text(formattedDate, style: TextStyle(fontSize: 10));
+                },
+              ),
+            ),
           ),
+          lineBarsData: [
+            LineChartBarData(
+              spots: spots,
+              isCurved: false,
+              color: Colors.blue,
+              dotData: FlDotData(show: false),
+              isStrokeCapRound: true, // 점선 스타일 설정
+            ),
+          ],
         ),
       ),
     );

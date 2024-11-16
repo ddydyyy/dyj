@@ -25,83 +25,63 @@ class GetApiModel {
   }
 }
 
-class StockData {
+class StockMinData {
   final String stck_cntg_hour; // 시간
   final double stck_prpr; // 현재가
 
-  StockData({
+  StockMinData({
     required this.stck_cntg_hour,
     required this.stck_prpr,
   });
 
   // JSON 데이터를 StockModel로 변환
-  factory StockData.fromJson(Map<String, dynamic> json) {
-    return StockData(
+  factory StockMinData.fromJson(Map<String, dynamic> json) {
+    return StockMinData(
       stck_cntg_hour: json['stck_cntg_hour'],
       stck_prpr: double.parse(json['stck_prpr']),
     );
   }
 }
 
-Map<String, List<Map<String, dynamic>>> stockData = {
-  '삼성전자': [
-    {'date': '2023-01-01', 'price': 100.0},
-    {'date': '2023-01-02', 'price': 120.0},
-    {'date': '2023-01-03', 'price': 100.0},
-    {'date': '2023-01-04', 'price': 250.0},
-    {'date': '2023-01-05', 'price': 200.0},
-    {'date': '2023-01-06', 'price': 300.0},
-    {'date': '2023-01-07', 'price': 340.0},
-    {'date': '2023-01-08', 'price': 380.0},
-    {'date': '2023-01-09', 'price': 370.0},
-    {'date': '2023-01-10', 'price': 460.0},
-  ],
-  '현대자동차': [
-    {'date': '2023-01-01', 'price': 100.0},
-    {'date': '2023-01-02', 'price': 220.0},
-    {'date': '2023-01-03', 'price': 180.0},
-    {'date': '2023-01-04', 'price': 140.0},
-    {'date': '2023-01-05', 'price': 260.0},
-    {'date': '2023-01-06', 'price': 420.0},
-    {'date': '2023-01-07', 'price': 340.0},
-    {'date': '2023-01-08', 'price': 300.0},
-    {'date': '2023-01-09', 'price': 460.0},
-    {'date': '2023-01-10', 'price': 420.0},
-  ],
-  'SK하이닉스': [
-    {'date': '2023-01-01', 'price': 100.0},
-    {'date': '2023-01-02', 'price': 220.0},
-    {'date': '2023-01-03', 'price': 180.0},
-    {'date': '2023-01-04', 'price': 220.0},
-    {'date': '2023-01-05', 'price': 260.0},
-    {'date': '2023-01-06', 'price': 420.0},
-    {'date': '2023-01-07', 'price': 340.0},
-    {'date': '2023-01-08', 'price': 240.0},
-    {'date': '2023-01-09', 'price': 340.0},
-    {'date': '2023-01-10', 'price': 460.0},
-  ],
-  'NAVER': [
-    {'date': '2023-01-01', 'price': 100.0},
-    {'date': '2023-01-02', 'price': 220.0},
-    {'date': '2023-01-03', 'price': 340.0},
-    {'date': '2023-01-04', 'price': 150.0},
-    {'date': '2023-01-05', 'price': 260.0},
-    {'date': '2023-01-06', 'price': 300.0},
-    {'date': '2023-01-07', 'price': 340.0},
-    {'date': '2023-01-08', 'price': 460.0},
-    {'date': '2023-01-09', 'price': 340.0},
-    {'date': '2023-01-10', 'price': 420.0},
-  ],
-  'LG화학': [
-    {'date': '2023-01-01', 'price': 100.0},
-    {'date': '2023-01-02', 'price': 140.0},
-    {'date': '2023-01-03', 'price': 250.0},
-    {'date': '2023-01-04', 'price': 260.0},
-    {'date': '2023-01-05', 'price': 220.0},
-    {'date': '2023-01-06', 'price': 300.0},
-    {'date': '2023-01-07', 'price': 350.0},
-    {'date': '2023-01-08', 'price': 320.0},
-    {'date': '2023-01-09', 'price': 420.0},
-    {'date': '2023-01-10', 'price': 460.0},
-  ],
-};
+
+class CurrentStockPrice {
+  final String stockName; // 종목명
+  final String stockCode; // 종목코드
+  final double currentPrice; // 현재가
+  final double changeRate; // 등락률
+  final double changeAmount; // 등락폭
+  final int volume; // 거래량
+
+  CurrentStockPrice({
+    required this.stockName,
+    required this.stockCode,
+    required this.currentPrice,
+    required this.changeRate,
+    required this.changeAmount,
+    required this.volume,
+  });
+
+  // JSON 데이터를 객체로 변환
+  factory CurrentStockPrice.fromJson(Map<String, dynamic> json) {
+    return CurrentStockPrice(
+      stockName: json['stockName'] ?? 'Unknown', // 종목명
+      stockCode: json['stockCode'] ?? '', // 종목코드
+      currentPrice: double.tryParse(json['currentPrice'].toString()) ?? 0.0, // 현재가
+      changeRate: double.tryParse(json['changeRate'].toString()) ?? 0.0, // 등락률
+      changeAmount: double.tryParse(json['changeAmount'].toString()) ?? 0.0, // 등락폭
+      volume: int.tryParse(json['volume'].toString()) ?? 0, // 거래량
+    );
+  }
+
+  // 객체를 JSON으로 변환 (필요시 사용)
+  Map<String, dynamic> toJson() {
+    return {
+      'stockName': stockName,
+      'stockCode': stockCode,
+      'currentPrice': currentPrice,
+      'changeRate': changeRate,
+      'changeAmount': changeAmount,
+      'volume': volume,
+    };
+  }
+}

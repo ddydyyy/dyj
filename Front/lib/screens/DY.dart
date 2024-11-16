@@ -2,7 +2,7 @@ import 'package:finance/models/test_model.dart';
 import 'package:finance/provider/test_provider.dart';
 import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/services/test_service.dart';
-import 'package:finance/widgets/graph.dart';
+import 'package:finance/widgets/StockChartMain.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,6 @@ import 'package:timezone/data/latest.dart' as tz;
 void main() {
   // KospiService.getKospi();
   // 타임존 데이터 초기화
-  tz.initializeTimeZones();
   runApp(
     // Provider 이용
     MultiProvider(
@@ -66,8 +65,9 @@ class _TestAppState extends State<TestApp> {
                 // accessToken 확인
                 // onPressed: () => print(stockProvider.accessToken),
                 onPressed: () => {
+                  // StockService().getMinData(accessToken),
+                  // print(''),
                   StockService().getStockData(accessToken),
-                  print(''),
                 },
 
                 style: TextButton.styleFrom(
@@ -79,8 +79,8 @@ class _TestAppState extends State<TestApp> {
             ),
             Container(
               height: 300,
-              child: FutureBuilder<List<StockData>>(
-                future: StockService().getStockData(accessToken),
+              child: FutureBuilder<List<StockMinData>>(
+                future: StockService().getMinData(accessToken),
                 // future에서 기다린 데이터 -> snapshot
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
@@ -88,7 +88,7 @@ class _TestAppState extends State<TestApp> {
                   } else if (snapshot.hasError) {
                     return Center(child: Text('Error: ${snapshot.error}'));
                   } else if (snapshot.hasData) {
-                    List<StockData> stockData = snapshot.data!;
+                    List<StockMinData> stockData = snapshot.data!;
                     print('stockList : ${snapshot.data!}');
 
                     // stockList의 각 StockData 객체를 Map으로 변환

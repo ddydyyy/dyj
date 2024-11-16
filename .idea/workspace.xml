@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241115_0100 dy 그래프 제작중">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241116_0100 dy 그래프 제작중">
+      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/FutureBuilder.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/StockChartMain2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/models/test_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/models/test_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/provider/test_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/test_provider.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/DY.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/DY.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/services/test_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/test_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/services/x100.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/x100.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/StockChartMain.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/SlideTab.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/line_chart.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_summary.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,32 +63,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Flutter.DY.executor&quot;: &quot;Run&quot;,
-    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/StudioProjects/dyj/Front/lib/services&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;emulator&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Flutter.DY.executor": "Run",
+    "Flutter.main.dart.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "io.flutter.reload.alreadyRun": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/USER/StudioProjects/dyj/Front/lib/widgets",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "emulator",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\widgets" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\services" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\provider" />
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\models" />
@@ -93,7 +103,7 @@
       <recent name="C:\Users\USER\StudioProjects\dyj\Front" />
     </key>
   </component>
-  <component name="RunManager" selected="Flutter.DY">
+  <component name="RunManager" selected="Flutter.main.dart">
     <configuration name="DY" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/Front/lib/screens/DY.dart" />
       <method v="2" />
@@ -348,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731599990310</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="241116_0100 dy 그래프 제작중">
+      <option name="closed" value="true" />
+      <created>1731687431316</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1731687431316</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -363,7 +381,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dy_241001_2302 파일 구조 변경" />
     <MESSAGE value="__" />
     <MESSAGE value="241009_0200 커스텀위젯 사용" />
     <MESSAGE value="241009_1145 assets 설정" />
@@ -388,7 +405,8 @@
     <MESSAGE value="241114_0500 dy alphavantage 데이터 이용해서 그래프 제작중" />
     <MESSAGE value="241114_0500 dy 가장 최신 날짜 데이터만 저장 성공" />
     <MESSAGE value="241115_0100 dy 그래프 제작중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241115_0100 dy 그래프 제작중" />
+    <MESSAGE value="241116_0100 dy 그래프 제작중" />
+    <option name="LAST_COMMIT_MESSAGE" value="241116_0100 dy 그래프 제작중" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -399,7 +417,7 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/Front/lib/widgets/graph_tab.dart</url>
+          <url>file://$PROJECT_DIR$/Front/lib/widgets/SlideTab.dart</url>
           <line>123</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>

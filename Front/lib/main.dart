@@ -1,3 +1,4 @@
+import 'package:finance/provider/test_provider.dart';
 import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => StockProvider()),
         // ChangeNotifierProvider(create: (_) => StockDataProvider()),
         // ChangeNotifierProvider(create: (_) => StockChartProvider()),
         // ChangeNotifierProvider(create: (_) => TestProvider()),

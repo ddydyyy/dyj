@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme.dart';
 
-class GraphRow extends StatefulWidget {
-  const GraphRow({super.key});
+class SlideTab extends StatefulWidget {
+  const SlideTab({super.key});
 
   @override
-  _GraphRowState createState() => _GraphRowState();
+  _SlideTabState createState() => _SlideTabState();
 }
 
-class _GraphRowState extends State<GraphRow> {
+class _SlideTabState extends State<SlideTab> {
   // 선택된 항목 인덱스
   int _selectedIndex = 0;
 
@@ -80,37 +80,37 @@ class _GraphRowState extends State<GraphRow> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          GraphTab(
+          EachTab(
             title: "국내",
             index: 0,
             selectedIndex: _selectedIndex,
             onSelected: _onSelected,
           ),
-          GraphTab(
+          EachTab(
             title: "해외",
             index: 1,
             selectedIndex: _selectedIndex,
             onSelected: _onSelected,
           ),
-          GraphTab(
+          EachTab(
             title: "원자재",
             index: 2,
             selectedIndex: _selectedIndex,
             onSelected: _onSelected,
           ),
-          GraphTab(
+          EachTab(
             title: "ETF",
             index: 3,
             selectedIndex: _selectedIndex,
             onSelected: _onSelected,
           ),
-          GraphTab(
+          EachTab(
             title: "환율",
             index: 4,
             selectedIndex: _selectedIndex,
             onSelected: _onSelected,
           ),
-          GraphTab(
+          EachTab(
             title: "채권",
             index: 5,
             selectedIndex: _selectedIndex,
@@ -122,13 +122,13 @@ class _GraphRowState extends State<GraphRow> {
   }
 }
 
-class GraphTab extends StatelessWidget {
+class EachTab extends StatelessWidget {
   final String title;
   final int index;
   final int selectedIndex;
   final Function(int) onSelected;
 
-  const GraphTab({
+  const EachTab({
     super.key,
     required this.title,
     required this.index,

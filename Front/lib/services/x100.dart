@@ -52,7 +52,7 @@ class StockService {
   }
 
   // 주식 당일 분봉 조회
-  Future<List<StockData>> getStockData(accessToken) async {
+  Future<List<StockMinData>> getStockData(accessToken) async {
     const path =
         'uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice';
     final url = Uri.parse('$baseUrl/$path');
@@ -71,7 +71,7 @@ class StockService {
     int time = int.parse(formattedNow);
 
 
-    List<StockData> resultList = [];
+    List<StockMinData> resultList = [];
 
     for (int i = 093000; i < (time + 3000); i = i + 30) {
       final params = {
@@ -99,8 +99,8 @@ class StockService {
         final temp = json.decode(response.body);
 
         // output2에서 데이터를 가져와 StockData로 변환 후 resultList에 추가
-        List<StockData> filteredData = (temp['output2'] as List)
-            .map((item) => StockData.fromJson({
+        List<StockMinData> filteredData = (temp['output2'] as List)
+            .map((item) => StockMinData.fromJson({
           'stck_cntg_hour': item['stck_cntg_hour'],
           'stck_prpr': item['stck_prpr'],
         }))

@@ -1,7 +1,7 @@
+import 'package:finance/provider/test_provider.dart';
 import 'package:finance/provider/theme_provider.dart';
-import 'package:finance/widgets/graph.dart';
-import 'package:finance/widgets/graph_tab.dart';
-import 'package:finance/widgets/line_chart.dart';
+import 'package:finance/widgets/StockChartMain.dart';
+import 'package:finance/widgets/SlideTab.dart';
 import 'package:finance/widgets/search.dart';
 import 'package:finance/widgets/stock_summary.dart';
 import 'package:finance/widgets/test.dart';
@@ -18,6 +18,7 @@ class Home extends StatelessWidget {
     // ThemeProvider에서 currentTheme 가져오기
     // final themeProvider = Provider.of<ThemeProvider>(context);
     // final Future<KospiModel> kospi = KospiService.getKospi();
+    final accessToken = Provider.of<StockProvider>(context).accessToken;
 
     return Container(
       child: Column(
@@ -25,34 +26,24 @@ class Home extends StatelessWidget {
           Column(
             // crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              // 검색창
-              const Search(),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.1),
+                child: // 검색창
+                    const Search(),
+              ),
               const SizedBox(
                 height: 10,
               ),
-              const GraphRow(),
-              // LineChartWidget(symbol: 'TSLA'),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 100,
-                  // vertical: 50,
-                ),
-                child: Column(
-                  children: [
-                    // TestScreen(),
-
-
-                    // Graph1(symbol: 'INTC'),
-                    const SizedBox(
-                      height: 150,
-                    ),
-                    // LineChartWidget(),
-
-
-                    // StockSummary(),
-                  ],
-                ),
+              const SlideTab(),
+              const SizedBox(
+                height: 15,
               ),
+              accessToken != null
+                  ? StockChartMain(
+                accessToken: accessToken,
+              )
+                  : const SizedBox(), // 기본적으로 빈 공간을 렌더링
               // 국내, 해외, ETF 선택
             ],
           )

@@ -16,7 +16,8 @@ class StockService {
   // final String Content_Type = 'application/json; charset=UTF-8';
   final String Content_Type = 'application/json; charset=utf-8';
 
-  Future<String?> getApi() async {
+  // api
+  Future<String?> getToken() async {
     const path = 'oauth2/tokenP';
     final url = Uri.parse('$baseUrl/$path');
 
@@ -39,21 +40,22 @@ class StockService {
       body: body,
     );
 
-    print('status : ${response.statusCode}');
-    print('response : ${response.body}');
+    // print('status : ${response.statusCode}');
+    // print('response : ${response.body}');
 
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
+      print('getToken_발급 성공');
       return jsonResponse['access_token'];
     } else {
-      print('발급 실패 : ${response.statusCode}');
-      print('response : ${response.body}');
+      print('getToken_발급 실패 : ${response.statusCode}, response : ${response.body}');
       return null;
     }
   }
 
-  Future<List<StockData>> getStockData(accessToken) async {
-    const path = 'uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice';
+  Future<List<StockMinData>> getMinData(accessToken) async {
+    const path =
+        'uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice';
     final url = Uri.parse('$baseUrl/$path');
 
     final headers = {
@@ -69,11 +71,11 @@ class StockService {
     String formattedNow =
         '${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}';
     int time = int.parse(formattedNow);
-    print('time : $time');
-    print('hour : ${now.hour}');
+    // print('time : $time');
+    // print('hour : ${now.hour}');
 
     // 변경된 부분: 정렬을 위한 일반 List 선언
-    List<StockData> resultList = [];
+    List<StockMinData> resultList = [];
 
     for (int i = 000000; i < (time + 3000); i += 3000) {
       String nowTime = i.toString().padLeft(6, '0');
@@ -100,14 +102,15 @@ class StockService {
         // print('temp : $temp');
 
         // output2 데이터를 가져와 StockData로 변환 후 resultList에 추가
-        List<StockData> filteredData = (temp['output2'] as List)
-            .map((item) => StockData.fromJson({
-          'stck_cntg_hour': item['stck_cntg_hour'],
-          'stck_prpr': item['stck_prpr'],
-        }))
+        List<StockMinData> filteredData = (temp['output2'] as List)
+            .map((item) => StockMinData.fromJson({
+                  'stck_cntg_hour': item['stck_cntg_hour'],
+                  'stck_prpr': item['stck_prpr'],
+                }))
             .toList();
         for (var stockData in filteredData) {
-          if (!resultList.any((data) => data.stck_cntg_hour == stockData.stck_cntg_hour)) {
+          if (!resultList
+              .any((data) => data.stck_cntg_hour == stockData.stck_cntg_hour)) {
             resultList.add(stockData);
           }
         }
@@ -123,7 +126,7 @@ class StockService {
 
     // 변경된 부분: 시간 순으로 정렬
     resultList.sort((a, b) => a.stck_cntg_hour.compareTo(b.stck_cntg_hour));
-    for (int i=0; i<resultList.length; i++) {
+    for (int i = 0; i < resultList.length; i++) {
       print('stock_cntg_hour : ${resultList[i].stck_cntg_hour}');
       print('stck_prpr : ${resultList[i].stck_prpr}');
     }
@@ -131,79 +134,121 @@ class StockService {
     return resultList;
   }
 
-  // // 주식 당일 분봉 조회
-  // Future<List<StockData>> getStockData(accessToken) async {
-  //   const path =
-  //       'uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice';
-  //   final url = Uri.parse('$baseUrl/$path');
-  //
-  //   final headers = {
-  //     'content-type': Content_Type,
-  //     'authorization': 'Bearer ${accessToken}',
-  //     'appKey': appkey,
-  //     'appSecret': appsecret,
-  //     'tr_id': 'FHKST03010200',
-  //     'custtype': 'P',
-  //   };
-  //
-  //   DateTime now = DateTime.now();
-  //   String formattedNow =
-  //       '${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}';
-  //   int time = int.parse(formattedNow);
-  //   print('time : $time');
-  //
-  //   List<StockData> resultList = [];
-  //
-  //   for (int i = 093000; i < (time + 3000); i = i + 3000) {
-  //     print('i : $i');
-  //     // 6자리 시간 포맷으로 맞추기
-  //     String nowTime = i.toString().padLeft(6, '0');  // 6자리로 맞춤
-  //
-  //     final params = {
-  //       // 기타 구분 코드
-  //       'FID_ETC_CLS_CODE': "",
-  //       // 주식, ETF, ETN : J
-  //       // ELW : W
-  //       'FID_COND_MRKT_DIV_CODE': 'J',
-  //       // 조회 종목 코드
-  //       'FID_INPUT_ISCD': '005930',
-  //       // 시간
-  //       'FID_INPUT_HOUR_1': nowTime,
-  //       // 과거 데이터 포함 여부
-  //       'FID_PW_DATA_INCU_YN': 'N',
-  //     };
-  //
-  //     final response = await http.get(
-  //       url.replace(
-  //         queryParameters: params,
-  //       ),
-  //       headers: headers,
-  //     );
-  //
-  //     if (response.statusCode == 200) {
-  //       final temp = json.decode(response.body);
-  //
-  //       // output2에서 데이터를 가져와 StockData로 변환 후 resultList에 추가
-  //       List<StockData> filteredData = (temp['output2'] as List)
-  //           .map((item) => StockData.fromJson({
-  //                 'stck_cntg_hour': item['stck_cntg_hour'],
-  //                 'stck_prpr': item['stck_prpr'],
-  //               }))
-  //           .toList();
-  //
-  //       resultList.addAll(filteredData); // 결과 목록에 추가
-  //
-  //     } else {
-  //       throw Exception('Failed to load stock data');
-  //     }
-  //   }
-  //   print('모델 생성 성공');
-  //   for (int i=0; i<resultList.length; i++) {
-  //     print(resultList[i].stck_cntg_hour);
-  //   }
-  //
-  //   return resultList; // 최종적으로 모든 데이터를 포함한 리스트 반환
-  // }
+  Future<CurrentStockPrice> getStockData(accessToken) async {
+    const path = 'uapi/domestic-stock/v1/quotations/inquire-price';
+    final url = Uri.parse('$baseUrl/$path');
+
+    final headers = {
+      'authorization': 'Bearer ${accessToken}',
+      'appKey': appkey,
+      'appSecret': appsecret,
+      'tr_id': 'FHKST01010100',
+    };
+
+    final params = {
+      'FID_COND_MRKT_DIV_CODE': 'J',
+      'FID_INPUT_ISCD': '005930',
+    };
+
+    final response = await http.get(
+      url.replace(
+        queryParameters: params,
+      ),
+      headers: headers,
+    );
+
+    try {
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        // API 응답에서 데이터를 추출
+        final stockData = data['output']; // 'output' 필드 사용
+        final result = CurrentStockPrice.fromJson(stockData);
+        print('result : $result');
+        print('result : ${result.currentPrice}');
+
+        return result;
+      } else {
+        throw Exception('getStockData_응답 실패 ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('getStockData_에러: $e');
+    }
+  }
+
+// // 주식 당일 분봉 조회
+// Future<List<StockData>> getStockData(accessToken) async {
+//   const path =
+//       'uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice';
+//   final url = Uri.parse('$baseUrl/$path');
+//
+//   final headers = {
+//     'content-type': Content_Type,
+//     'authorization': 'Bearer ${accessToken}',
+//     'appKey': appkey,
+//     'appSecret': appsecret,
+//     'tr_id': 'FHKST03010200',
+//     'custtype': 'P',
+//   };
+//
+//   DateTime now = DateTime.now();
+//   String formattedNow =
+//       '${now.hour.toString().padLeft(2, '0')}${now.minute.toString().padLeft(2, '0')}${now.second.toString().padLeft(2, '0')}';
+//   int time = int.parse(formattedNow);
+//   print('time : $time');
+//
+//   List<StockData> resultList = [];
+//
+//   for (int i = 093000; i < (time + 3000); i = i + 3000) {
+//     print('i : $i');
+//     // 6자리 시간 포맷으로 맞추기
+//     String nowTime = i.toString().padLeft(6, '0');  // 6자리로 맞춤
+//
+//     final params = {
+//       // 기타 구분 코드
+//       'FID_ETC_CLS_CODE': "",
+//       // 주식, ETF, ETN : J
+//       // ELW : W
+//       'FID_COND_MRKT_DIV_CODE': 'J',
+//       // 조회 종목 코드
+//       'FID_INPUT_ISCD': '005930',
+//       // 시간
+//       'FID_INPUT_HOUR_1': nowTime,
+//       // 과거 데이터 포함 여부
+//       'FID_PW_DATA_INCU_YN': 'N',
+//     };
+//
+//     final response = await http.get(
+//       url.replace(
+//         queryParameters: params,
+//       ),
+//       headers: headers,
+//     );
+//
+//     if (response.statusCode == 200) {
+//       final temp = json.decode(response.body);
+//
+//       // output2에서 데이터를 가져와 StockData로 변환 후 resultList에 추가
+//       List<StockData> filteredData = (temp['output2'] as List)
+//           .map((item) => StockData.fromJson({
+//                 'stck_cntg_hour': item['stck_cntg_hour'],
+//                 'stck_prpr': item['stck_prpr'],
+//               }))
+//           .toList();
+//
+//       resultList.addAll(filteredData); // 결과 목록에 추가
+//
+//     } else {
+//       throw Exception('Failed to load stock data');
+//     }
+//   }
+//   print('모델 생성 성공');
+//   for (int i=0; i<resultList.length; i++) {
+//     print(resultList[i].stck_cntg_hour);
+//   }
+//
+//   return resultList; // 최종적으로 모든 데이터를 포함한 리스트 반환
+// }
 
 // // 주식 당일 분봉 조회
 // Future<List<StockData>> getStockData(accessToken) async {
