@@ -67,7 +67,7 @@ class _TestAppState extends State<TestApp> {
                 onPressed: () => {
                   // StockService().getMinData(accessToken),
                   // print(''),
-                  StockService().getStockData(accessToken),
+                  StockService().getStockData(accessToken, 005930),
                 },
 
                 style: TextButton.styleFrom(

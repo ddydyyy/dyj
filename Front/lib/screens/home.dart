@@ -42,6 +42,7 @@ class Home extends StatelessWidget {
               accessToken != null
                   ? StockChartMain(
                 accessToken: accessToken,
+                code: '005930',
               )
                   : const SizedBox(), // 기본적으로 빈 공간을 렌더링
               // 국내, 해외, ETF 선택

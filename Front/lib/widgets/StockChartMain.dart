@@ -7,10 +7,12 @@ import 'package:intl/intl.dart';
 
 class StockChartMain extends StatelessWidget {
   late final String accessToken;
+  late final String code;
 
   StockChartMain({
     super.key,
     required this.accessToken,
+    required this.code,
   });
 
   @override
@@ -22,6 +24,7 @@ class StockChartMain extends StatelessWidget {
         children: [
           StockSummary(
             accessToken: accessToken,
+            code : code,
           ),
           Text('2'),
           Text('3'),
@@ -34,22 +37,25 @@ class StockChartMain extends StatelessWidget {
 
 class StockSummary extends StatelessWidget {
   late final String accessToken;
+  late final String code;
 
   StockSummary({
     super.key,
     required this.accessToken,
+    required this.code,
   });
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: StockService().getStockData(accessToken),
+      future: StockService().getStockData(accessToken, code),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
             color: Colors.grey,
             height: 60,
             child: const Center(
+              // 로딩 표시
               child: CircularProgressIndicator(),
             ),
           );
@@ -58,12 +64,13 @@ class StockSummary extends StatelessWidget {
             color: Colors.grey,
             height: 60,
             child: const Center(
+              // 에러 표시
               child: Text("Error loading data"),
             ),
           );
         } else if (snapshot.hasData) {
           final data = snapshot.data!;
-          print('data : $data');
+          print('data : ${data}');
           return Container(
             color: Colors.grey,
             height: 60,
@@ -77,7 +84,11 @@ class StockSummary extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('${data.stockName}'),
+                        // Text('123'),
+                        // Text('${data.currentPrice}'),
+                        // Text('${data.changePrice}'),
+                        Text('${data.changeRate}%'),
+                        Text('${data.volume}'),
                       ],
                     ),
                   ),

@@ -53,6 +53,7 @@ class StockService {
     }
   }
 
+  // 주식당일분봉조회
   Future<List<StockMinData>> getMinData(accessToken) async {
     const path =
         'uapi/domestic-stock/v1/quotations/inquire-time-itemchartprice';
@@ -134,7 +135,8 @@ class StockService {
     return resultList;
   }
 
-  Future<CurrentStockPrice> getStockData(accessToken) async {
+  // 주식현재가 시세
+  Future<CurrentStockPrice> getStockData(accessToken, code) async {
     const path = 'uapi/domestic-stock/v1/quotations/inquire-price';
     final url = Uri.parse('$baseUrl/$path');
 
@@ -147,7 +149,8 @@ class StockService {
 
     final params = {
       'FID_COND_MRKT_DIV_CODE': 'J',
-      'FID_INPUT_ISCD': '005930',
+      // 'FID_INPUT_ISCD': '005930',
+      'FID_INPUT_ISCD': code,
     };
 
     final response = await http.get(
@@ -161,13 +164,14 @@ class StockService {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
 
-        // API 응답에서 데이터를 추출
-        final stockData = data['output']; // 'output' 필드 사용
+        // 데이터 추출
+        final stockData = data['output'];
+        // print('getStockData_응답 성공 : ${stockData}');
+        // print('getStockData_현재가 : ${stockData['stck_prpr']}');
         final result = CurrentStockPrice.fromJson(stockData);
-        print('result : $result');
-        print('result : ${result.currentPrice}');
-
         return result;
+
+        // return stockData;
       } else {
         throw Exception('getStockData_응답 실패 ${response.statusCode}');
       }
