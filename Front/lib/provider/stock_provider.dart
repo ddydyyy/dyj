@@ -1,6 +1,6 @@
-// provider/StockProvider.dart
+// provider/stock_provider.dart
 
-import 'package:finance/services/StockService.dart';
+import 'package:finance/services/stock_service.dart';
 import 'package:flutter/material.dart';
 
 class StockProvider with ChangeNotifier {

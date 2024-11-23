@@ -1,5 +1,5 @@
-// import 'package:finance/provider/ThemeProvider.dart';
-// import 'package:finance/theme/Theme.dart';
+// import 'package:finance/provider/theme_provider.dart';
+// import 'package:finance/theme/theme.dart';
 // import 'package:flutter/material.dart';
 // import 'package:provider/provider.dart';
 //

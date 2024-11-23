@@ -1,9 +1,9 @@
-// widgets/SearchWidget.dart
+// widgets/search_widget.dart
 
-import 'package:finance/provider/ThemeProvider.dart';
+import 'package:finance/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../theme/Theme.dart';
+import '../theme/theme.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});

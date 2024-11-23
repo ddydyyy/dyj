@@ -1,4 +1,4 @@
-// import 'package:finance/Page/Home.dart';
+// import 'package:finance/Page/home.dart';
 // import 'package:flutter/material.dart';
 // import 'package:intl/intl.dart';
 //
@@ -6,8 +6,8 @@
 // // StatefulWidget : 각종 상호작용에 따라 UI 변경
 import 'package:flutter/material.dart';
 
-class yb_home extends StatelessWidget {
-  const yb_home({super.key});
+class TestYB extends StatelessWidget {
+  const TestYB({super.key});
 
   @override
   Widget build(BuildContext context) {

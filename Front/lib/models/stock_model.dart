@@ -1,14 +1,14 @@
-// models/StockModel.dart
+// models/stock_model.dart
 
 // api 토큰 발급
 class GetApiModel {
-  final String access_token; // api 토큰
+  final String accessToken; // api 토큰
   // final String token_type; // 토큰 유형
   // final double expires_in; // 유효기간( 초 ex) 7776000 )
   // final String acess_token_token_expired; // 유효기간( ex) 2022-08-30 08:10:10 )
 
   GetApiModel({
-    required this.access_token,
+    required this.accessToken,
     // required this.token_type,
     // required this.expires_in,
     // required this.acess_token_token_expired,
@@ -17,7 +17,7 @@ class GetApiModel {
   // JSON 데이터를 StockModel로 변환
   factory GetApiModel.fromJson(Map<String, dynamic> json) {
     return GetApiModel(
-      access_token: json['access_token'],
+      accessToken: json['access_token'],
       // token_type: json['token_type'],
       // expires_in: json['expires_in'],
       // acess_token_token_expired: json['acess_token_token_expired'],
@@ -27,19 +27,19 @@ class GetApiModel {
 
 // 주식당일분봉조회 -> 개별주식
 class StockMinData {
-  final String stck_cntg_hour; // 시간
-  final double stck_prpr; // 현재가
+  final String time; // 시간
+  final double price; // 현재가
 
   StockMinData({
-    required this.stck_cntg_hour,
-    required this.stck_prpr,
+    required this.time,
+    required this.price,
   });
 
   // JSON 데이터를 StockModel 객체로 변환
   factory StockMinData.fromJson(Map<String, dynamic> json) {
     return StockMinData(
-      stck_cntg_hour: json['stck_cntg_hour'],
-      stck_prpr: double.parse(json['stck_prpr']),
+      time: json['stck_cntg_hour'],
+      price: double.parse(json['stck_prpr']),
     );
   }
 }

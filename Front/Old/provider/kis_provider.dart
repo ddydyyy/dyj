@@ -1,5 +1,5 @@
 // // stock_provider.dart
-// import 'package:finance/services/StockService.dart';
+// import 'package:finance/services/stock_service.dart';
 // import 'package:flutter/material.dart';
 //
 // import '../service/kis_service.dart';

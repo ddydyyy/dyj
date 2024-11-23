@@ -1,5 +1,5 @@
-import 'package:finance/provider/StockProvider.dart';
-import 'package:finance/provider/ThemeProvider.dart';
+import 'package:finance/provider/stock_provider.dart';
+import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/start.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

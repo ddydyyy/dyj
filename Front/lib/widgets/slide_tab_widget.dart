@@ -1,6 +1,6 @@
 // widgets/SlideWidget.dart
 
-import 'package:finance/provider/ThemeProvider.dart';
+import 'package:finance/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,10 +8,10 @@ class SlideTab extends StatefulWidget {
   const SlideTab({super.key});
 
   @override
-  _SlideTabState createState() => _SlideTabState();
+  SlideTabState createState() => SlideTabState();
 }
 
-class _SlideTabState extends State<SlideTab> {
+class SlideTabState extends State<SlideTab> {
   // 선택된 항목 인덱스
   int _selectedIndex = 0;
 
@@ -19,7 +19,7 @@ class _SlideTabState extends State<SlideTab> {
   final ScrollController _scrollController = ScrollController();
 
   // 버튼 표시 여부
-  bool _showButtons = false;
+  // bool _showButtons = false;
 
   void _onSelected(int index) {
     setState(() {
@@ -27,51 +27,51 @@ class _SlideTabState extends State<SlideTab> {
     });
   }
 
-  // 오른쪽 스크롤
-  void _scrollRight() {
-    _scrollController.animateTo(
-      // 스크롤 이동 거리
-      _scrollController.offset + 100,
-      // 이동에 걸리는 시간
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  // 왼쪽 스크롤
-  void _scrollLeft() {
-    _scrollController.animateTo(
-      _scrollController.offset - 100,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    // 첫 번째 렌더링 이후에 버튼 표시 여부 확인
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkButtonVisibility();
-    });
-    _scrollController.addListener(_checkButtonVisibility);
-  }
+  // // 오른쪽 스크롤
+  // void _scrollRight() {
+  //   _scrollController.animateTo(
+  //     // 스크롤 이동 거리
+  //     _scrollController.offset + 100,
+  //     // 이동에 걸리는 시간
+  //     duration: const Duration(milliseconds: 300),
+  //     curve: Curves.easeInOut,
+  //   );
+  // }
+  //
+  // // 왼쪽 스크롤
+  // void _scrollLeft() {
+  //   _scrollController.animateTo(
+  //     _scrollController.offset - 100,
+  //     duration: const Duration(milliseconds: 300),
+  //     curve: Curves.easeInOut,
+  //   );
+  // }
 
   @override
-  void dispose() {
-    _scrollController.removeListener(_checkButtonVisibility);
-    _scrollController.dispose();
-    super.dispose();
-  }
+  // void initState() {
+  //   super.initState();
+  //   // 첫 번째 렌더링 이후에 버튼 표시 여부 확인
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     _checkButtonVisibility();
+  //   });
+  //   _scrollController.addListener(_checkButtonVisibility);
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   _scrollController.removeListener(_checkButtonVisibility);
+  //   _scrollController.dispose();
+  //   super.dispose();
+  // }
 
-  // 버튼 표시 여부 결정
-  void _checkButtonVisibility() {
-    setState(() {
-      // 스크롤이 오른쪽으로 이동 가능하면 버튼 표시
-      _showButtons =
-          _scrollController.position.maxScrollExtent > _scrollController.offset;
-    });
-  }
+  // // 버튼 표시 여부 결정
+  // void _checkButtonVisibility() {
+  //   setState(() {
+  //     // 스크롤이 오른쪽으로 이동 가능하면 버튼 표시
+  //     _showButtons =
+  //         _scrollController.position.maxScrollExtent > _scrollController.offset;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +144,7 @@ class EachTab extends StatelessWidget {
 
     return TextButton(
       onPressed: () {
-        print('graph.widget_76_$index');
+        debugPrint('graph.widget_76_$index');
         onSelected(index);
       },
       child: Text(

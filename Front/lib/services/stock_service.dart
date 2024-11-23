@@ -1,7 +1,8 @@
-// services/StockService.dart
+// services/stock_service.dart
 
 import 'dart:convert';
-import 'package:finance/models/StockModel.dart';
+import 'package:finance/models/stock_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 // koreainvestment( 한국투자증권 )
@@ -10,7 +11,7 @@ class StockService {
   final String appkey = 'PSxqSKoJkoHE997XzT09OCG4Efd1jTbsAxi6';
   final String appsecret =
       'riXSV1NsPY6G1uoukJaoXC/IKLGd0mLPByAOj2oVtCruAr6o38pmAVR4viJkiiAIWZ+CJPsr1Chuh/HvKnXAaHOGBgBv0ftPsT+hU43BtbXsC4MdPbpAmIlTLmnC0amIvS3FB6Bk+2w3sHJQIK9aEM2H0cI9sfJweuFzuDK3wfTaGfEalf8=';
-  final String content_type = 'application/json; charset=utf-8';
+  final String contentType = 'application/json; charset=utf-8';
 
   // api 토큰 발급
   Future<String?> getToken() async {
@@ -27,7 +28,7 @@ class StockService {
 
     // 요청 헤더 설정
     final headers = {
-      'Content-Type': content_type,
+      'Content-Type': contentType,
     };
 
     final response = await http.post(
@@ -41,10 +42,10 @@ class StockService {
 
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
-      print('getToken_발급 성공');
+      debugPrint('getToken_발급 성공');
       return jsonResponse['access_token'];
     } else {
-      print('getToken_발급 실패 : ${response.statusCode}, response : ${response.body}');
+      debugPrint('getToken_발급 실패 : ${response.statusCode}, response : ${response.body}');
       return null;
     }
   }
@@ -56,8 +57,8 @@ class StockService {
     final url = Uri.parse('$baseUrl/$path');
 
     final headers = {
-      'content-type': content_type,
-      'authorization': 'Bearer ${accessToken}',
+      'content-type': contentType,
+      'authorization': 'Bearer $accessToken',
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHKST03010200',
@@ -107,7 +108,7 @@ class StockService {
             .toList();
         for (var stockData in filteredData) {
           if (!resultList
-              .any((data) => data.stck_cntg_hour == stockData.stck_cntg_hour)) {
+              .any((data) => data.time == stockData.time)) {
             resultList.add(stockData);
           }
         }
@@ -119,13 +120,13 @@ class StockService {
       }
     }
 
-    print('모델 생성 성공');
+    debugPrint('모델 생성 성공');
 
     // 변경된 부분: 시간 순으로 정렬
-    resultList.sort((a, b) => a.stck_cntg_hour.compareTo(b.stck_cntg_hour));
+    resultList.sort((a, b) => a.time.compareTo(b.time));
     for (int i = 0; i < resultList.length; i++) {
-      print('stock_cntg_hour : ${resultList[i].stck_cntg_hour}');
-      print('stck_prpr : ${resultList[i].stck_prpr}');
+      debugPrint('time : ${resultList[i].time}');
+      debugPrint('price : ${resultList[i].price}');
     }
 
     return resultList;
@@ -137,7 +138,7 @@ class StockService {
     final url = Uri.parse('$baseUrl/$path');
 
     final headers = {
-      'authorization': 'Bearer ${accessToken}',
+      'authorization': 'Bearer $accessToken',
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHKST01010100',
@@ -162,7 +163,7 @@ class StockService {
 
         // 데이터 추출
         final stockData = data['output'];
-        print('getStockData_응답 성공');
+        debugPrint('getStockData_응답 성공');
         // print('${stockData}');
         // print('getStockData_현재가 : ${stockData['stck_prpr']}');
 
@@ -182,8 +183,8 @@ class StockService {
     final url = Uri.parse('$baseUrl/$path');
 
     final headers = {
-      'content-type' : content_type,
-      'authorization': 'Bearer ${accessToken}',
+      'content-type' : contentType,
+      'authorization': 'Bearer $accessToken',
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHPUP02100000',
@@ -209,7 +210,7 @@ class StockService {
 
         // 데이터 추출
         final stockData = data['output'];
-        print('getMajorIndex_응답 성공');
+        debugPrint('getMajorIndex_응답 성공');
         // print('${stockData}');
         // print('getMajorIndex_현재가 : ${stockData['bstp_nmix_prpr']}');
 

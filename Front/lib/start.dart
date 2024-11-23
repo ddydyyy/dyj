@@ -1,9 +1,9 @@
-import 'package:finance/provider/ThemeProvider.dart';
-import 'package:finance/screens/TestDY.dart';
+import 'package:finance/provider/theme_provider.dart';
+import 'package:finance/screens/test_dy.dart';
 import 'package:flutter/material.dart';
 
-import 'package:finance/screens/Home.dart';
-import 'package:finance/screens/yb_home.dart';
+import 'package:finance/screens/home.dart';
+import 'package:finance/screens/test_yb.dart';
 import 'package:provider/provider.dart';
 
 class Start extends StatefulWidget {
@@ -20,7 +20,7 @@ class _Start extends State<Start> {
   // 탭 했을 때
   void _onItemTapped(int index) {
     setState(() {
-      print('start33_bottomBarIndex : $index');
+      debugPrint('start33_bottomBarIndex : $index');
       // 선택한 인덱스를 저장
       _selectedIndex = index;
     });
@@ -30,7 +30,7 @@ class _Start extends State<Start> {
   final List<Widget> _navIndex = [
     const Home(),
     const TestDY(),
-    const yb_home(),
+    const TestYB(),
   ];
 
   @override
@@ -68,7 +68,7 @@ class _Start extends State<Start> {
         bottomNavigationBar: Container(
           // 다크모드 시 body와 bottom 구분을 위해
           // container로 테두리를 줌
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
                 color: Colors.grey, // 선 색상
@@ -122,14 +122,14 @@ class _Start extends State<Start> {
 
 
 
-// import 'package:finance/provider/ThemeProvider.dart';
-// import 'package:finance/theme/Theme.dart';
+// import 'package:finance/provider/theme_provider.dart';
+// import 'package:finance/theme/theme.dart';
 // import 'package:flutter/material.dart';
 //
-// import 'package:finance/screens/Home.dart';
+// import 'package:finance/screens/home.dart';
 // import 'package:finance/screens/영빈아참고해.dart';
-// import 'package:finance/screens/yb_home.dart';
-// import 'package:provider/ThemeProvider.dart';
+// import 'package:finance/screens/test_yb.dart';
+// import 'package:provider/theme_provider.dart';
 //
 // class Start extends StatefulWidget {
 //   const Start({super.key});

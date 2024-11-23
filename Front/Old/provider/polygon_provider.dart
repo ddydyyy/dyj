@@ -1,51 +1,51 @@
-import '../models/polygon_model.dart';
-import '../service/polygon_service.dart';
-import 'package:flutter/material.dart';
-
-class StockChartProvider with ChangeNotifier {
-  // 데이터 저장 리스트
-  List<StockChartModel> _data = [];
-
-  final StockChartService _service = StockChartService();
-
-  // get 함수
-  List<StockChartModel> get data => _data;
-
-  Future<void> loadData(String symbol) async {
-    try {
-      // 비동기로 loadData 실행
-      _data = await _service.getData(symbol);
-      print('test0');
-      _data.map((stock) {
-        // 시간 확인
-        print('TestDY.dart : ${stock.timestamp}');
-      }).toList();
-      // final index = value.toInt();
-      // final timestamp = stockChartProvider.data[index].timestamp;
-
-      notifyListeners();
-    } catch (e) {
-      print('Error fetching data: $e');
-    }
-  }
-}
-
-// import 'package:finance/models/polygon_model.dart';
-// import 'package:finance/services/polygon_service.dart';
+// import '../models/polygon_model.dart';
+// import '../service/polygon_service.dart';
 // import 'package:flutter/material.dart';
 //
 // class StockChartProvider with ChangeNotifier {
-//   final StockChartService _service = StockChartService();
+//   // 데이터 저장 리스트
 //   List<StockChartModel> _data = [];
 //
+//   final StockChartService _service = StockChartService();
+//
+//   // get 함수
 //   List<StockChartModel> get data => _data;
 //
-//   Future<void> load5MinData() async {
+//   Future<void> loadData(String symbol) async {
 //     try {
-//       _data = await _service.fetch5MinData();
+//       // 비동기로 loadData 실행
+//       _data = await _service.getData(symbol);
+//       print('test0');
+//       _data.map((stock) {
+//         // 시간 확인
+//         print('test_dy.dart : ${stock.timestamp}');
+//       }).toList();
+//       // final index = value.toInt();
+//       // final timestamp = stockChartProvider.data[index].timestamp;
+//
 //       notifyListeners();
 //     } catch (e) {
 //       print('Error fetching data: $e');
 //     }
 //   }
 // }
+//
+// // import 'package:finance/models/polygon_model.dart';
+// // import 'package:finance/services/polygon_service.dart';
+// // import 'package:flutter/material.dart';
+// //
+// // class StockChartProvider with ChangeNotifier {
+// //   final StockChartService _service = StockChartService();
+// //   List<StockChartModel> _data = [];
+// //
+// //   List<StockChartModel> get data => _data;
+// //
+// //   Future<void> load5MinData() async {
+// //     try {
+// //       _data = await _service.fetch5MinData();
+// //       notifyListeners();
+// //     } catch (e) {
+// //       print('Error fetching data: $e');
+// //     }
+// //   }
+// // }
