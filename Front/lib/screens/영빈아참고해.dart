@@ -1,8 +1,8 @@
-import 'package:finance/models/test_model.dart';
-import 'package:finance/provider/test_provider.dart';
-import 'package:finance/provider/theme_provider.dart';
-import 'package:finance/services/test_service.dart';
-import 'package:finance/widgets/StockChartMain.dart';
+import 'package:finance/models/StockModel.dart';
+import 'package:finance/provider/StockProvider.dart';
+import 'package:finance/provider/ThemeProvider.dart';
+import 'package:finance/services/StockService.dart';
+import 'package:finance/widgets/StockChartWidget.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

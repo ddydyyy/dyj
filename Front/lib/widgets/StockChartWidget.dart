@@ -1,15 +1,16 @@
-import 'package:finance/models/test_model.dart';
-import 'package:finance/services/test_service.dart';
-import 'package:finance/widgets/stock_summary.dart';
+// widgets/StockChartWidget.dart
+
+import 'package:finance/models/StockModel.dart';
+import 'package:finance/services/StockService.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class StockChartMain extends StatelessWidget {
-  late final String accessToken;
-  late final String code;
+class StockChart extends StatelessWidget {
+  final String accessToken;
+  final String code;
 
-  StockChartMain({
+  const StockChart({
     super.key,
     required this.accessToken,
     required this.code,
@@ -19,14 +20,18 @@ class StockChartMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.95,
-      color: Colors.greenAccent,
+      // color: Colors.greenAccent,
       child: Column(
         children: [
-          StockSummary(
+          SummaryMajorIndex(
+            accessToken: accessToken,
+            // 코스피(0001), 코스닥(1001), 코스피200(2001) ...
+            code : '0001',
+          ),
+          SummaryStockData(
             accessToken: accessToken,
             code : code,
           ),
-          Text('2'),
           Text('3'),
           Text('4'),
         ],
@@ -35,11 +40,126 @@ class StockChartMain extends StatelessWidget {
   }
 }
 
-class StockSummary extends StatelessWidget {
-  late final String accessToken;
-  late final String code;
+// 주요지수 요약표
+class SummaryMajorIndex extends StatelessWidget {
+  final String accessToken;
+  final String code;
 
-  StockSummary({
+  const SummaryMajorIndex({
+    super.key,
+    required this.accessToken,
+    required this.code,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: StockService().getMajorIndex(accessToken, code),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              // 로딩 표시
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              // 에러 표시
+              child: Text("Error loading data"),
+            ),
+          );
+        } else if (snapshot.hasData) {
+          final data = snapshot.data!;
+          return Container(
+            // color: Colors.grey,
+            height: 60,
+            child: Row(
+              children: [
+                Flexible(
+                  flex: 3,
+                  child: Container(
+                    // color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Text('123'),
+                        // Text('${data.currentPrice}'),
+                        // Text('${data.changePrice}'),
+                        Text('주요지수 - KOSPI'),
+                        Text('${data.volume}'),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    color: Colors.amber,
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('그래프'),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('${data.price}'),
+                        // 가격 56000 -> 56,000 처럼 표시
+                        // Text(
+                        //   NumberFormat('#,###').format(data.price),
+                        // ),
+                        Text('${data.changeRate}%',
+                          style: TextStyle(
+                            color: data.changeRate > 0
+                                ? Colors.red
+                                : data.changeRate < 0
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        } else {
+          // 데이터가 없는 경우의 기본 반환값 추가
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              child: Text("No data available"),
+            ),
+          );
+        }
+      },
+    );
+  }
+}
+
+// 보유종목 요약표
+class SummaryStockData extends StatelessWidget {
+  final String accessToken;
+  final String code;
+
+  const SummaryStockData({
     super.key,
     required this.accessToken,
     required this.code,
@@ -70,16 +190,15 @@ class StockSummary extends StatelessWidget {
           );
         } else if (snapshot.hasData) {
           final data = snapshot.data!;
-          print('data : ${data}');
           return Container(
-            color: Colors.grey,
+            // color: Colors.grey,
             height: 60,
             child: Row(
               children: [
                 Flexible(
                   flex: 3,
                   child: Container(
-                    color: Colors.amber,
+                    // color: Colors.amber,
                     width: MediaQuery.of(context).size.width * 0.95,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -87,33 +206,46 @@ class StockSummary extends StatelessWidget {
                         // Text('123'),
                         // Text('${data.currentPrice}'),
                         // Text('${data.changePrice}'),
-                        Text('${data.changeRate}%'),
+                        Text('개별종목 - 삼성전자'),
                         Text('${data.volume}'),
                       ],
                     ),
                   ),
                 ),
                 Flexible(
-                  flex: 3,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.95,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('data123123123123'),
-                      ],
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 3,
+                  flex: 2,
                   child: Container(
                     color: Colors.amber,
                     width: MediaQuery.of(context).size.width * 0.95,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('data123123123123'),
+                        Text('그래프'),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.95,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Text('${data.currentPrice}'),
+                        // 가격 56000 -> 56,000 처럼 표시
+                        Text(
+                          NumberFormat('#,###').format(data.price),
+                        ),
+                        Text('${data.changeRate}%',
+                          style: TextStyle(
+                            color: data.changeRate > 0
+                                ? Colors.red
+                                : data.changeRate < 0
+                                ? Colors.blue
+                                : Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ),

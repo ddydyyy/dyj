@@ -1,6 +1,5 @@
-// import 'package:finance/Page/home.dart';
+// import 'package:finance/Page/Home.dart';
 // import 'package:flutter/material.dart';
-// import '../CustomWidget/global.dart';
 // import 'package:intl/intl.dart';
 //
 // // StatelessWidget : 앱 시작 시 랜더링 후 불변

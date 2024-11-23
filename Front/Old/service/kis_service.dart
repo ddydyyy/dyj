@@ -1,7 +1,7 @@
 // services/kis_service.dart
 import 'dart:convert';
-import 'package:finance/models/test_model.dart';
-import 'package:finance/provider/test_provider.dart';
+import 'package:finance/models/StockModel.dart';
+import 'package:finance/provider/StockProvider.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 

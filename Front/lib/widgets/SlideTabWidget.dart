@@ -1,7 +1,8 @@
-import 'package:finance/provider/theme_provider.dart';
+// widgets/SlideWidget.dart
+
+import 'package:finance/provider/ThemeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../theme/theme.dart';
 
 class SlideTab extends StatefulWidget {
   const SlideTab({super.key});

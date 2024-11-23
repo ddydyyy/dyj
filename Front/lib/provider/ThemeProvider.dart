@@ -1,6 +1,7 @@
-// theme_provider.dart
+// provider/ThemeProvider.dart
+
 import 'package:flutter/material.dart';
-import 'package:finance/theme/theme.dart';
+import 'package:finance/theme/Theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   bool isDarkMode = false;

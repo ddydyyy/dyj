@@ -1,32 +1,51 @@
 // .dart는 생략
 
-stock_model / stock_service / stock_provider
-- symbol 입력해 요청( 티커 )
-- 시가, 종가, 고가, 저가, 거래량, 시간 응답받음
--> graph 에서 사용
+StockModel / StockService / StockProvider
+- 종목 코드로 한국투자증권 api 요청하는 모델, 서비스
+- StockProvider 에는 발급받은 api 토큰 저장
+-> StockChart 에서 사용
 
-theme / theme_provider
+Theme / ThemeProvider
 - 전역으로 사용할 테마
 -> main, start 에서 사용
 
-graph
-- 작업중
--> home에서 사용 예정
+TimeZoneConvert
+- 미국, 한국 시간 변환
+- 아직 사용 하지 않음, 추후에 쓸지도 몰라서 남겨둠
 
-graph_tab
-- 국내, 해외, 원자재 등 대분류
--> home에서 사용
-
-search
+Search
 - 검색창, ui만 구현
--> home 에서 사용
+-> Home 에서 사용
 
-stock_summary
-- 코스피, 코스닥 등 graph_tab에서 선택하면 해당 지수 출력
-- 이후 나스닥 등 지수를 클릭하면 해당 그래프가 graph에 출력되게 작업중
-- 추후 오른쪽으로 밀어서 ui 개선해야 함
-- 작업중
--> home 에서 사용
+-   -   -   -   -   screens   -   -   -   -   -
+1. main 에서 테마 지정 후 start 실행
+2. start 에서 bottomNavigationBar 로 페이지 이동 기능 설정 후 기본 Home 페이지부터 출력
+
+Home
+- 메인 페이지
+
+TestDY
+- 우선 테스트 용으로 사용중
+
+yb_home
+- 영빈 페이지
+
+
+-   -   -   -   -   widgets   -   -   -   -   -
+SearchWidget
+- 검색창
+- 틀만 있고 기능 구현은 아직 안됨
+-> Home 에서 사용
+
+SlideTabWidget
+- 국내, 해외, 원자재, ETF, 환율, 채권 등 주요 지수 탭으로 선택하는 위젯
+- 아직 기능 구현은 안됐음
+-> Home 에서 사용
+
+StockChartWidget
+- 주식 요약표
+- 그래프, 가격, 등락률 등
+-> Home 에서 사용
 
 
 

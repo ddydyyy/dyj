@@ -1,8 +1,8 @@
-import 'package:finance/provider/theme_provider.dart';
-import 'package:finance/screens/test.dart';
+import 'package:finance/provider/ThemeProvider.dart';
+import 'package:finance/screens/TestDY.dart';
 import 'package:flutter/material.dart';
 
-import 'package:finance/screens/home.dart';
+import 'package:finance/screens/Home.dart';
 import 'package:finance/screens/yb_home.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class _Start extends State<Start> {
   // 페이지 이동
   final List<Widget> _navIndex = [
     const Home(),
-    // const TestApp(),
+    const TestDY(),
     const yb_home(),
   ];
 
@@ -122,14 +122,14 @@ class _Start extends State<Start> {
 
 
 
-// import 'package:finance/provider/theme_provider.dart';
-// import 'package:finance/theme/theme.dart';
+// import 'package:finance/provider/ThemeProvider.dart';
+// import 'package:finance/theme/Theme.dart';
 // import 'package:flutter/material.dart';
 //
-// import 'package:finance/screens/home.dart';
-// import 'package:finance/screens/DY.dart';
+// import 'package:finance/screens/Home.dart';
+// import 'package:finance/screens/영빈아참고해.dart';
 // import 'package:finance/screens/yb_home.dart';
-// import 'package:provider/theme_provider.dart';
+// import 'package:provider/ThemeProvider.dart';
 //
 // class Start extends StatefulWidget {
 //   const Start({super.key});

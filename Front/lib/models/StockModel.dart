@@ -1,6 +1,6 @@
-// models/stock_model.dart
-import 'dart:ffi';
+// models/StockModel.dart
 
+// api 토큰 발급
 class GetApiModel {
   final String access_token; // api 토큰
   // final String token_type; // 토큰 유형
@@ -25,6 +25,7 @@ class GetApiModel {
   }
 }
 
+// 주식당일분봉조회 -> 개별주식
 class StockMinData {
   final String stck_cntg_hour; // 시간
   final double stck_prpr; // 현재가
@@ -34,7 +35,7 @@ class StockMinData {
     required this.stck_prpr,
   });
 
-  // JSON 데이터를 StockModel로 변환
+  // JSON 데이터를 StockModel 객체로 변환
   factory StockMinData.fromJson(Map<String, dynamic> json) {
     return StockMinData(
       stck_cntg_hour: json['stck_cntg_hour'],
@@ -43,33 +44,27 @@ class StockMinData {
   }
 }
 
-
-class CurrentStockPrice {
-  // final String stockName; // 종목명
-  // final String stockCode; // 종목코드
-  final double currentPrice; // 현재가
+// 국장 개별 종목 데이터
+class StockDataModel {
+  final int price; // 현재가
   final double changePrice; // 전일 대비 가격
   final double changeRate; // 전일 대비 비율
   final int volume; // 거래량
 
-  CurrentStockPrice({
-    // required this.stockName,
-    // required this.stockCode,
-    required this.currentPrice,
+  StockDataModel({
+    required this.price,
     required this.changePrice,
     required this.changeRate,
     required this.volume,
   });
 
   // JSON 데이터를 객체로 변환
-  factory CurrentStockPrice.fromJson(Map<String, dynamic> json) {
-    return CurrentStockPrice(
-      // stockName: json['stockName'] ?? 'Unknown', // 종목명
-      // stockCode: json['stockCode'] ?? '', // 종목코드
-      currentPrice: double.tryParse(json['stck_prpr'].toString()) ?? 0.0, // 현재가
-      changePrice: double.tryParse(json['prdy_vrss'].toString()) ?? 0.0, // 등락률
-      changeRate: double.tryParse(json['prdy_ctrt'].toString()) ?? 0.0, // 등락폭
-      volume: int.tryParse(json['acml_vol'].toString()) ?? 0, // 거래량
+  factory StockDataModel.fromJson(Map<String, dynamic> json) {
+    return StockDataModel(
+      price: int.tryParse(json['stck_prpr'].toString()) ?? 0,
+      changePrice: double.tryParse(json['prdy_vrss'].toString()) ?? 0.0,
+      changeRate: double.tryParse(json['prdy_ctrt'].toString()) ?? 0.0,
+      volume: int.tryParse(json['acml_vol'].toString()) ?? 0,
     );
   }
 
@@ -85,3 +80,31 @@ class CurrentStockPrice {
   //   };
   // }
 }
+
+// 국내업종 현재지수 -> Kospi Kosdaq 등
+class MajorIndexModel {
+  final double price; // 현재가
+  final double changePrice; // 전일 대비 가격
+  final double changeRate; // 전일 대비 비율
+  final int volume; // 거래량
+
+  MajorIndexModel({
+    required this.price,
+    required this.changePrice,
+    required this.changeRate,
+    required this.volume,
+  });
+
+  // JSON 데이터를 객체로 변환
+  factory MajorIndexModel.fromJson(Map<String, dynamic> json) {
+    return MajorIndexModel(
+      price: double.tryParse(json['bstp_nmix_prpr'].toString()) ?? 0.0,
+      changePrice: double.tryParse(json['bstp_nmix_prdy_vrss'].toString()) ?? 0.0,
+      changeRate: double.tryParse(json['bstp_nmix_prdy_ctrt'].toString()) ?? 0.0,
+      volume: int.tryParse(json['acml_vol'].toString()) ?? 0,
+    );
+  }
+}
+
+
+

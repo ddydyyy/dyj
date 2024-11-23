@@ -1,6 +1,5 @@
-import 'package:finance/models/test_model.dart';
-import 'package:finance/provider/theme_provider.dart';
-import 'package:finance/services/test_service.dart';
+import 'package:finance/provider/ThemeProvider.dart';
+import 'package:finance/services/StockService.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +63,7 @@ class _TestAppState extends State<TestApp> {
               return Center(child: Text('Error: ${snapshot.error}'));
             } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
               final stockList = snapshot.data!;
-              print('test.dart : ${stockList[0].time}');
+              print('TestDY.dart : ${stockList[0].time}');
               print(
                   'all data : ${stockList.map((data) => data.time).toList()}');
 
