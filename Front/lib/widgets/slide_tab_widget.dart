@@ -144,7 +144,7 @@ class EachTab extends StatelessWidget {
 
     return TextButton(
       onPressed: () {
-        debugPrint('graph.widget_76_$index');
+        debugPrint('slide_tab_widget - index : $index');
         onSelected(index);
       },
       child: Text(

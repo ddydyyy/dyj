@@ -4,38 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241123_1600 dy 파일 정리">
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241123_1720 dy 느낌표 정리">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/models/alpha_vantage_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/models/alpha_vantage_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/models/finnhub_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/models/finnhub_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/models/kis_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/models/kis_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/models/polygon_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/models/polygon_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/provider/finnhub_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/finnhub_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/provider/kis_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/kis_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/provider/polygon_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/provider/polygon_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/screens/alphavantage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/screens/alphavantage.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/service/alpha_vantage_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/alpha_vantage_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/service/finnhub_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/finnhub_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/service/kis_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/kis_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/service/polygon_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/service/polygon_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/Old/widgets/stock_summary.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/Old/widgets/stock_summary.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/library/TimeZoneConvert.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/library/time_zone_convert.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/models/StockModel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/provider/StockProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/stock_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/provider/ThemeProvider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/provider/theme_provider.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/TestDY.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/yb_home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/test_yb.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/영빈아참고해.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/영빈아참고해.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/services/StockService.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/theme/Theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/theme/theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/SearchWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/SlideTabWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/StockChartWidget.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +64,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
@@ -411,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732345717358</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="241123_1720 dy 느낌표 정리">
+      <option name="closed" value="true" />
+      <created>1732350092441</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732350092441</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +407,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241009_1445 dy home 커스텀위젯 제작중" />
     <MESSAGE value="241009_1500 dy home 커스텀위젯 제작중" />
     <MESSAGE value="241009_1600 dy home 커스텀위젯 제작중" />
     <MESSAGE value="241106_0000 dy home 제작중" />
@@ -451,7 +431,8 @@
     <MESSAGE value="241116_1700 dy" />
     <MESSAGE value="241123_1400 dy getStockData 수정중" />
     <MESSAGE value="241123_1600 dy 파일 정리" />
-    <option name="LAST_COMMIT_MESSAGE" value="241123_1600 dy 파일 정리" />
+    <MESSAGE value="241123_1720 dy 느낌표 정리" />
+    <option name="LAST_COMMIT_MESSAGE" value="241123_1720 dy 느낌표 정리" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

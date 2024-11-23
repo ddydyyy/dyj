@@ -20,7 +20,7 @@ class _Start extends State<Start> {
   // 탭 했을 때
   void _onItemTapped(int index) {
     setState(() {
-      debugPrint('start33_bottomBarIndex : $index');
+      debugPrint('start.dart - bottomBarIndex : $index');
       // 선택한 인덱스를 저장
       _selectedIndex = index;
     });
