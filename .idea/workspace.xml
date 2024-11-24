@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241124_1800 dy padding, textstyle 등 ui 개선">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241124_2140 dy 소제목, 구분선, slide_tab_widget.dart 여러 코드에서 재사용 가능하게 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -418,7 +416,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732438548537</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="241124_2140 dy 소제목, 구분선, slide_tab_widget.dart 여러 코드에서 재사용 가능하게 수정">
+      <option name="closed" value="true" />
+      <created>1732452193395</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1732452193395</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,7 +439,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241110_1600 dy" />
     <MESSAGE value="241110_1600 dy&#10;bottomNavigationBar 페이지 이동 설정" />
     <MESSAGE value="241110_1630 dy&#10;bottomNavigationBar 페이지 이동 설정 / 파일 구조 변경" />
     <MESSAGE value="241110_1830 dy 테마 페이지 파일로 구분 / 다크모드 화이트모드 적용" />
@@ -458,7 +463,8 @@
     <MESSAGE value="241123_1730 dy print 출력문 정리" />
     <MESSAGE value="241124_1640 dy slide_tab_widget.dart에서 선택한 인덱스에 따라 화면 구현 적용" />
     <MESSAGE value="241124_1800 dy padding, textstyle 등 ui 개선" />
-    <option name="LAST_COMMIT_MESSAGE" value="241124_1800 dy padding, textstyle 등 ui 개선" />
+    <MESSAGE value="241124_2140 dy 소제목, 구분선, slide_tab_widget.dart 여러 코드에서 재사용 가능하게 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="241124_2140 dy 소제목, 구분선, slide_tab_widget.dart 여러 코드에서 재사용 가능하게 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -490,18 +496,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>90</line>
-          <option name="timeStamp" value="16" />
+          <line>142</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>128</line>
-          <option name="timeStamp" value="17" />
+          <line>218</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>204</line>
-          <option name="timeStamp" value="18" />
+          <line>91</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -35,9 +35,9 @@ class Home extends StatelessWidget {
         //     // 기본적으로 빈 공간을 렌더링
         //     : const SizedBox(),
 
-        const SizedBox(height: 15),
+        const SizedBox(height: 14),
         DivLine(themeProvider: themeProvider),
-        const SizedBox(height: 15),
+        const SizedBox(height: 20),
         const BoldText(text: '실시간 랭킹'),
         if (accessToken != null)
           SlideTab(
@@ -61,7 +61,7 @@ class BoldText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.865,
+      width: MediaQuery.of(context).size.width * 0.85,
       child: Text(
         text,
         style: const TextStyle(

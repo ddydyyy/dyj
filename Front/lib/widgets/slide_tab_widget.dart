@@ -47,44 +47,45 @@ class SlideTabState extends State<SlideTab> {
         tabTitles = ["국내", "해외", "상품", "환율", "금리", "채권"];
         break;
       case 1:
-        tabTitles = ["주식", "ETF", "Futures"];
+        tabTitles = ["상승률", "하락률", "거래량"];
         break;
       case 2:
-        tabTitles = ["부동산", "금", "채권"];
+        tabTitles = ["temp"];
         break;
       default:
-        tabTitles = ["기본", "목록"];
+        tabTitles = ["temp"];
     }
 
-    return Column(
-      children: [
-        // widget.num==0?
-        SingleChildScrollView(
-          // controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            // mainAxisAlignment: MainAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              for (int i = 0; i < tabTitles.length; i++)
-                EachTab(
-                  title: tabTitles[i],
-                  index: i,
-                  selectedIndex: _selectedIndex,
-                  onSelected: _onSelected,
-                ),
-            ],
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: MediaQuery.of(context).size.width * 0.08,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // widget.num==0?
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (int i = 0; i < tabTitles.length; i++) ...[
+                  EachTab(
+                    title: tabTitles[i],
+                    index: i,
+                    selectedIndex: _selectedIndex,
+                    onSelected: _onSelected,
+                  ),
+                  if (i < tabTitles.length - 1) const SizedBox(width: 10),
+                ],
+              ],
+            ),
           ),
-        ),
-        SizedBox(
-          width: MediaQuery.of(context).size.width * 0.8,
-          child: SelectedIndexData(
+          SelectedIndexData(
             accessToken: widget.accessToken,
             selectedIndex: _selectedIndex,
           ),
-        ),
-
-      ],
+        ],
+      ),
     );
   }
 }
@@ -108,19 +109,32 @@ class EachTab extends StatelessWidget {
     // provider.dart에 저장된 현재 테마 가져옴
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    return TextButton(
-      onPressed: () {
-        debugPrint('slide_tab_widget - index : $index');
-        onSelected(index);
-      },
-      child: Text(
-        title,
-        style: TextStyle(
-          color: selectedIndex == index
-              ? Colors.orange // 선택된 항목은 주황색
-              : (themeProvider.isDarkMode ? Colors.white : Colors.black),
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
+    return Transform.translate(
+      offset: const Offset(-8, 0),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          // 최소크기 삭제
+          minimumSize: const Size(0, 0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 8,
+          ),
+          // shape:
+          //     RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        onPressed: () {
+          debugPrint('slide_tab_widget - index : $index');
+          onSelected(index);
+        },
+        child: Text(
+          title,
+          style: TextStyle(
+            color: selectedIndex == index
+                ? Colors.orange // 선택된 항목은 주황색
+                : (themeProvider.isDarkMode ? Colors.white : Colors.black),
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -202,4 +216,5 @@ class SelectedIndexData extends StatelessWidget {
     );
   }
 }
+
 
