@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
       children: [
         const Search(),
         const SizedBox(height: 20),
-        const BoldText(text: '주요 지수'),
+        const TitleText(text: '주요 지수', list: []),
         // 슬라이드탭 + 해당 인덱스의 데이터
         if (accessToken != null)
           SlideTab(
@@ -38,7 +38,10 @@ class Home extends StatelessWidget {
         const SizedBox(height: 14),
         DivLine(themeProvider: themeProvider),
         const SizedBox(height: 20),
-        const BoldText(text: '실시간 랭킹'),
+        const TitleText(
+          text: '실시간 랭킹',
+          list: ['한국', '미국', '암호화폐'],
+        ),
         if (accessToken != null)
           SlideTab(
             accessToken: accessToken,
@@ -50,24 +53,83 @@ class Home extends StatelessWidget {
 }
 
 // 제목
-class BoldText extends StatelessWidget {
+class TitleText extends StatefulWidget {
   final String text;
+  final List<String> list;
 
-  const BoldText({
+  const TitleText({
     super.key,
     required this.text,
+    required this.list,
   });
 
   @override
+  State<TitleText> createState() => _TitleTextState();
+}
+
+class _TitleTextState extends State<TitleText> {
+  // 선택된 항목 인덱스
+  int _selectedIndex = 0;
+
+  void _onSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.85,
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.w600,
-        ),
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * 0.08),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            widget.text,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          widget.list.isNotEmpty
+              ? Container(
+            height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300, // 회색 배경
+                    borderRadius: BorderRadius.circular(100), // 둥근 모서리
+                  ),
+                  child: Row(
+                    children: widget.list.map((item) {
+                      // 각 항목 인덱스
+                      int index = widget.list.indexOf(item);
+
+                      return TextButton(
+                        onPressed: () => _onSelected(index),
+                        style: TextButton.styleFrom(
+                          // 최소크기 삭제
+                          minimumSize:
+                          item.length>3?
+                              const Size(100,0):
+
+                          const Size(0, 0),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 6,
+                          ),
+                          backgroundColor: _selectedIndex == index
+                              ? Colors.white
+                              : Colors.grey.shade300,
+                          // 해당 영역만큼만 공간 차지하게 설정
+                          tapTargetSize: MaterialTapTargetSize.padded,
+                        ),
+                        child: Text(item),
+                      );
+                    }).toList(),
+                  ),
+                )
+              : const SizedBox(),
+        ],
       ),
     );
   }

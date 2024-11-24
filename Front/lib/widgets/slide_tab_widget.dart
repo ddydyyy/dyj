@@ -47,7 +47,7 @@ class SlideTabState extends State<SlideTab> {
         tabTitles = ["국내", "해외", "상품", "환율", "금리", "채권"];
         break;
       case 1:
-        tabTitles = ["상승률", "하락률", "거래량"];
+        tabTitles = ["상승률", "하락률", "거래량", "시가총액"];
         break;
       case 2:
         tabTitles = ["temp"];
