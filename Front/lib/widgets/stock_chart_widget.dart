@@ -4,11 +4,11 @@ import 'package:finance/services/stock_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class StockChart extends StatelessWidget {
+class EachStockChart extends StatelessWidget {
   final String accessToken;
   final String code;
 
-  const StockChart({
+  const EachStockChart({
     super.key,
     required this.accessToken,
     required this.code,
@@ -25,6 +25,7 @@ class StockChart extends StatelessWidget {
             accessToken: accessToken,
             // 코스피(0001), 코스닥(1001), 코스피200(2001) ...
             code : '0001',
+            height: 60,
           ),
           SummaryStockData(
             accessToken: accessToken,
@@ -42,11 +43,13 @@ class StockChart extends StatelessWidget {
 class SummaryMajorIndex extends StatelessWidget {
   final String accessToken;
   final String code;
+  final double height;
 
   const SummaryMajorIndex({
     super.key,
     required this.accessToken,
     required this.code,
+    required this.height,
   });
 
   @override
@@ -57,7 +60,7 @@ class SummaryMajorIndex extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Container(
             color: Colors.grey,
-            height: 60,
+            height: height,
             child: const Center(
               // 로딩 표시
               child: CircularProgressIndicator(),
@@ -66,7 +69,7 @@ class SummaryMajorIndex extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Container(
             color: Colors.grey,
-            height: 60,
+            height: height,
             child: const Center(
               // 에러 표시
               child: Text("Error loading data"),
@@ -76,7 +79,7 @@ class SummaryMajorIndex extends StatelessWidget {
           final data = snapshot.data!;
           return SizedBox(
             // color: Colors.grey,
-            height: 60,
+            height: height,
             child: Row(
               children: [
                 Flexible(

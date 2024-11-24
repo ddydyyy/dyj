@@ -33,15 +33,17 @@ class Home extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  SlideTab(),
                 ],
               ),
             ),
+            accessToken != null?
+            SlideTab(accessToken: accessToken)
+                : const SizedBox(),
             const SizedBox(
               height: 15,
             ),
             accessToken != null
-                ? StockChart(
+                ? EachStockChart(
                     accessToken: accessToken,
                     code: '005930',
                   )
