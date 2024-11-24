@@ -6,6 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
 // koreainvestment( 한국투자증권 )
+// getToken() : api 토큰 발급
+// getMinData() : 주식당일 분봉조회( 개별주식 )
+// getStockData() : 주식현재가 시세( 개별주식 )
+// getMajorIndex() : 국내업종 현재지수 ( Kospi, Kosdaq 등 )
 class StockService {
   final String baseUrl = 'https://openapi.koreainvestment.com:9443';
   final String appkey = 'PSxqSKoJkoHE997XzT09OCG4Efd1jTbsAxi6';

@@ -33,6 +33,12 @@ class Home extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
+                  // accessToken != null?
+                  // SlideTab(accessToken: accessToken)
+                  //     : const SizedBox(),
+                  // const SizedBox(
+                  //   height: 15,
+                  // ),
                 ],
               ),
             ),
@@ -42,12 +48,12 @@ class Home extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            accessToken != null
-                ? EachStockChart(
-                    accessToken: accessToken,
-                    code: '005930',
-                  )
-                : const SizedBox(), // 기본적으로 빈 공간을 렌더링
+            // accessToken != null
+            //     ? EachStockChart(
+            //         accessToken: accessToken,
+            //         code: '005930',
+            //       )
+            //     : const SizedBox(), // 기본적으로 빈 공간을 렌더링
             // 국내, 해외, ETF 선택
           ],
         )

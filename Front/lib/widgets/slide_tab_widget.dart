@@ -5,6 +5,16 @@ import 'package:finance/widgets/stock_chart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// SlideTab(accessToken) : 슬라이드 탭
+
+// EachTab(title, index, selectedIndex, onSelected)
+// - 선택된 탭, 선택됐을 때 해당 탭의 Index를 전달하는 selectedIndex,
+// - 선택됐을 때 실행할 함수 onSelected
+
+// SelectedIndexData(accessToken, selectedIndex)
+// - 토큰과 선택된 탭의 인덱스를 입력받아 해당하는 데이터로
+// -stock_chart_widget의 SummaryMajorIndex 실행
+
 class SlideTab extends StatefulWidget {
   final String accessToken;
 
@@ -50,19 +60,19 @@ class SlideTabState extends State<SlideTab> {
                 onSelected: _onSelected,
               ),
               EachTab(
-                title: "원자재",
+                title: "상품",
                 index: 2,
                 selectedIndex: _selectedIndex,
                 onSelected: _onSelected,
               ),
               EachTab(
-                title: "ETF",
+                title: "환율",
                 index: 3,
                 selectedIndex: _selectedIndex,
                 onSelected: _onSelected,
               ),
               EachTab(
-                title: "환율",
+                title: "금리",
                 index: 4,
                 selectedIndex: _selectedIndex,
                 onSelected: _onSelected,
@@ -76,11 +86,14 @@ class SlideTabState extends State<SlideTab> {
             ],
           ),
         ),
-        // 선택된 인덱스와 액세스 토큰을 StockChart로 전달
-        SelectedIndexData(
-          accessToken: widget.accessToken,
-          selectedIndex: _selectedIndex,
+        SizedBox(
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: SelectedIndexData(
+            accessToken: widget.accessToken,
+            selectedIndex: _selectedIndex,
+          ),
         ),
+
       ],
     );
   }
@@ -131,8 +144,8 @@ class SelectedIndexData extends StatelessWidget {
   // 인덱스에 해당하는 데이터
   final Map<int, List<Map<String, String>>> chartData = {
     0: [
-      {"title": "코스닥", "code": "1001"},
-      {"title": "코스피", "code": "0001"},
+      {"title": "KOSPI", "code": "0001"},
+      {"title": "KOSDAQ", "code": "1001"},
     ],
     1: [
       {"title": "나스닥", "code": "2001"},
@@ -179,7 +192,7 @@ class SelectedIndexData extends StatelessWidget {
               : (selectedData.length == 4)
                   ? 240
                   : 270,
-      color: Colors.greenAccent,
+      // color: Colors.greenAccent,
       child: ListView.builder(
         itemCount: selectedData.length,
         itemBuilder: (context, index) {
@@ -188,6 +201,7 @@ class SelectedIndexData extends StatelessWidget {
             height: 60,
             child: SummaryMajorIndex(
               accessToken: accessToken,
+              title: item['title']!,
               code: item["code"]!,
               height: 60,
             ),
@@ -197,3 +211,4 @@ class SelectedIndexData extends StatelessWidget {
     );
   }
 }
+
