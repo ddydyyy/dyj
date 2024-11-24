@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241124_1640 dy slide_tab_widget.dart에서 선택한 인덱스에 따라 화면 구현 적용">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241124_1800 dy padding, textstyle 등 ui 개선">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/_info/info" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/_info/info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/search_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/search_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
     </list>
@@ -54,31 +53,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Flutter.DY.executor&quot;: &quot;Run&quot;,
-    &quot;Flutter.DY_test.executor&quot;: &quot;Run&quot;,
-    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/StudioProjects/dyj/Front/lib/widgets&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;emulator&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Flutter.DY.executor": "Run",
+    "Flutter.DY_test.executor": "Run",
+    "Flutter.main.dart.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "io.flutter.reload.alreadyRun": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/USER/StudioProjects/dyj/Front/lib/widgets",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "emulator",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\lib\widgets" />
@@ -411,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732434453194</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="241124_1800 dy padding, textstyle 등 ui 개선">
+      <option name="closed" value="true" />
+      <created>1732438548537</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1732438548537</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -426,7 +433,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241106_0000 dy home 제작중" />
     <MESSAGE value="241110_1600 dy" />
     <MESSAGE value="241110_1600 dy&#10;bottomNavigationBar 페이지 이동 설정" />
     <MESSAGE value="241110_1630 dy&#10;bottomNavigationBar 페이지 이동 설정 / 파일 구조 변경" />
@@ -451,7 +457,8 @@
     <MESSAGE value="241123_1720 dy 느낌표 정리" />
     <MESSAGE value="241123_1730 dy print 출력문 정리" />
     <MESSAGE value="241124_1640 dy slide_tab_widget.dart에서 선택한 인덱스에 따라 화면 구현 적용" />
-    <option name="LAST_COMMIT_MESSAGE" value="241124_1640 dy slide_tab_widget.dart에서 선택한 인덱스에 따라 화면 구현 적용" />
+    <MESSAGE value="241124_1800 dy padding, textstyle 등 ui 개선" />
+    <option name="LAST_COMMIT_MESSAGE" value="241124_1800 dy padding, textstyle 등 ui 개선" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -483,17 +490,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>100</line>
+          <line>90</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>138</line>
+          <line>128</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>213</line>
+          <line>204</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>

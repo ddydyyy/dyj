@@ -16,10 +16,12 @@ import 'package:provider/provider.dart';
 // -stock_chart_widget의 SummaryMajorIndex 실행
 
 class SlideTab extends StatefulWidget {
+  final int num;
   final String accessToken;
 
   const SlideTab({
     super.key,
+    required this.num,
     required this.accessToken,
   });
 
@@ -39,50 +41,38 @@ class SlideTabState extends State<SlideTab> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> tabTitles;
+    switch (widget.num) {
+      case 0:
+        tabTitles = ["국내", "해외", "상품", "환율", "금리", "채권"];
+        break;
+      case 1:
+        tabTitles = ["주식", "ETF", "Futures"];
+        break;
+      case 2:
+        tabTitles = ["부동산", "금", "채권"];
+        break;
+      default:
+        tabTitles = ["기본", "목록"];
+    }
+
     return Column(
       children: [
+        // widget.num==0?
         SingleChildScrollView(
           // controller: _scrollController,
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            // mainAxisAlignment: MainAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              EachTab(
-                title: "국내",
-                index: 0,
-                selectedIndex: _selectedIndex,
-                onSelected: _onSelected,
-              ),
-              EachTab(
-                title: "해외",
-                index: 1,
-                selectedIndex: _selectedIndex,
-                onSelected: _onSelected,
-              ),
-              EachTab(
-                title: "상품",
-                index: 2,
-                selectedIndex: _selectedIndex,
-                onSelected: _onSelected,
-              ),
-              EachTab(
-                title: "환율",
-                index: 3,
-                selectedIndex: _selectedIndex,
-                onSelected: _onSelected,
-              ),
-              EachTab(
-                title: "금리",
-                index: 4,
-                selectedIndex: _selectedIndex,
-                onSelected: _onSelected,
-              ),
-              EachTab(
-                title: "채권",
-                index: 5,
-                selectedIndex: _selectedIndex,
-                onSelected: _onSelected,
-              ),
+              for (int i = 0; i < tabTitles.length; i++)
+                EachTab(
+                  title: tabTitles[i],
+                  index: i,
+                  selectedIndex: _selectedIndex,
+                  onSelected: _onSelected,
+                ),
             ],
           ),
         ),
@@ -183,7 +173,7 @@ class SelectedIndexData extends StatelessWidget {
     // 선택된 데이터
     final selectedData = chartData[selectedIndex] ?? [];
 
-    return Container(
+    return SizedBox(
       // 차지하는 공간( 높이 )
       height: (selectedData.length <= 2)
           ? 120
@@ -194,6 +184,7 @@ class SelectedIndexData extends StatelessWidget {
                   : 270,
       // color: Colors.greenAccent,
       child: ListView.builder(
+        // key: ValueKey(selectedData),
         itemCount: selectedData.length,
         itemBuilder: (context, index) {
           final item = selectedData[index];

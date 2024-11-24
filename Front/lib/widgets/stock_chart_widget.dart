@@ -1,10 +1,8 @@
 // widgets/stock_chart_widget.dart
 
-import 'package:finance/provider/theme_provider.dart';
 import 'package:finance/services/stock_service.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 // EachStockChart(accessToken, code)
 // - 추후 보유중인 전체 개별종목 요약표로 사용 예정( SummaryStockData 이용 )
@@ -67,13 +65,12 @@ class SummaryMajorIndex extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
     return FutureBuilder(
       future: StockService().getMajorIndex(accessToken, code),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Container(
-            color: Colors.grey,
+          return SizedBox(
+            // color: Colors.grey,
             height: height,
             child: const Center(
               // 로딩 표시
@@ -81,8 +78,8 @@ class SummaryMajorIndex extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasError) {
-          return Container(
-            color: Colors.grey,
+          return SizedBox(
+            // color: Colors.grey,
             height: height,
             child: const Center(
               // 에러 표시
@@ -110,13 +107,13 @@ class SummaryMajorIndex extends StatelessWidget {
                         // Text('${data.changePrice}'),
                         Text(
                           title,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         Text(
                           '${data.price}',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 20,
                           ),
@@ -128,7 +125,7 @@ class SummaryMajorIndex extends StatelessWidget {
                 Flexible(
                   flex: 3,
                   child: Container(
-                    color: Colors.amber,
+                    color: Colors.blue.shade300,
                     width: MediaQuery.of(context).size.width * 0.95,
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
