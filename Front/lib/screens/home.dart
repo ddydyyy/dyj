@@ -94,38 +94,42 @@ class _TitleTextState extends State<TitleText> {
           ),
           widget.list.isNotEmpty
               ? Container(
-            height: 40,
+                  height: 40,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300, // 회색 배경
-                    borderRadius: BorderRadius.circular(100), // 둥근 모서리
+                    borderRadius: BorderRadius.circular(20), // 둥근 모서리
                   ),
-                  child: Row(
-                    children: widget.list.map((item) {
-                      // 각 항목 인덱스
-                      int index = widget.list.indexOf(item);
+                  child: Transform.translate(
+                    offset: const Offset(-2, 0),
+                    child: Row(
+                      children: widget.list.map((item) {
+                        // 각 항목 인덱스
+                        int index = widget.list.indexOf(item);
 
-                      return TextButton(
-                        onPressed: () => _onSelected(index),
-                        style: TextButton.styleFrom(
-                          // 최소크기 삭제
-                          minimumSize:
-                          item.length>3?
-                              const Size(100,0):
-
-                          const Size(0, 0),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 6,
+                        return TextButton(
+                          onPressed: () => _onSelected(index),
+                          style: TextButton.styleFrom(
+                            // 최소크기 삭제
+                            minimumSize: const Size(0, 0),
+                            padding: item.length > 3
+                                ? const EdgeInsets.symmetric(
+                                    horizontal: 4,
+                                    vertical: 6,
+                                  )
+                                : const EdgeInsets.symmetric(
+                                    horizontal: 6,
+                                    vertical: 6,
+                                  ),
+                            backgroundColor: _selectedIndex == index
+                                ? Colors.white
+                                : Colors.grey.shade300,
+                            // 해당 영역만큼만 공간 차지하게 설정
+                            tapTargetSize: MaterialTapTargetSize.padded,
                           ),
-                          backgroundColor: _selectedIndex == index
-                              ? Colors.white
-                              : Colors.grey.shade300,
-                          // 해당 영역만큼만 공간 차지하게 설정
-                          tapTargetSize: MaterialTapTargetSize.padded,
-                        ),
-                        child: Text(item),
-                      );
-                    }).toList(),
+                          child: Text(item),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 )
               : const SizedBox(),
@@ -146,16 +150,22 @@ class DivLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      width: double.infinity,
-      height: 7,
-      color: themeProvider.isDarkMode
-          ? Colors.grey.shade900
-          : Colors.grey.shade200,
-      // 전환 시간
-      duration: const Duration(milliseconds: 100),
-      // 처음, 마지막이 느리고 중간에 빨리 바뀜
-      curve: Curves.easeInOut,
+    // ThemeProvider의 상태 변화에 따라 업데이트
+    // -> 라이트, 다크모드 변경 시에만 랜더링
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, child) {
+        return AnimatedContainer(
+          width: double.infinity,
+          height: 7,
+          color: themeProvider.isDarkMode
+              ? Colors.grey.shade900
+              : Colors.grey.shade200,
+          // 전환 시간
+          duration: const Duration(milliseconds: 100),
+          // 처음, 마지막이 느리고 중간에 빨리 바뀜
+          curve: Curves.easeInOut,
+        );
+      },
     );
   }
 }
