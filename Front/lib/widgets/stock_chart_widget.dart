@@ -237,28 +237,32 @@ class SummaryStockData extends StatelessWidget {
 class SummaryVolRank extends StatelessWidget {
   final String accessToken;
   final int selectedIndex;
+  // 한 칸 높이
+  final double height;
 
   const SummaryVolRank({
     super.key,
     required this.accessToken,
     required this.selectedIndex,
+    required this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return buildStockData(
       StockService().getVolumeRanking(accessToken),
-      700.0,
+      // 로딩중, 에러 등 높이
+      height * 5,
       (context, data) {
         final itemCount = data.length > 5 ? 5 : data.length;
         return SizedBox(
-          height: 700,
+          height: height * 5,
           child: ListView.builder(
             itemCount: itemCount,
             itemBuilder: (context, index) {
               final item = data[index];
               return SizedBox(
-                height: 40,
+                height: height,
                 child: Row(
                   children: [
                     Flexible(
@@ -331,4 +335,3 @@ class SummaryVolRank extends StatelessWidget {
     );
   }
 }
-

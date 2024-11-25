@@ -82,7 +82,7 @@ class SlideTabState extends State<SlideTab> {
                   accessToken: widget.accessToken,
                   selectedIndex: _selectedIndex)
               : widget.num == 1
-                  ? SummaryVolRank(
+                  ? SelectedIndexData1(
                       accessToken: widget.accessToken,
                       selectedIndex: _selectedIndex)
                   : const Text(''),
@@ -230,14 +230,11 @@ class SelectedIndexData1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // 차지하는 공간( 높이 )
-      height: 700,
-      color: Colors.greenAccent,
-      child: SummaryVolRank(
-        accessToken: accessToken,
-        selectedIndex: selectedIndex,
-      ),
+    return SummaryVolRank(
+      // 한 칸 높이
+      height: 40,
+      accessToken: accessToken,
+      selectedIndex: selectedIndex,
     );
   }
 }

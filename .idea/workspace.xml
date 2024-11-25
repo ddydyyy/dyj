@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241125_1600 dy 거래량 순위 제작">
-      <change afterPath="$PROJECT_DIR$/Front/Old/widgets/slide_tab_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/Old/widgets/stock_chart_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front/lib/widgets/global_widget.dart" afterDir="false" />
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241125_1930 dy 코드 리팩토링">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
@@ -459,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732518602545</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="241125_1930 dy 코드 리팩토링">
+      <option name="closed" value="true" />
+      <created>1732530643869</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1732530643869</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +479,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241111_0100 dy graph 위젯 생성" />
     <MESSAGE value="241111_0220 dy 지수 요약 제작중" />
     <MESSAGE value="241111_1700 dy krx api 호출 성공" />
     <MESSAGE value="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님" />
@@ -499,7 +503,8 @@
     <MESSAGE value="241125_0200 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중" />
     <MESSAGE value="241125_0210 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중" />
     <MESSAGE value="241125_1600 dy 거래량 순위 제작" />
-    <option name="LAST_COMMIT_MESSAGE" value="241125_1600 dy 거래량 순위 제작" />
+    <MESSAGE value="241125_1930 dy 코드 리팩토링" />
+    <option name="LAST_COMMIT_MESSAGE" value="241125_1930 dy 코드 리팩토링" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
