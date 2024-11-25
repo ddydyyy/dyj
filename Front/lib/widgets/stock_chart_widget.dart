@@ -11,7 +11,7 @@ import 'package:intl/intl.dart';
 // SummaryStockData(accessToken, code)
 // - 개별종목 요약표
 
-// 보유중인 전체 개별종목 요약표
+// 보유 중인 전체 개별 종목 요약표
 class EachStockChart extends StatelessWidget {
   final String accessToken;
   final String code;
@@ -27,28 +27,16 @@ class EachStockChart extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width * 0.95,
       // color: Colors.greenAccent,
-      child: Column(
+      child: const Column(
         children: [
-          SummaryMajorIndex(
-            accessToken: accessToken,
-            // 코스피(0001), 코스닥(1001), 코스피200(2001) ...
-            title: '주요지수',
-            code: '0001',
-            height: 60,
-          ),
-          SummaryStockData(
-            accessToken: accessToken,
-            code: code,
-          ),
-          const Text('3'),
-          const Text('4'),
+          Text(''),
         ],
       ),
     );
   }
 }
 
-// 주요지수 요약표
+// 주요 지수 요약표
 class SummaryMajorIndex extends StatelessWidget {
   final String accessToken;
   final String title;
@@ -146,13 +134,13 @@ class SummaryMajorIndex extends StatelessWidget {
                         Text(
                           // 양수일 때 + 붙여주기
                           '${data.changeRate > 0 ? '+' : ''}'
-                          '${data.changePrice}',
+                              '${data.changePrice}',
                           style: TextStyle(
                             color: data.changeRate > 0
                                 ? Colors.red
                                 : data.changeRate < 0
-                                    ? Colors.blue
-                                    : Colors.black,
+                                ? Colors.blue
+                                : Colors.black,
                           ),
                         ),
                         // 가격 56000 -> 56,000 처럼 표시
@@ -165,8 +153,8 @@ class SummaryMajorIndex extends StatelessWidget {
                             color: data.changeRate > 0
                                 ? Colors.red
                                 : data.changeRate < 0
-                                    ? Colors.blue
-                                    : Colors.black,
+                                ? Colors.blue
+                                : Colors.black,
                           ),
                         ),
                       ],
@@ -191,7 +179,7 @@ class SummaryMajorIndex extends StatelessWidget {
   }
 }
 
-// 개별종목 요약표
+// 개별 종목 요약표
 class SummaryStockData extends StatelessWidget {
   final String accessToken;
   final String code;
@@ -289,6 +277,137 @@ class SummaryStockData extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          );
+        } else {
+          // 데이터가 없는 경우의 기본 반환값 추가
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              child: Text("No data available"),
+            ),
+          );
+        }
+      },
+    );
+  }
+}
+
+// 거래량 순위 요약표
+class SummaryVolRank extends StatelessWidget {
+  final String accessToken;
+
+  const SummaryVolRank({
+    super.key,
+    required this.accessToken,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: StockService().getVolumeRanking(accessToken),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              // 로딩 표시
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return Container(
+            color: Colors.grey,
+            height: 60,
+            child: const Center(
+              // 에러 표시
+              child: Text("Error loading data"),
+            ),
+          );
+        } else if (snapshot.hasData) {
+          final data = snapshot.data!;
+          // 5 초과면 5까지
+          final itemCount = data.length > 5 ? 5 : data.length;
+
+          return SizedBox(
+            height: 700,
+            child: ListView.builder(
+              // 최대 5개만 렌더링
+              itemCount: itemCount,
+              // 데이터 가져오기
+              itemBuilder: (context, index) {
+                final item = data[index];
+
+                return SizedBox(
+                  height: 40,
+                  child: Row(
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text('${item.rank}'),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(item.korName),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                NumberFormat('#,###').format(item.price),
+                                style: TextStyle(
+                                    // fontSize: 16,
+                                    color: item.price > 0
+                                        ? Colors.red
+                                        : item.price < 0
+                                            ? Colors.blue
+                                            : Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                // 양수일 때 + 붙여주기
+                                '${item.changePriceRate > 0 ? '+' : ''}'
+                                    '${item.changePriceRate}%',
+                                style: TextStyle(
+                                  color: item.changePriceRate > 0
+                                      ? Colors.red
+                                      : item.changePriceRate < 0
+                                      ? Colors.blue
+                                      : Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           );
         } else {

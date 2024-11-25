@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241125_0200 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241125_0210 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/start.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Front/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +71,6 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
@@ -439,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732467357919</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="241125_0210 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중">
+      <option name="closed" value="true" />
+      <created>1732468289369</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1732468289369</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -454,7 +469,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241110_1830 dy 테마 페이지 파일로 구분 / 다크모드 화이트모드 적용" />
     <MESSAGE value="241110_2100 dy provider로 isDarkMode 변수 전역으로 설정_UI 바로바로 업데이트" />
     <MESSAGE value="241111_0100 dy graph 위젯 생성" />
     <MESSAGE value="241111_0220 dy 지수 요약 제작중" />
@@ -479,7 +493,8 @@
     <MESSAGE value="241124_2140 dy 소제목, 구분선, slide_tab_widget.dart 여러 코드에서 재사용 가능하게 수정" />
     <MESSAGE value="241125_0020 dy 패딩 등 ui 수정" />
     <MESSAGE value="241125_0200 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중" />
-    <option name="LAST_COMMIT_MESSAGE" value="241125_0200 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중" />
+    <MESSAGE value="241125_0210 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중" />
+    <option name="LAST_COMMIT_MESSAGE" value="241125_0210 dy 실시간 랭킹 한국, 미국, 암호화폐 탭 추가중" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -491,38 +506,68 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/models/stock_model.dart</url>
-          <line>26</line>
+          <line>28</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/models/stock_model.dart</url>
-          <line>45</line>
+          <line>47</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/models/stock_model.dart</url>
-          <line>82</line>
+          <line>84</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/models/stock_model.dart</url>
-          <line>107</line>
+          <line>109</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>142</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>218</line>
+          <line>221</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart</url>
-          <line>91</line>
-          <option name="timeStamp" value="22" />
+          <url>file://$PROJECT_DIR$/Front/lib/screens/home.dart</url>
+          <line>140</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/screens/home.dart</url>
+          <line>53</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/services/stock_service.dart</url>
+          <line>55</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/services/stock_service.dart</url>
+          <line>137</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/services/stock_service.dart</url>
+          <line>182</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/services/stock_service.dart</url>
+          <line>229</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart</url>
+          <line>295</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart</url>
+          <line>180</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

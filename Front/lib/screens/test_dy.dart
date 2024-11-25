@@ -23,7 +23,8 @@ class TestDY extends StatelessWidget {
             onPressed: () => {
               // StockService().getMinData(accessToken),
               // print(''),
-              StockService().getMajorIndex(accessToken, '0001'),
+              // StockService().getMajorIndex(accessToken, '0001'),
+              StockService().getVolumeRanking(accessToken),
             },
 
             style: TextButton.styleFrom(

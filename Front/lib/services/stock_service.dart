@@ -7,9 +7,9 @@ import 'package:http/http.dart' as http;
 
 // koreainvestment( 한국투자증권 )
 // getToken() : api 토큰 발급
-// getMinData() : 주식당일 분봉조회( 개별주식 )
-// getStockData() : 주식현재가 시세( 개별주식 )
-// getMajorIndex() : 국내업종 현재지수 ( Kospi, Kosdaq 등 )
+// getMinData(accessToken) : 주식당일 분봉조회( 개별주식 )
+// getStockData(accessToken, code) : 주식현재가 시세( 개별주식 )
+// getMajorIndex(accessToken, code) : 국내업종 현재지수 ( Kospi, Kosdaq 등 )
 class StockService {
   final String baseUrl = 'https://openapi.koreainvestment.com:9443';
   final String appkey = 'PSxqSKoJkoHE997XzT09OCG4Efd1jTbsAxi6';
@@ -225,6 +225,88 @@ class StockService {
       }
     } catch (e) {
       throw Exception('getMajorIndex_에러: $e');
+    }
+  }
+
+  // 순위분석 - 거래량순위
+  Future<List<VolumeRankingModel>?> getVolumeRanking(accessToken) async {
+    const path = 'uapi/domestic-stock/v1/quotations/volume-rank';
+    final url = Uri.parse('$baseUrl/$path');
+
+    // 요청 헤더 설정
+    final headers = {
+      'Content-Type': contentType,
+      'authorization': 'Bearer $accessToken',
+      'appKey': appkey,
+      'appSecret': appsecret,
+      'tr_id': 'FHPST01710000',
+      'custtype' : 'P',
+    };
+
+    final params = {
+      // 업종 'U'
+      'FID_COND_MRKT_DIV_CODE': 'J',
+      'FID_COND_SCR_DIV_CODE': '20171',
+      // 0000(전체) 기타(업종코드)
+      'FID_INPUT_ISCD': '0000',
+      // 0(전체) 1(보통주) 2(우선주)
+      'FID_DIV_CLS_CODE': '0',
+      // 0 : 평균거래량 1:거래증가율 2:평균거래회전율 3:거래금액순 4:평균거래금액회전율
+      'FID_BLNG_CLS_CODE': '0',
+      // 1 or 0 9자리 (차례대로 증거금 30% 40% 50% 60% 100% 신용보증금 30% 40% 50% 60%)
+      'FID_TRGT_CLS_CODE': '111111111',
+      // 1 or 0 10자리 (차례대로 투자위험/경고/주의 관리종목 정리매매 불성실공시 우선주 거래정지 ETF ETN 신용주문불가 SPAC)
+      'FID_TRGT_EXLS_CLS_CODE': '0000011100',
+      // 가격 ~ ex) "0"
+      // 전체 가격 대상 조회 시 FID_INPUT_PRICE_1, FID_INPUT_PRICE_2 모두 ""(공란) 입력
+      'FID_INPUT_PRICE_1': '',
+      'FID_INPUT_PRICE_2': '',
+      // 거래량 ~ // ex) "100000"
+      // 전체 거래량 대상 조회 시 FID_VOL_CNT ""(공란) 입력
+      'FID_VOL_CNT': '',
+      'FID_INPUT_DATE_1': '',
+    };
+
+    final response = await http.get(
+      url.replace(
+        queryParameters: params,
+      ),
+      headers: headers,
+    );
+
+    // debugPrint('status : ${response.statusCode}');
+    // debugPrint('response : ${response.body}');
+
+    try {
+      if (response.statusCode == 200) {
+        // 리스트 형태
+        final decodeData = jsonDecode(response.body);
+        // debugPrint('decodeData : $decodeData');
+        // 데이터 추출
+        final List<dynamic> data = decodeData['output'];
+        // debugPrint('data : $data');
+
+        // 리스트 데이터를 VolumeRankingModel로 변환
+        final list = data
+            .map((item) => VolumeRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .toList();
+        debugPrint('getVolumeRanking_응답 성공');
+        // int i = 0;
+        // debugPrint('순위 : ${list[i].rank}');
+        // debugPrint('이름 : ${list[i].korName}');
+        // debugPrint('가격 : ${list[i].price}');
+        // debugPrint('전일 대비 가격 변화량 : ${list[i].changePrice}');
+        // debugPrint('전일 대비 가격 변화율 : ${list[i].changePriceRate}');
+        // debugPrint('평균 거래량 : ${list[i].volAvg}');
+        // debugPrint('거래량 증가율 : ${list[i].volIncRate}');
+        // debugPrint('평균 거래 대금 : ${list[i].priceAvg}');
+
+        return list;
+      } else {
+        throw Exception('getVolumeRanking_응답 실패 ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('getVolumeRanking_에러: $e');
     }
   }
 

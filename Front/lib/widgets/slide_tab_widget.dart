@@ -44,9 +44,11 @@ class SlideTabState extends State<SlideTab> {
     List<String> tabTitles;
     switch (widget.num) {
       case 0:
+        // 주요 지수
         tabTitles = ["국내", "해외", "상품", "환율", "금리", "채권"];
         break;
       case 1:
+        // 실시간 랭킹
         tabTitles = ["상승률", "하락률", "거래량", "시가총액"];
         break;
       case 2:
@@ -60,32 +62,33 @@ class SlideTabState extends State<SlideTab> {
       padding: EdgeInsets.symmetric(
         horizontal: MediaQuery.of(context).size.width * 0.08,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // widget.num==0?
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+      child: widget.num == 0
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (int i = 0; i < tabTitles.length; i++) ...[
-                  EachTab(
-                    title: tabTitles[i],
-                    index: i,
-                    selectedIndex: _selectedIndex,
-                    onSelected: _onSelected,
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      for (int i = 0; i < tabTitles.length; i++) ...[
+                        EachTab(
+                          title: tabTitles[i],
+                          index: i,
+                          selectedIndex: _selectedIndex,
+                          onSelected: _onSelected,
+                        ),
+                        if (i < tabTitles.length - 1) const SizedBox(width: 10),
+                      ],
+                    ],
                   ),
-                  if (i < tabTitles.length - 1) const SizedBox(width: 10),
-                ],
+                ),
+                SelectedIndexData(
+                  accessToken: widget.accessToken,
+                  selectedIndex: _selectedIndex,
+                ),
               ],
-            ),
-          ),
-          SelectedIndexData(
-            accessToken: widget.accessToken,
-            selectedIndex: _selectedIndex,
-          ),
-        ],
-      ),
+            )
+          : SummaryVolRank(accessToken: widget.accessToken,)
     );
   }
 }
@@ -216,5 +219,3 @@ class SelectedIndexData extends StatelessWidget {
     );
   }
 }
-
-

@@ -60,7 +60,7 @@ class _Start extends State<Start> {
             // padding: const EdgeInsets.all(16.0),
             padding: const EdgeInsets.symmetric(
               // horizontal: 100,
-              vertical: 50,
+              vertical: 10,
             ),
             child: _navIndex.elementAt(_selectedIndex),
           ),

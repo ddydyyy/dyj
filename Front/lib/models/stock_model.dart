@@ -1,5 +1,7 @@
 // models/stock_model.dart
 
+import 'dart:convert';
+
 // api 토큰 발급
 class GetApiModel {
   final String accessToken; // api 토큰
@@ -106,5 +108,65 @@ class MajorIndexModel {
   }
 }
 
+// 순위분석 - 거래량순위
+class VolumeRankingModel {
+  final String korName; // 종목 이름
+  final int rank;       // 순위
+  final int price;      // 현재가
+  final int changePrice;          // 전일 대비 가격 변화량
+  final double changePriceRate;   // 전일 대비 가격 변화율
+  final int volAvg;     // 평균 거래량
+  final double volIncRate;        // 거래량 증가율
+  final int priceAvg;   // 평균 거래 대금
 
+  VolumeRankingModel({
+    required this.korName,
+    required this.rank,
+    required this.price,
+    required this.changePrice,
+    required this.changePriceRate,
+    required this.volAvg,
+    required this.volIncRate,
+    required this.priceAvg,
+  });
+
+  // JSON 데이터를 객체로 변환
+  factory VolumeRankingModel.fromJson(Map<String, dynamic> json) {
+    return VolumeRankingModel(
+      korName: _decodeKorName(json['hts_kor_isnm'] as String),
+      rank: int.parse(json['data_rank'] as String),
+      price: int.parse(json['stck_prpr'] as String),
+      changePrice: int.parse(json['prdy_vrss'] as String),
+      changePriceRate: double.parse(json['prdy_ctrt'] as String),
+      volAvg: int.parse(json['avrg_vol'] as String),
+      volIncRate: double.parse(json['vol_inrt'] as String),
+      priceAvg: int.parse(json['avrg_tr_pbmn'] as String),
+    );
+  }
+
+  // 디코딩 함수
+  static String _decodeKorName(String korName) {
+    try {
+      // UTF-8로 디코딩해서 정상적인 문자열을 반환
+      return utf8.decode(korName.runes.toList());
+    } catch (e) {
+      // 디코딩 실패 시 원래 값을 반환
+      return korName;
+    }
+  }
+  // // 모델 데이터를 JSON으로 변환
+  // Map<String, dynamic> toJson() {
+  //   return {
+  //     'hts_kor_isnm': korName,
+  //     'data_rank': rank.toString(),
+  //     'stck_prpr': price.toString(),
+  //     'prdy_vrss': changePrice.toString(),
+  //     'prdy_ctrt': changePriceRate.toString(),
+  //     'avrg_vol': volAvg.toString(),
+  //     'vol_inrt': volIncRate.toString(),
+  //     'avrg_tr_pbmn': priceAvg.toString(),
+  //   };
+  // }
+
+}
 
