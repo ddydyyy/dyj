@@ -87,13 +87,13 @@ class StockDataModel {
 class MajorIndexModel {
   final double price; // 현재가
   final double changePrice; // 전일 대비 가격
-  final double changeRate; // 전일 대비 비율
+  final double changePriceRate; // 전일 대비 비율
   final int volume; // 거래량
 
   MajorIndexModel({
     required this.price,
     required this.changePrice,
-    required this.changeRate,
+    required this.changePriceRate,
     required this.volume,
   });
 
@@ -102,7 +102,7 @@ class MajorIndexModel {
     return MajorIndexModel(
       price: double.tryParse(json['bstp_nmix_prpr'].toString()) ?? 0.0,
       changePrice: double.tryParse(json['bstp_nmix_prdy_vrss'].toString()) ?? 0.0,
-      changeRate: double.tryParse(json['bstp_nmix_prdy_ctrt'].toString()) ?? 0.0,
+      changePriceRate: double.tryParse(json['bstp_nmix_prdy_ctrt'].toString()) ?? 0.0,
       volume: int.tryParse(json['acml_vol'].toString()) ?? 0,
     );
   }
@@ -252,6 +252,73 @@ class MarketCapRankingModel {
       rank: int.parse(json['data_rank'] as String),
       price: int.parse(json['stck_prpr'] as String),
       changePrice: int.parse(json['prdy_vrss'] as String),
+      changePriceRate: double.parse(json['prdy_ctrt'] as String),
+    );
+  }
+
+  // 디코딩 함수
+  static String _decodeKorName(String korName) {
+    try {
+      // UTF-8로 디코딩해서 정상적인 문자열을 반환
+      return utf8.decode(korName.runes.toList());
+    } catch (e) {
+      // 디코딩 실패 시 원래 값을 반환
+      return korName;
+    }
+  }
+// // 모델 데이터를 JSON으로 변환
+// Map<String, dynamic> toJson() {
+//   return {
+//     'hts_kor_isnm': korName,
+//     'data_rank': rank.toString(),
+//     'stck_prpr': price.toString(),
+//     'prdy_vrss': changePrice.toString(),
+//     'prdy_ctrt': changePriceRate.toString(),
+//     'avrg_vol': volAvg.toString(),
+//     'vol_inrt': volIncRate.toString(),
+//     'avrg_tr_pbmn': priceAvg.toString(),
+//   };
+// }
+
+}
+
+// 해외주식 종목/지수/환율기간별시세
+class ForeignMajorIndexModel {
+  final String korName; // 종목 이름
+  final String code;    // 종목 코드
+  final double price;      // 현재가
+  final double changePrice;          // 전일 대비 가격 변화량
+  final double changePriceRate;   // 전일 대비 가격 변화율
+
+  ForeignMajorIndexModel({
+    required this.korName,
+    required this.code,
+    required this.price,
+    required this.changePrice,
+    required this.changePriceRate,
+  });
+
+  // JSON 데이터를 객체로 변환
+  factory ForeignMajorIndexModel.fromJson(Map<String, dynamic> json) {
+    final korName = _decodeKorName(json['hts_kor_isnm'] as String);
+    final price =
+    korName != '원/엔' ?
+    double.parse(json['ovrs_nmix_prpr'] as String) :
+    double.parse(json['ovrs_nmix_prpr'] as String)*100;
+    final changePrice =
+    korName != '원/엔' ?
+    double.parse(json['ovrs_nmix_prdy_vrss'] as String) :
+    double.parse(json['ovrs_nmix_prdy_vrss'] as String)*100;
+
+    return ForeignMajorIndexModel(
+      korName: korName,
+      // if (korName != '원/엔'){
+      //   code: json['stck_shrn_iscd'] as String,
+      // }
+      code: json['stck_shrn_iscd'] as String,
+      // price: int.parse(json['ovrs_nmix_prpr'] as String),
+      price: price,
+      changePrice: changePrice,
       changePriceRate: double.parse(json['prdy_ctrt'] as String),
     );
   }

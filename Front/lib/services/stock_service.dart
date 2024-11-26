@@ -49,7 +49,8 @@ class StockService {
       debugPrint('getToken_발급 성공');
       return jsonResponse['access_token'];
     } else {
-      debugPrint('getToken_발급 실패 : ${response.statusCode}, response : ${response.body}');
+      debugPrint(
+          'getToken_발급 실패 : ${response.statusCode}, response : ${response.body}');
       return null;
     }
   }
@@ -111,8 +112,7 @@ class StockService {
                 }))
             .toList();
         for (var stockData in filteredData) {
-          if (!resultList
-              .any((data) => data.time == stockData.time)) {
+          if (!resultList.any((data) => data.time == stockData.time)) {
             resultList.add(stockData);
           }
         }
@@ -187,12 +187,12 @@ class StockService {
     final url = Uri.parse('$baseUrl/$path');
 
     final headers = {
-      'content-type' : contentType,
+      'content-type': contentType,
       'authorization': 'Bearer $accessToken',
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHPUP02100000',
-      'custtype' : 'P',
+      'custtype': 'P',
     };
 
     final params = {
@@ -240,7 +240,7 @@ class StockService {
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHPST01710000',
-      'custtype' : 'P',
+      'custtype': 'P',
     };
 
     final params = {
@@ -288,7 +288,8 @@ class StockService {
 
         // 리스트 데이터를 VolumeRankingModel로 변환
         final list = data
-            .map((item) => VolumeRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .map((item) => VolumeRankingModel.fromJson(
+                item as Map<String, dynamic>)) // 변경된 부분
             .toList();
         debugPrint('getVolumeRanking_응답 성공');
         // int i = 0;
@@ -311,7 +312,8 @@ class StockService {
   }
 
   // 순위 분석 - 등락률 순위
-  Future<List<ChangeRateRankingModel>?> getChangeRateRanking(accessToken, sort) async {
+  Future<List<ChangeRateRankingModel>?> getChangeRateRanking(
+      accessToken, sort) async {
     const path = 'uapi/domestic-stock/v1/ranking/fluctuation';
     final url = Uri.parse('$baseUrl/$path');
 
@@ -322,7 +324,7 @@ class StockService {
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHPST01700000',
-      'custtype' : 'P',
+      'custtype': 'P',
     };
 
     final params = {
@@ -372,7 +374,8 @@ class StockService {
 
         // 리스트 데이터를 VolumeRankingModel로 변환
         final list = data
-            .map((item) => ChangeRateRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .map((item) => ChangeRateRankingModel.fromJson(
+                item as Map<String, dynamic>)) // 변경된 부분
             .toList();
         debugPrint('getChangeRateRanking_응답 성공');
 
@@ -397,7 +400,7 @@ class StockService {
       'appKey': appkey,
       'appSecret': appsecret,
       'tr_id': 'FHPST01740000',
-      'custtype' : 'P',
+      'custtype': 'P',
     };
 
     final params = {
@@ -438,7 +441,8 @@ class StockService {
 
         // 리스트 데이터를 VolumeRankingModel로 변환
         final list = data
-            .map((item) => MarketCapRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .map((item) => MarketCapRankingModel.fromJson(
+                item as Map<String, dynamic>)) // 변경된 부분
             .toList();
         debugPrint('getMarketCapRanking_응답 성공');
 
@@ -448,6 +452,56 @@ class StockService {
       }
     } catch (e) {
       throw Exception('getMarketCapRanking_에러: $e');
+    }
+  }
+
+  // 해외주식 종목/지수/환율기간별시세
+  Future<ForeignMajorIndexModel> getForeignMajorIndex(accessToken, code, type) async {
+    const path = 'uapi/overseas-price/v1/quotations/inquire-daily-chartprice';
+    final url = Uri.parse('$baseUrl/$path');
+
+    final headers = {
+      'content-type': contentType,
+      'authorization': 'Bearer $accessToken',
+      'appKey': appkey,
+      'appSecret': appsecret,
+      'tr_id': 'FHKST03030100',
+    };
+
+    final params = {
+      // N: 해외지수, X 환율, I: 국채, S:금선물
+      'FID_COND_MRKT_DIV_CODE': type,
+      'FID_INPUT_ISCD': code,
+      'FID_INPUT_DATE_1': '20241120',
+      'FID_INPUT_DATE_2': '20241121',
+      'FID_PERIOD_DIV_CODE': 'D',
+    };
+
+    final response = await http.get(
+      url.replace(
+        queryParameters: params,
+      ),
+      headers: headers,
+    );
+
+    // debugPrint('status : ${response.statusCode}');
+    // debugPrint('response : ${response.body}');
+
+    try {
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        // 데이터 추출
+        final stockData = data['output1'];
+        final result = ForeignMajorIndexModel.fromJson(stockData);
+
+        debugPrint('getForeignMajorIndex_응답 성공');
+        return result;
+      } else {
+        throw Exception('getForeignMajorIndex_응답 실패 ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('getForeignMajorIndex_에러: $e');
     }
   }
 

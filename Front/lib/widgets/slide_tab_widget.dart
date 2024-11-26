@@ -43,7 +43,7 @@ class SlideTabState extends State<SlideTab> {
   List<String> _getTabTitles() {
     switch (widget.num) {
       case 0:
-        return ["국내", "해외", "상품", "환율", "금리", "채권"];
+        return ["국내", "해외", "환율", "국채"];
       case 1:
         return ["상승률", "하락률", "거래량", "시가총액"];
       case 2:
@@ -162,27 +162,19 @@ class SelectedIndexData0 extends StatelessWidget {
       {"title": "KOSDAQ", "code": "1001"},
     ],
     1: [
-      {"title": "나스닥", "code": "2001"},
-      {"title": "러셀", "code": "2002"},
-      {"title": "S&P500", "code": "2003"},
-      {"title": "다우존스", "code": "2004"},
+      {"title": "NASDAQ", "code": "COMP"},
+      {"title": "S&P500", "code": "SPX"},
+      {"title": "DOW", "code": ".DJI"},
     ],
     2: [
-      {"title": "금", "code": "3001"},
-      {"title": "은", "code": "3002"},
-      {"title": "유가", "code": "3003"},
+      {"title": "원/달러", "code": "FX@KRW"},
+      {"title": "원/엔(100)", "code": "FX@KRWJS"},
     ],
     3: [
-      {"title": "KODEX 200", "code": "4001"},
-      {"title": "TIGER MSCI", "code": "4002"},
-    ],
-    4: [
-      {"title": "USD/KRW", "code": "5001"},
-      {"title": "EUR/KRW", "code": "5002"},
-    ],
-    5: [
-      {"title": "국채 3년", "code": "6001"},
-      {"title": "국채 10년", "code": "6002"},
+      {"title": "국고채1년", "code": "Y0104"},
+      {"title": "국고채3년", "code": "Y0101"},
+      {"title": "국고채5년", "code": "Y0105"},
+      {"title": "국고채10년", "code": "Y0106"},
     ],
   };
 
@@ -204,7 +196,9 @@ class SelectedIndexData0 extends StatelessWidget {
           final item = selectedData[index];
           return SizedBox(
             height: 60,
-            child: SummaryMajorIndex(
+            child:
+            SummaryMajorIndex(
+              index: selectedIndex,
               accessToken: accessToken,
               title: item['title']!,
               code: item["code"]!,

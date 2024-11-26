@@ -40,6 +40,7 @@ class EachStockChart extends StatelessWidget {
 
 // 주요 지수 요약표
 class SummaryMajorIndex extends StatelessWidget {
+  final int index;
   final String accessToken;
   final String title;
   final String code;
@@ -47,6 +48,7 @@ class SummaryMajorIndex extends StatelessWidget {
 
   const SummaryMajorIndex({
     super.key,
+    required this.index,
     required this.accessToken,
     required this.title,
     required this.code,
@@ -56,7 +58,14 @@ class SummaryMajorIndex extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return buildStockData(
-      StockService().getMajorIndex(accessToken, code),
+      switch (index) {
+        0 => StockService().getMajorIndex(accessToken, code),
+        // N: 해외지수, X 환율, I: 국채, S:금선물
+        1 => StockService().getForeignMajorIndex(accessToken, code, 'N'),
+        2 => StockService().getForeignMajorIndex(accessToken, code, 'X'),
+        3 => StockService().getForeignMajorIndex(accessToken, code, 'I'),
+        _ => StockService().getForeignMajorIndex(accessToken, code, 'S'),
+      },
       height,
       (context, data) {
         return SizedBox(
@@ -112,12 +121,12 @@ class SummaryMajorIndex extends StatelessWidget {
                     children: [
                       Text(
                         // 양수일 때 + 붙여주기
-                        '${data.changeRate > 0 ? '+' : ''}'
+                        '${data.changePriceRate > 0 ? '+' : ''}'
                         '${data.changePrice}',
                         style: TextStyle(
-                          color: data.changeRate > 0
+                          color: data.changePriceRate > 0
                               ? Colors.red
-                              : data.changeRate < 0
+                              : data.changePriceRate < 0
                                   ? Colors.blue
                                   : Colors.black,
                         ),
@@ -127,11 +136,11 @@ class SummaryMajorIndex extends StatelessWidget {
                       //   NumberFormat('#,###').format(data.price),
                       // ),
                       Text(
-                        '${data.changeRate}%',
+                        '${data.changePriceRate}%',
                         style: TextStyle(
-                          color: data.changeRate > 0
+                          color: data.changePriceRate > 0
                               ? Colors.red
-                              : data.changeRate < 0
+                              : data.changePriceRate < 0
                                   ? Colors.blue
                                   : Colors.black,
                         ),
@@ -479,7 +488,7 @@ class SummaryMarketCapRank extends StatelessWidget {
       StockService().getMarketCapRanking(accessToken),
       // 로딩중, 에러 등 높이
       height * 5,
-          (context, data) {
+      (context, data) {
         final itemCount = data.length > 5 ? 5 : data.length;
         return SizedBox(
           height: height * 5,
@@ -526,12 +535,12 @@ class SummaryMarketCapRank extends StatelessWidget {
                             Text(
                               NumberFormat('#,###').format(item.price),
                               style: TextStyle(
-                                // fontSize: 16,
+                                  // fontSize: 16,
                                   color: item.changePriceRate > 0
                                       ? Colors.red
                                       : item.changePriceRate < 0
-                                      ? Colors.blue
-                                      : Colors.black),
+                                          ? Colors.blue
+                                          : Colors.black),
                             ),
                           ],
                         ),
@@ -547,13 +556,13 @@ class SummaryMarketCapRank extends StatelessWidget {
                             Text(
                               // 양수일 때 + 붙여주기
                               '${item.changePriceRate > 0 ? '+' : ''}'
-                                  '${item.changePriceRate}%',
+                              '${item.changePriceRate}%',
                               style: TextStyle(
                                 color: item.changePriceRate > 0
                                     ? Colors.red
                                     : item.changePriceRate < 0
-                                    ? Colors.blue
-                                    : Colors.black,
+                                        ? Colors.blue
+                                        : Colors.black,
                               ),
                             ),
                           ],
@@ -570,4 +579,3 @@ class SummaryMarketCapRank extends StatelessWidget {
     );
   }
 }
-
