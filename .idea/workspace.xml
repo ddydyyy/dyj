@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241125_1940 dy 코드 리팩토링">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241126_1740 dy 국내주식 등락률 순위 service, model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/screens/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -474,7 +476,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732531067543</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="241126_1740 dy 국내주식 등락률 순위 service, model">
+      <option name="closed" value="true" />
+      <created>1732610669222</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1732610669222</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -489,7 +499,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241111_1700 dy krx api 호출 성공" />
     <MESSAGE value="241111_1930 dy krx api 폐기 -&gt; 호출 및 해당 데이터 provide에 저장 성공했으나, 실시간 데이터가 아님" />
     <MESSAGE value="241112_0230 dy finnhub api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
     <MESSAGE value="241112_1530 dy polygon.io api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
@@ -514,7 +523,8 @@
     <MESSAGE value="241125_1600 dy 거래량 순위 제작" />
     <MESSAGE value="241125_1930 dy 코드 리팩토링" />
     <MESSAGE value="241125_1940 dy 코드 리팩토링" />
-    <option name="LAST_COMMIT_MESSAGE" value="241125_1940 dy 코드 리팩토링" />
+    <MESSAGE value="241126_1740 dy 국내주식 등락률 순위 service, model" />
+    <option name="LAST_COMMIT_MESSAGE" value="241126_1740 dy 국내주식 등락률 순위 service, model" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -546,12 +556,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/screens/home.dart</url>
-          <line>140</line>
+          <line>142</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/Front/lib/screens/home.dart</url>
-          <line>53</line>
+          <line>55</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
@@ -608,6 +618,36 @@
           <url>file://$PROJECT_DIR$/Front/lib/models/stock_model.dart</url>
           <line>171</line>
           <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart</url>
+          <line>346</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/services/stock_service.dart</url>
+          <line>386</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/services/stock_service.dart</url>
+          <line>452</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/models/stock_model.dart</url>
+          <line>227</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart</url>
+          <line>461</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart</url>
+          <line>572</line>
+          <option name="timeStamp" value="49" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -108,7 +108,7 @@ class MajorIndexModel {
   }
 }
 
-// 순위분석 - 거래량순위
+// 순위 분석 - 거래량 순위
 class VolumeRankingModel {
   final String korName; // 종목 이름
   final int rank;       // 순위
@@ -170,16 +170,16 @@ class VolumeRankingModel {
 
 }
 
-// 순위분석 - 거래량순위
-class FluctuationRateRankingModel {
+// 순위 분석 - 등락률 순위
+class ChangeRateRankingModel {
   final String korName; // 종목 이름
-  final int code;       // 종목 코드
+  final String code;    // 종목 코드
   final int rank;       // 순위
   final int price;      // 현재가
   final int changePrice;          // 전일 대비 가격 변화량
   final double changePriceRate;   // 전일 대비 가격 변화율
 
-  FluctuationRateRankingModel({
+  ChangeRateRankingModel({
     required this.korName,
     required this.code,
     required this.rank,
@@ -189,10 +189,10 @@ class FluctuationRateRankingModel {
   });
 
   // JSON 데이터를 객체로 변환
-  factory FluctuationRateRankingModel.fromJson(Map<String, dynamic> json) {
-    return FluctuationRateRankingModel(
+  factory ChangeRateRankingModel.fromJson(Map<String, dynamic> json) {
+    return ChangeRateRankingModel(
       korName: _decodeKorName(json['hts_kor_isnm'] as String),
-      code: int.parse(json['stck_shrn_iscd'] as String),
+      code: json['stck_shrn_iscd'] as String,
       rank: int.parse(json['data_rank'] as String),
       price: int.parse(json['stck_prpr'] as String),
       changePrice: int.parse(json['prdy_vrss'] as String),
@@ -226,4 +226,59 @@ class FluctuationRateRankingModel {
 
 }
 
+// 순위 분석 - 시가 총액 순위
+class MarketCapRankingModel {
+  final String korName; // 종목 이름
+  final String code;    // 종목 코드
+  final int rank;       // 순위
+  final int price;      // 현재가
+  final int changePrice;          // 전일 대비 가격 변화량
+  final double changePriceRate;   // 전일 대비 가격 변화율
+
+  MarketCapRankingModel({
+    required this.korName,
+    required this.code,
+    required this.rank,
+    required this.price,
+    required this.changePrice,
+    required this.changePriceRate,
+  });
+
+  // JSON 데이터를 객체로 변환
+  factory MarketCapRankingModel.fromJson(Map<String, dynamic> json) {
+    return MarketCapRankingModel(
+      korName: _decodeKorName(json['hts_kor_isnm'] as String),
+      code: json['mksc_shrn_iscd'] as String,
+      rank: int.parse(json['data_rank'] as String),
+      price: int.parse(json['stck_prpr'] as String),
+      changePrice: int.parse(json['prdy_vrss'] as String),
+      changePriceRate: double.parse(json['prdy_ctrt'] as String),
+    );
+  }
+
+  // 디코딩 함수
+  static String _decodeKorName(String korName) {
+    try {
+      // UTF-8로 디코딩해서 정상적인 문자열을 반환
+      return utf8.decode(korName.runes.toList());
+    } catch (e) {
+      // 디코딩 실패 시 원래 값을 반환
+      return korName;
+    }
+  }
+// // 모델 데이터를 JSON으로 변환
+// Map<String, dynamic> toJson() {
+//   return {
+//     'hts_kor_isnm': korName,
+//     'data_rank': rank.toString(),
+//     'stck_prpr': price.toString(),
+//     'prdy_vrss': changePrice.toString(),
+//     'prdy_ctrt': changePriceRate.toString(),
+//     'avrg_vol': volAvg.toString(),
+//     'vol_inrt': volIncRate.toString(),
+//     'avrg_tr_pbmn': priceAvg.toString(),
+//   };
+// }
+
+}
 

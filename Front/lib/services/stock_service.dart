@@ -228,7 +228,7 @@ class StockService {
     }
   }
 
-  // 순위분석 - 거래량순위
+  // 순위 분석 - 거래량 순위
   Future<List<VolumeRankingModel>?> getVolumeRanking(accessToken) async {
     const path = 'uapi/domestic-stock/v1/quotations/volume-rank';
     final url = Uri.parse('$baseUrl/$path');
@@ -310,14 +310,14 @@ class StockService {
     }
   }
 
-  // 순위분석 - 등락률량순위
-  Future<List<FluctuationRateRankingModel>?> getFluctuationRateRanking(accessToken, sort) async {
+  // 순위 분석 - 등락률 순위
+  Future<List<ChangeRateRankingModel>?> getChangeRateRanking(accessToken, sort) async {
     const path = 'uapi/domestic-stock/v1/ranking/fluctuation';
     final url = Uri.parse('$baseUrl/$path');
 
     // 요청 헤더 설정
     final headers = {
-      'Content-Type': contentType,
+      'content-type': contentType,
       'authorization': 'Bearer $accessToken',
       'appKey': appkey,
       'appSecret': appsecret,
@@ -358,8 +358,8 @@ class StockService {
       headers: headers,
     );
 
-    debugPrint('status : ${response.statusCode}');
-    debugPrint('response : ${response.body}');
+    // debugPrint('status : ${response.statusCode}');
+    // debugPrint('response : ${response.body}');
 
     try {
       if (response.statusCode == 200) {
@@ -372,27 +372,85 @@ class StockService {
 
         // 리스트 데이터를 VolumeRankingModel로 변환
         final list = data
-            .map((item) => FluctuationRateRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .map((item) => ChangeRateRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
             .toList();
-        debugPrint('getFluctuationRateRanking_응답 성공');
-        // int i = 0;
-        // debugPrint('순위 : ${list[i].rank}');
-        // debugPrint('이름 : ${list[i].korName}');
-        // debugPrint('가격 : ${list[i].price}');
-        // debugPrint('전일 대비 가격 변화량 : ${list[i].changePrice}');
-        // debugPrint('전일 대비 가격 변화율 : ${list[i].changePriceRate}');
-        // debugPrint('평균 거래량 : ${list[i].volAvg}');
-        // debugPrint('거래량 증가율 : ${list[i].volIncRate}');
-        // debugPrint('평균 거래 대금 : ${list[i].priceAvg}');
+        debugPrint('getChangeRateRanking_응답 성공');
 
         return list;
       } else {
-        throw Exception('getFluctuationRateRanking_응답 실패 ${response.statusCode}');
+        throw Exception('getChangeRateRanking_응답 실패 ${response.statusCode}');
       }
     } catch (e) {
-      throw Exception('getFluctuationRateRanking_에러: $e');
+      throw Exception('getChangeRateRanking_에러: $e');
     }
   }
+
+  // 순위 분석 - 시가 총액 상위
+  Future<List<MarketCapRankingModel>?> getMarketCapRanking(accessToken) async {
+    const path = 'uapi/domestic-stock/v1/ranking/market-cap';
+    final url = Uri.parse('$baseUrl/$path');
+
+    // 요청 헤더 설정
+    final headers = {
+      'content-type': contentType,
+      'authorization': 'Bearer $accessToken',
+      'appKey': appkey,
+      'appSecret': appsecret,
+      'tr_id': 'FHPST01740000',
+      'custtype' : 'P',
+    };
+
+    final params = {
+      // 업종 'U' 주식 'J'
+      'fid_cond_mrkt_div_code': 'J',
+      'fid_cond_scr_div_code': '20174',
+      // 0: 전체, 1:보통주, 2:우선주
+      'fid_div_cls_code': '0',
+      // 0000:전체, 0001:거래소, 1001:코스닥, 2001:코스피200
+      'fid_input_iscd': '0000',
+      'fid_trgt_cls_code': '0',
+      'fid_trgt_exls_cls_code': '0',
+      // 입력 가격 ( price 1 ~ 2 )
+      'fid_input_price_1': '',
+      'fid_input_price_2': '',
+      // 거래량 수
+      'fid_vol_cnt': '',
+    };
+
+    final response = await http.get(
+      url.replace(
+        queryParameters: params,
+      ),
+      headers: headers,
+    );
+
+    // debugPrint('status : ${response.statusCode}');
+    // debugPrint('response : ${response.body}');
+
+    try {
+      if (response.statusCode == 200) {
+        // 리스트 형태
+        final decodeData = jsonDecode(response.body);
+        // debugPrint('decodeData : $decodeData');
+        // 데이터 추출
+        final List<dynamic> data = decodeData['output'];
+        // debugPrint('data : $data');
+
+        // 리스트 데이터를 VolumeRankingModel로 변환
+        final list = data
+            .map((item) => MarketCapRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .toList();
+        debugPrint('getMarketCapRanking_응답 성공');
+
+        return list;
+      } else {
+        throw Exception('getMarketCapRanking_응답 실패 ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('getMarketCapRanking_에러: $e');
+    }
+  }
+
 
 
 }

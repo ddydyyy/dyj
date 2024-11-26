@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
 
         const SizedBox(height: 14),
         DivLine(themeProvider: themeProvider),
-        const SizedBox(height: 20),
+        const SizedBox(height: 24),
         const TitleText(
           text: '실시간 랭킹',
           list: ['한국', '미국', '암호화폐'],
@@ -47,6 +47,8 @@ class Home extends StatelessWidget {
             accessToken: accessToken,
             num: 1,
           ),
+        const SizedBox(height: 14),
+        DivLine(themeProvider: themeProvider),
       ],
     );
   }

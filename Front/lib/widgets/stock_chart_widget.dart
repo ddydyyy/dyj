@@ -236,14 +236,15 @@ class SummaryStockData extends StatelessWidget {
 // 거래량 순위 요약표
 class SummaryVolRank extends StatelessWidget {
   final String accessToken;
-  final int selectedIndex;
+
+  // final int selectedIndex;
   // 한 칸 높이
   final double height;
 
   const SummaryVolRank({
     super.key,
     required this.accessToken,
-    required this.selectedIndex,
+    // required this.selectedIndex,
     required this.height,
   });
 
@@ -276,7 +277,15 @@ class SummaryVolRank extends StatelessWidget {
                             const SizedBox(
                               width: 10,
                             ),
-                            Text(item.korName),
+                            Expanded(
+                              child: Text(
+                                item.korName,
+                                // 공간 초과 시 ...으로 표시
+                                overflow: TextOverflow.ellipsis,
+                                // 텍스트를 한 줄로 제한
+                                maxLines: 1,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -335,3 +344,230 @@ class SummaryVolRank extends StatelessWidget {
     );
   }
 }
+
+// 등락률 순위 요약표
+class SummaryChangeRateRank extends StatelessWidget {
+  final String accessToken;
+
+  // 한 칸 높이
+  final double height;
+
+  // 0:상승율순 1:하락율순 2:시가대비상승율 3:시가대비하락율 4:변동율
+  final String sort;
+
+  const SummaryChangeRateRank({
+    super.key,
+    required this.accessToken,
+    required this.height,
+    required this.sort,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return buildStockData(
+      StockService().getChangeRateRanking(accessToken, sort),
+      // 로딩중, 에러 등 높이
+      height * 5,
+      (context, data) {
+        final itemCount = data.length > 5 ? 5 : data.length;
+        return SizedBox(
+          height: height * 5,
+          child: ListView.builder(
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              final item = data[index];
+              return SizedBox(
+                height: height,
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('${item.rank}'),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            // 공간 할당
+                            Expanded(
+                              child: Text(
+                                item.korName,
+                                // 공간 초과 시 ...으로 표시
+                                overflow: TextOverflow.ellipsis,
+                                // 텍스트를 한 줄로 제한
+                                maxLines: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              NumberFormat('#,###').format(item.price),
+                              style: TextStyle(
+                                  // fontSize: 16,
+                                  color: item.changePriceRate > 0
+                                      ? Colors.red
+                                      : item.changePriceRate < 0
+                                          ? Colors.blue
+                                          : Colors.black),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              // 양수일 때 + 붙여주기
+                              '${item.changePriceRate > 0 ? '+' : ''}'
+                              '${item.changePriceRate}%',
+                              style: TextStyle(
+                                color: item.changePriceRate > 0
+                                    ? Colors.red
+                                    : item.changePriceRate < 0
+                                        ? Colors.blue
+                                        : Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+// 등락률 순위 요약표
+class SummaryMarketCapRank extends StatelessWidget {
+  final String accessToken;
+
+  // 한 칸 높이
+  final double height;
+
+  const SummaryMarketCapRank({
+    super.key,
+    required this.accessToken,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return buildStockData(
+      StockService().getMarketCapRanking(accessToken),
+      // 로딩중, 에러 등 높이
+      height * 5,
+          (context, data) {
+        final itemCount = data.length > 5 ? 5 : data.length;
+        return SizedBox(
+          height: height * 5,
+          child: ListView.builder(
+            itemCount: itemCount,
+            itemBuilder: (context, index) {
+              final item = data[index];
+              return SizedBox(
+                height: height,
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 2,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text('${item.rank}'),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            // 공간 할당
+                            Expanded(
+                              child: Text(
+                                item.korName,
+                                // 공간 초과 시 ...으로 표시
+                                overflow: TextOverflow.ellipsis,
+                                // 텍스트를 한 줄로 제한
+                                maxLines: 1,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              NumberFormat('#,###').format(item.price),
+                              style: TextStyle(
+                                // fontSize: 16,
+                                  color: item.changePriceRate > 0
+                                      ? Colors.red
+                                      : item.changePriceRate < 0
+                                      ? Colors.blue
+                                      : Colors.black),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      flex: 1,
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.95,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              // 양수일 때 + 붙여주기
+                              '${item.changePriceRate > 0 ? '+' : ''}'
+                                  '${item.changePriceRate}%',
+                              style: TextStyle(
+                                color: item.changePriceRate > 0
+                                    ? Colors.red
+                                    : item.changePriceRate < 0
+                                    ? Colors.blue
+                                    : Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+

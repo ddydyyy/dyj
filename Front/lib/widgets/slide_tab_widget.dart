@@ -126,7 +126,7 @@ class EachTab extends StatelessWidget {
           //     RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         ),
         onPressed: () {
-          debugPrint('slide_tab_widget - index : $index');
+          // debugPrint('slide_tab_widget - index : $index');
           onSelected(index);
         },
         child: Text(
@@ -219,6 +219,7 @@ class SelectedIndexData0 extends StatelessWidget {
 
 // 슬라이드 탭 num = 1 : 실시간 랭킹
 class SelectedIndexData1 extends StatelessWidget {
+  final double height = 40;
   final String accessToken;
   final int selectedIndex;
 
@@ -230,11 +231,29 @@ class SelectedIndexData1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SummaryVolRank(
-      // 한 칸 높이
-      height: 40,
-      accessToken: accessToken,
-      selectedIndex: selectedIndex,
-    );
+    switch (selectedIndex) {
+      case 0:
+        return SummaryChangeRateRank(
+          height: height,
+          accessToken: accessToken,
+          sort: '0',
+        );
+      case 1:
+        return SummaryChangeRateRank(
+          height: height,
+          accessToken: accessToken,
+          sort: '1',
+        );
+      case 2:
+        return SummaryVolRank(
+          height: height,
+          accessToken: accessToken,
+        );
+      default:
+        return SummaryMarketCapRank(
+          accessToken: accessToken,
+          height: height,
+        );
+    }
   }
 }

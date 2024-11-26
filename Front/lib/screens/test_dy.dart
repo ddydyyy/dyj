@@ -24,7 +24,7 @@ class TestDY extends StatelessWidget {
               // StockService().getMinData(accessToken),
               // print(''),
               // StockService().getMajorIndex(accessToken, '0001'),
-              StockService().getFluctuationRateRanking(accessToken, '0'),
+              StockService().getMarketCapRanking(accessToken),
             },
 
             style: TextButton.styleFrom(
