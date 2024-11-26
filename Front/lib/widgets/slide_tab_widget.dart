@@ -222,7 +222,7 @@ class SelectedIndexData1 extends StatelessWidget {
   final String accessToken;
   final int selectedIndex;
 
-  SelectedIndexData1({
+  const SelectedIndexData1({
     super.key,
     required this.accessToken,
     required this.selectedIndex,

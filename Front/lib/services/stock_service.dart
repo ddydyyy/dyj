@@ -310,7 +310,89 @@ class StockService {
     }
   }
 
+  // 순위분석 - 등락률량순위
+  Future<List<FluctuationRateRankingModel>?> getFluctuationRateRanking(accessToken, sort) async {
+    const path = 'uapi/domestic-stock/v1/ranking/fluctuation';
+    final url = Uri.parse('$baseUrl/$path');
 
+    // 요청 헤더 설정
+    final headers = {
+      'Content-Type': contentType,
+      'authorization': 'Bearer $accessToken',
+      'appKey': appkey,
+      'appSecret': appsecret,
+      'tr_id': 'FHPST01700000',
+      'custtype' : 'P',
+    };
+
+    final params = {
+      'fid_rsfl_rate2': '',
+      // 업종 'U'
+      'fid_cond_mrkt_div_code': 'J',
+      'fid_cond_scr_div_code': '20170',
+      // 0000(전체) 코스피(0001), 코스닥(1001), 코스피200(2001)
+      'fid_input_iscd': '0000',
+      // 0:상승율순 1:하락율순 2:시가대비상승율 3:시가대비하락율 4:변동율
+      'fid_rank_sort_cls_code': sort,
+      // 0:전체 , 누적일수 입력
+      'fid_input_cnt_1': '0',
+      // 상승율 순일때 (0:저가대비, 1:종가대비)
+      // 하락율 순일때 (0:고가대비, 1:종가대비)
+      // 기타 (0:전체)
+      'fid_prc_cls_code': '1',
+      // 입력 가격 ( price 1 ~ 2 )
+      'fid_input_price_1': '',
+      'fid_input_price_2': '',
+      // 거래량 수
+      'fid_vol_cnt': '',
+      'fid_trgt_cls_code': '0',
+      'fid_trgt_exls_cls_code': '0',
+      'fid_div_cls_code': '0',
+      'fid_rsfl_rate1': '',
+    };
+
+    final response = await http.get(
+      url.replace(
+        queryParameters: params,
+      ),
+      headers: headers,
+    );
+
+    debugPrint('status : ${response.statusCode}');
+    debugPrint('response : ${response.body}');
+
+    try {
+      if (response.statusCode == 200) {
+        // 리스트 형태
+        final decodeData = jsonDecode(response.body);
+        // debugPrint('decodeData : $decodeData');
+        // 데이터 추출
+        final List<dynamic> data = decodeData['output'];
+        // debugPrint('data : $data');
+
+        // 리스트 데이터를 VolumeRankingModel로 변환
+        final list = data
+            .map((item) => FluctuationRateRankingModel.fromJson(item as Map<String, dynamic>)) // 변경된 부분
+            .toList();
+        debugPrint('getFluctuationRateRanking_응답 성공');
+        // int i = 0;
+        // debugPrint('순위 : ${list[i].rank}');
+        // debugPrint('이름 : ${list[i].korName}');
+        // debugPrint('가격 : ${list[i].price}');
+        // debugPrint('전일 대비 가격 변화량 : ${list[i].changePrice}');
+        // debugPrint('전일 대비 가격 변화율 : ${list[i].changePriceRate}');
+        // debugPrint('평균 거래량 : ${list[i].volAvg}');
+        // debugPrint('거래량 증가율 : ${list[i].volIncRate}');
+        // debugPrint('평균 거래 대금 : ${list[i].priceAvg}');
+
+        return list;
+      } else {
+        throw Exception('getFluctuationRateRanking_응답 실패 ${response.statusCode}');
+      }
+    } catch (e) {
+      throw Exception('getFluctuationRateRanking_에러: $e');
+    }
+  }
 
 
 }
