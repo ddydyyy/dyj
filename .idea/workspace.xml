@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241126_2000 dy 실시간 랭킹 - 상승률, 하락률, 거래량, 시가총액별 데이터 구현">
+    <list default="true" id="df0b605d-1ecf-46da-a4b4-4e89f75f756b" name="Changes" comment="241127_0100 dy 주요지수 해외, 환율, 국채 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/models/stock_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/screens/test_dy.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/services/stock_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/slide_tab_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/Front/lib/widgets/stock_chart_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,31 +49,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Flutter.DY.executor": "Run",
-    "Flutter.DY_test.executor": "Run",
-    "Flutter.main.dart.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "io.flutter.reload.alreadyRun": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/USER/StudioProjects/dyj/Front/Old/widgets",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "emulator",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Flutter.DY.executor&quot;: &quot;Run&quot;,
+    &quot;Flutter.DY_test.executor&quot;: &quot;Run&quot;,
+    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/StudioProjects/dyj/Front/Old/widgets&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;emulator&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\USER\StudioProjects\dyj\Front\Old\widgets" />
@@ -491,7 +486,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732626378382</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="241127_0100 dy 주요지수 해외, 환율, 국채 구현">
+      <option name="closed" value="true" />
+      <created>1732637720059</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1732637720060</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -506,7 +509,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="241112_0230 dy finnhub api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
     <MESSAGE value="241112_1530 dy polygon.io api를 이용해 주가 데이터 확보 후 15분 단위 종가 기준 그래프 작업중" />
     <MESSAGE value="241113_0600 dy 그래프 제작중" />
     <MESSAGE value="241113_2300 dy 한국투자증권 api로 그래프 제작중" />
@@ -531,7 +533,8 @@
     <MESSAGE value="241125_1940 dy 코드 리팩토링" />
     <MESSAGE value="241126_1740 dy 국내주식 등락률 순위 service, model" />
     <MESSAGE value="241126_2000 dy 실시간 랭킹 - 상승률, 하락률, 거래량, 시가총액별 데이터 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="241126_2000 dy 실시간 랭킹 - 상승률, 하락률, 거래량, 시가총액별 데이터 구현" />
+    <MESSAGE value="241127_0100 dy 주요지수 해외, 환율, 국채 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="241127_0100 dy 주요지수 해외, 환율, 국채 구현" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
