@@ -21,7 +21,9 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody UserModel user) {
         System.out.println("\n\n /api/users/register 요청 \n\n");
+        System.out.println("user : " + user + "\n\n");
         String response = userService.registerUser(user);
+        System.out.println("response : " + response + "\n\n");
         if (response.equals("회원가입 성공!")) {
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         }

@@ -1,6 +1,5 @@
 package com.finance.back.model;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,32 +9,44 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class UserModel {
+    // 기본키 -> 고유한 값 자동생성
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // private Long id;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    private String userId;
+    private String password;
     private String email;
 
-    @Column(nullable = false)
-    private String password;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // private Long id;
+
+    // @Column(nullable = false, unique = true)
+    // private String username;
+    // private String email;
+
+    // @Column(nullable = false)
+    // private String password;
 
     // Getter & Setter
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getPassword() {
@@ -54,4 +65,13 @@ public class UserModel {
         this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

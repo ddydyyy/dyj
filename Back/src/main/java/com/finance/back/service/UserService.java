@@ -13,13 +13,12 @@ public class UserService {
     private UserRepository userRepository;
 
     public String registerUser(UserModel user) {
-        if (userRepository.existsByUsername(user.getUsername())) {
+        System.out.println("UserService\n");
+        if (userRepository.existsByUserId(user.getUserId())) {
             return "이미 존재하는 아이디입니다.";
         }
-        if (userRepository.existsByEmail(user.getEmail())) {
-            return "이미 존재하는 이메일입니다.";
-        }
         userRepository.save(user);
+        System.out.println("성공n\n");
         return "회원가입 성공!";
     }
 }

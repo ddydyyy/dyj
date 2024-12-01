@@ -2,17 +2,17 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class UserService {
-  // 서버 URL
-  final String baseUrl = 'http://192.168.0.194:8080/api/users'; // 로컬 환경
+  // 서버 URL -> 로컬
+  final String baseUrl = 'http://192.168.0.194:8080/api/users';
 
   // 회원가입 메소드
-  Future<String> registerUser(String id, String password, String username, String email) async {
+  Future<String> registerUser(String userId, String password, String email) async {
     final url = Uri.parse('$baseUrl/register'); // 회원가입 경로
     final headers = {'Content-Type': 'application/json'};
     final body = json.encode({
-      'id': id,
+      // 'id': id,
+      'userId': userId,
       'password': password,
-      'username': username,
       'email': email,
     });
 

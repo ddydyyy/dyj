@@ -20,12 +20,11 @@ class _TestDYState extends State<TestDY> {
   String _responseMessage = '';
 
   void _register() async {
-    final id = _idController.text;
+    final userId = _idController.text;
     final password = _passwordController.text;
-    final username = _usernameController.text;
     final email = _emailController.text;
 
-    if (id.isEmpty || username.isEmpty || password.isEmpty || email.isEmpty) {
+    if (userId.isEmpty || password.isEmpty || email.isEmpty) {
       setState(() {
         _responseMessage = '모든 필드를 입력해주세요.';
       });
@@ -34,7 +33,7 @@ class _TestDYState extends State<TestDY> {
 
     // AuthService를 통해 회원가입 요청
     final response =
-        await _userService.registerUser(id, password, username, email);
+        await _userService.registerUser(userId, password, email);
     setState(() {
       _responseMessage = response;
     });
@@ -74,11 +73,6 @@ class _TestDYState extends State<TestDY> {
               TextField(
                 controller: _passwordController,
                 decoration: InputDecoration(labelText: '비밀번호'),
-                obscureText: true,
-              ),
-              TextField(
-                controller: _usernameController,
-                decoration: InputDecoration(labelText: '이름'),
                 obscureText: true,
               ),
               TextField(
